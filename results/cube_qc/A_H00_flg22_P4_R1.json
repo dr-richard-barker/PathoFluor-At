@@ -1,0 +1,19 @@
+{
+ "cube_id": "A_H00_flg22_P4_R1",
+ "relpath_raw": "Hour0/FLG22/Hour0 FLG22-4 Row1 (inverted).raw",
+ "sha256_raw": "2c9f1f6c2259ac976ddb28d9e8e66e843cbb032a1991f3909939d7d828db6f9e",
+ "lines": 1740,
+ "bands": 324,
+ "samples": 1416,
+ "read_seconds": 70.9,
+ "bg_median685": 110.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 108.4625015258789,
+ "dark_sd_420_620": 7.292150974273682,
+ "n_fg_pixels": 54590,
+ "fg_fraction": 0.022156471199428533,
+ "n_saturated_fg_pixels": 2,
+ "cube_max": 4095,
+ "fg_mean_minus_dark_in_420_620": 0.7643753886222839,
+ "harvested_utc": "2026-10-28T18:11:07Z"
+}

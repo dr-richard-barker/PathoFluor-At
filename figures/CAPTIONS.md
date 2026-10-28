@@ -1,0 +1,13 @@
+# Figure captions
+
+Each caption says what the figure shows and where its data come from.
+
+**fig1_exposure_artefact** — Exposure time changed between timepoints (a; plate-mean exposure of the Control plates, so hour 0 mixes 0.305 s scans with the 0.203 s rescan of Control-4). The 2016 summary graphs plotted raw intensity (b), so part of their apparent fall after hour 0 is a camera setting. Dividing by each cube's exposure (c) removes that step. Control plates only, set A, median 683-687 nm emission of the 2016 hand-drawn ROIs. Hour 24 mixed exposures within plates (0.222-0.268 s), so its plate-mean exposure is used. Data: results/roi_spectra_A.parquet, metadata/cube_manifest.csv; table: tables/fig1_exposure_artefact.csv.
+
+**fig2_spectral_change** — Treatment-induced change in emission-spectrum shape, Col-0, set A. Each spectrum is area-normalised over 650-800 nm (so exposure and seedling size cancel), averaged per plate, and expressed relative to the same plate at hour 0. Curves show treated minus Control at each time after treatment. No hand ROIs exist for Pathogen at 48 h. Data: results/roi_features.csv.gz; table: tables/fig2_spectral_change.csv.
+
+**fig3_timecourse** — Change from hour 0 in three emission-shape features, Col-0, set A. Points are means over plates (n = 3-4 plates per treatment; the plate is the treated unit) ± s.e.m.; each plate value is the mean of its Col-0 hand-ROI spectra minus the same plate's hour-0 mean. Time axis is categorical (1, 2, 3, 24, 48 h). Plates Control-4 and flg22-2 are excluded because their hour-0 scans were partly upright rescans. Data: results/roi_features.csv.gz; table: tables/fig3_timecourse.csv. Statistics: tables/stats_contrasts_baseline_adjusted.csv.
+
+**fig4_auc** — Can a plate's treatment be told from its seedlings' emission spectra? Logistic regression on the area-normalised 650-800 nm spectrum of Col-0 hand ROIs, evaluated by leave-one-plate-out cross-validation. AUC is computed on plate means (8 plates; 6 for the change-from-hour-0 variant). * exact plate-label permutation p ≤ 0.05. Hour 0 is before treatment: the high hour-0 AUC in (a) shows that plates differ before treatment, so only (b) is evidence of a treatment effect. Data: tables/model_auc.csv.
+
+**fig5_specificity** — Is the signature genotype-specific? A logistic model trained on Col-0 shape features (change from hour 0) is applied to every genotype on the same plates. Values are the mean predicted probability of 'treated' on treated plates minus that on Control plates (Col-0: out-of-fold). An FLS2-dependent flg22 signature would vanish in fls2-17 and fls2-101; it does not, so the set-A flg22 signal is a plate-level effect. Data: tables/model_specificity.csv.

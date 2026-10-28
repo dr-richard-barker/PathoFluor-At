@@ -1,0 +1,21 @@
+variant,hour,contrast,genotypes,features,model,n_plants,n_plates,auc_plant,auc_plate,perm_p_plate,n_perm
+absolute,0.0,Pathogen vs Control,Col-0,spectrum,logistic,46,8,0.6723484848484849,0.8125,0.02857142857142857,70
+absolute,0.0,flg22 vs Control,Col-0,spectrum,logistic,48,8,0.8715277777777777,1.0,0.02857142857142857,70
+absolute,1.0,Pathogen vs Control,Col-0,spectrum,logistic,46,8,0.9299242424242424,1.0,0.02857142857142857,70
+absolute,1.0,flg22 vs Control,Col-0,spectrum,logistic,48,8,0.546875,0.5625,0.11428571428571428,70
+absolute,2.0,Pathogen vs Control,Col-0,spectrum,logistic,47,8,0.911231884057971,1.0,0.02857142857142857,70
+absolute,2.0,flg22 vs Control,Col-0,spectrum,logistic,47,8,0.5163043478260869,0.5625,0.2,70
+absolute,3.0,Pathogen vs Control,Col-0,spectrum,logistic,48,8,0.4548611111111111,0.5,0.42857142857142855,70
+absolute,3.0,flg22 vs Control,Col-0,spectrum,logistic,48,8,0.48958333333333337,0.4375,0.2571428571428571,70
+absolute,24.0,Pathogen vs Control,Col-0,spectrum,logistic,48,8,0.8958333333333334,1.0,0.02857142857142857,70
+absolute,24.0,flg22 vs Control,Col-0,spectrum,logistic,48,8,0.5138888888888888,0.375,0.2571428571428571,70
+absolute,48.0,flg22 vs Control,Col-0,spectrum,logistic,48,8,0.6666666666666666,0.8125,0.02857142857142857,70
+baseline-relative,1.0,Pathogen vs Control,Col-0,spectrum,logistic,40,7,0.9444444444444445,1.0,0.02857142857142857,35
+baseline-relative,1.0,flg22 vs Control,Col-0,spectrum,logistic,36,6,0.802469135802469,1.0,0.1,20
+baseline-relative,2.0,Pathogen vs Control,Col-0,spectrum,logistic,41,7,0.9371980676328503,1.0,0.02857142857142857,35
+baseline-relative,2.0,flg22 vs Control,Col-0,spectrum,logistic,35,6,0.7581699346405228,0.888888888888889,0.1,20
+baseline-relative,3.0,Pathogen vs Control,Col-0,spectrum,logistic,42,7,0.5671296296296297,0.5,0.34285714285714286,35
+baseline-relative,3.0,flg22 vs Control,Col-0,spectrum,logistic,36,6,0.7623456790123456,1.0,0.1,20
+baseline-relative,24.0,Pathogen vs Control,Col-0,spectrum,logistic,42,7,0.8333333333333334,1.0,0.02857142857142857,35
+baseline-relative,24.0,flg22 vs Control,Col-0,spectrum,logistic,36,6,0.5246913580246914,0.5555555555555556,0.3,20
+baseline-relative,48.0,flg22 vs Control,Col-0,spectrum,logistic,36,6,0.6851851851851851,0.888888888888889,0.1,20

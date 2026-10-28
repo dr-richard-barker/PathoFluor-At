@@ -1,0 +1,14 @@
+Creative Commons Attribution 4.0 International (CC-BY 4.0)
+
+Copyright (c) 2016-2026 Richard Barker and the data producers listed in CITATION.cff
+
+This license applies to the 2016 hyperspectral data (the copies in data/original_2016/ and
+the raw cubes deposited on Zenodo), the derived data in results/, and the figures, tables,
+manuscript and slides in this repository. You are free to share and adapt the material for
+any purpose provided you give appropriate credit, provide a link to the license, and
+indicate if changes were made.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Not covered and not redistributed: the 2016 Middleton Spectral Vision analysis reports,
+which are cited in the manuscript but remain their authors' work.

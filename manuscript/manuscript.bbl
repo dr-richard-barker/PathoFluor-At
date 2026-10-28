@@ -1,0 +1,233 @@
+\begin{thebibliography}{19}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Felix et~al.(1999)Felix, Duran, Volko, and Boller]{felix1999}
+Georg Felix, Juliana~D. Duran, Sigrid Volko, and Thomas Boller.
+\newblock Plants have a sensitive perception system for the most conserved
+  domain of bacterial flagellin.
+\newblock \emph{The Plant Journal}, 18\penalty0 (3):\penalty0 265--276, 1999.
+\newblock ISSN 1365-313X.
+\newblock \doi{10.1046/j.1365-313x.1999.00265.x}.
+\newblock URL \url{http://dx.doi.org/10.1046/j.1365-313x.1999.00265.x}.
+
+\bibitem[Gómez-Gómez et~al.(1999)Gómez-Gómez, Felix, and
+  Boller]{gomezgomez1999}
+Lourdes Gómez-Gómez, Georg Felix, and Thomas Boller.
+\newblock A single locus determines sensitivity to bacterial flagellin in
+  arabidopsis thaliana.
+\newblock \emph{The Plant Journal}, 18\penalty0 (3):\penalty0 277--284, 1999.
+\newblock ISSN 1365-313X.
+\newblock \doi{10.1046/j.1365-313x.1999.00451.x}.
+\newblock URL \url{http://dx.doi.org/10.1046/j.1365-313x.1999.00451.x}.
+
+\bibitem[Gómez-Gómez and Boller(2000)]{gomezgomez2000}
+Lourdes Gómez-Gómez and Thomas Boller.
+\newblock Fls2: an lrr receptor-like kinase involved in the perception of the
+  bacterial elicitor flagellin in arabidopsis.
+\newblock \emph{Molecular Cell}, 5\penalty0 (6):\penalty0 1003--1011, 2000.
+\newblock ISSN 1097-2765.
+\newblock \doi{10.1016/s1097-2765(00)80265-8}.
+\newblock URL \url{http://dx.doi.org/10.1016/s1097-2765(00)80265-8}.
+
+\bibitem[Chinchilla et~al.(2005)Chinchilla, Bauer, Regenass, Boller, and
+  Felix]{chinchilla2006}
+Delphine Chinchilla, Zsuzsa Bauer, Martin Regenass, Thomas Boller, and Georg
+  Felix.
+\newblock The \textit{Arabidopsis} receptor kinase fls2 binds flg22 and
+  determines the specificity of flagellin perception.
+\newblock \emph{The Plant Cell}, 18\penalty0 (2):\penalty0 465--476, 2005.
+\newblock ISSN 1532-298X.
+\newblock \doi{10.1105/tpc.105.036574}.
+\newblock URL \url{http://dx.doi.org/10.1105/tpc.105.036574}.
+
+\bibitem[Zipfel et~al.(2004)Zipfel, Robatzek, Navarro, Oakeley, Jones, Felix,
+  and Boller]{zipfel2004}
+Cyril Zipfel, Silke Robatzek, Lionel Navarro, Edward~J. Oakeley, Jonathan D.~G.
+  Jones, Georg Felix, and Thomas Boller.
+\newblock Bacterial disease resistance in arabidopsis through flagellin
+  perception.
+\newblock \emph{Nature}, 428\penalty0 (6984):\penalty0 764--767, 2004.
+\newblock ISSN 1476-4687.
+\newblock \doi{10.1038/nature02485}.
+\newblock URL \url{http://dx.doi.org/10.1038/nature02485}.
+
+\bibitem[Göhre et~al.(2012)Göhre, Jones, Sklenář, Robatzek, and
+  Weber]{gohre2012}
+Vera Göhre, Alexandra M.~E. Jones, Jan Sklenář, Silke Robatzek, and Andreas
+  P.~M. Weber.
+\newblock Molecular crosstalk between pamp-triggered immunity and
+  photosynthesis.
+\newblock \emph{Molecular Plant-Microbe Interactions}, 25\penalty0
+  (8):\penalty0 1083--1092, 2012.
+\newblock ISSN 1943-7706.
+\newblock \doi{10.1094/mpmi-11-11-0301}.
+\newblock URL \url{http://dx.doi.org/10.1094/mpmi-11-11-0301}.
+
+\bibitem[Bonfig et~al.(2006)Bonfig, Schreiber, Gabler, Roitsch, and
+  Berger]{bonfig2006}
+Katharina~B. Bonfig, Ulrich Schreiber, Andrea Gabler, Thomas Roitsch, and
+  Susanne Berger.
+\newblock Infection with virulent and avirulent p. syringae strains
+  differentially affects photosynthesis and sink metabolism in arabidopsis
+  leaves.
+\newblock \emph{Planta}, 225\penalty0 (1):\penalty0 1--12, 2006.
+\newblock ISSN 1432-2048.
+\newblock \doi{10.1007/s00425-006-0303-3}.
+\newblock URL \url{http://dx.doi.org/10.1007/s00425-006-0303-3}.
+
+\bibitem[Rousseau et~al.(2013)Rousseau, Belin, Bove, Rousseau, Fabre, Berruyer,
+  Guillaumès, Manceau, Jacques, and Boureau]{rousseau2013}
+Céline Rousseau, Etienne Belin, Edouard Bove, David Rousseau, Frédéric
+  Fabre, Romain Berruyer, Jacky Guillaumès, Charles Manceau, Marie-Agnès
+  Jacques, and Tristan Boureau.
+\newblock High throughput quantitative phenotyping of plant resistance using
+  chlorophyll fluorescence image analysis.
+\newblock \emph{Plant Methods}, 9\penalty0 (1), 2013.
+\newblock ISSN 1746-4811.
+\newblock \doi{10.1186/1746-4811-9-17}.
+\newblock URL \url{http://dx.doi.org/10.1186/1746-4811-9-17}.
+
+\bibitem[Pérez-Bueno et~al.(2016)Pérez-Bueno, Pineda, Cabeza, and
+  Barón]{perezbueno2016}
+María~L. Pérez-Bueno, Mónica Pineda, Francisco~M. Cabeza, and Matilde
+  Barón.
+\newblock Multicolor fluorescence imaging as a candidate for disease detection
+  in plant phenotyping.
+\newblock \emph{Frontiers in Plant Science}, 7, 2016.
+\newblock ISSN 1664-462X.
+\newblock \doi{10.3389/fpls.2016.01790}.
+\newblock URL \url{http://dx.doi.org/10.3389/fpls.2016.01790}.
+
+\bibitem[Pérez-Bueno et~al.(2019)Pérez-Bueno, Pineda, and
+  Barón]{perezbueno2019}
+María~Luisa Pérez-Bueno, Mónica Pineda, and Matilde Barón.
+\newblock Phenotyping plant responses to biotic stress by chlorophyll
+  fluorescence imaging.
+\newblock \emph{Frontiers in Plant Science}, 10, 2019.
+\newblock ISSN 1664-462X.
+\newblock \doi{10.3389/fpls.2019.01135}.
+\newblock URL \url{http://dx.doi.org/10.3389/fpls.2019.01135}.
+
+\bibitem[Mahlein(2016)]{mahlein2016}
+Anne-Katrin Mahlein.
+\newblock Plant disease detection by imaging sensors -- parallels and specific
+  demands for precision agriculture and plant phenotyping.
+\newblock \emph{Plant Disease}, 100\penalty0 (2):\penalty0 241--251, 2016.
+\newblock ISSN 1943-7692.
+\newblock \doi{10.1094/pdis-03-15-0340-fe}.
+\newblock URL \url{http://dx.doi.org/10.1094/pdis-03-15-0340-fe}.
+
+\bibitem[Buschmann(2007)]{buschmann2007}
+Claus Buschmann.
+\newblock Variability and application of the chlorophyll fluorescence emission
+  ratio red/far-red of leaves.
+\newblock \emph{Photosynthesis Research}, 92\penalty0 (2):\penalty0 261--271,
+  2007.
+\newblock ISSN 1573-5079.
+\newblock \doi{10.1007/s11120-007-9187-8}.
+\newblock URL \url{http://dx.doi.org/10.1007/s11120-007-9187-8}.
+
+\bibitem[Delk et~al.(2005)Delk, Johnson, Chowdhury, and Braam]{delk2005}
+Nikkí~A. Delk, Keith~A. Johnson, Naweed~I. Chowdhury, and Janet Braam.
+\newblock \textit{CML24} , regulated in expression by diverse stimuli, encodes
+  a potential ca2+ sensor that functions in responses to abscisic acid,
+  daylength, and ion stress.
+\newblock \emph{Plant Physiology}, 139\penalty0 (1):\penalty0 240--253, 2005.
+\newblock ISSN 0032-0889.
+\newblock \doi{10.1104/pp.105.062612}.
+\newblock URL \url{http://dx.doi.org/10.1104/pp.105.062612}.
+
+\bibitem[Ma et~al.(2008)Ma, Smigel, Tsai, Braam, and Berkowitz]{ma2008}
+Wei Ma, Andries Smigel, Yu-Chang Tsai, Janet Braam, and Gerald~A. Berkowitz.
+\newblock Innate immunity signaling: Cytosolic ca2+ elevation is linked to
+  downstream nitric oxide generation through the action of calmodulin or a
+  calmodulin-like protein.
+\newblock \emph{Plant Physiology}, 148\penalty0 (2):\penalty0 818--828, 2008.
+\newblock ISSN 1532-2548.
+\newblock \doi{10.1104/pp.108.125104}.
+\newblock URL \url{http://dx.doi.org/10.1104/pp.108.125104}.
+
+\bibitem[de~Juan and Tauler(2021)]{dejuan2021}
+Anna de~Juan and Romà Tauler.
+\newblock Multivariate curve resolution: 50 years addressing the mixture
+  analysis problem -- a review.
+\newblock \emph{Analytica Chimica Acta}, 1145:\penalty0 59--78, 2021.
+\newblock ISSN 0003-2670.
+\newblock \doi{10.1016/j.aca.2020.10.051}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.aca.2020.10.051}.
+
+\bibitem[Ishiga et~al.(2011)Ishiga, Ishiga, Uppalapati, and Mysore]{ishiga2011}
+Yasuhiro Ishiga, Takako Ishiga, Srinivasa~R Uppalapati, and Kirankumar~S
+  Mysore.
+\newblock Arabidopsis seedling flood-inoculation technique: a rapid and
+  reliable assay for studying plant-bacterial interactions.
+\newblock \emph{Plant Methods}, 7\penalty0 (1), 2011.
+\newblock ISSN 1746-4811.
+\newblock \doi{10.1186/1746-4811-7-32}.
+\newblock URL \url{http://dx.doi.org/10.1186/1746-4811-7-32}.
+
+\bibitem[Benjamini and Hochberg(1995)]{benjamini1995}
+Yoav Benjamini and Yosef Hochberg.
+\newblock Controlling the false discovery rate: A practical and powerful
+  approach to multiple testing.
+\newblock \emph{Journal of the Royal Statistical Society Series B: Statistical
+  Methodology}, 57\penalty0 (1):\penalty0 289--300, 1995.
+\newblock ISSN 1467-9868.
+\newblock \doi{10.1111/j.2517-6161.1995.tb02031.x}.
+\newblock URL \url{http://dx.doi.org/10.1111/j.2517-6161.1995.tb02031.x}.
+
+\bibitem[Papoutsoglou et~al.(2020)Papoutsoglou, Faria, Arend, Arnaud,
+  Athanasiadis, Chaves, Coppens, Cornut, Costa, Ćwiek Kupczyńska, Droesbeke,
+  Finkers, Gruden, Junker, King, Krajewski, Lange, Laporte, Michotey,
+  Oppermann, Ostler, Poorter, Ramírez-Gonzalez, Ramšak, Reif, Rocca-Serra,
+  Sansone, Scholz, Tardieu, Uauy, Usadel, Visser, Weise, Kersey, Miguel,
+  Adam-Blondon, and Pommier]{papoutsoglou2020}
+Evangelia~A. Papoutsoglou, Daniel Faria, Daniel Arend, Elizabeth Arnaud,
+  Ioannis~N. Athanasiadis, Inês Chaves, Frederik Coppens, Guillaume Cornut,
+  Bruno~V. Costa, Hanna Ćwiek Kupczyńska, Bert Droesbeke, Richard Finkers,
+  Kristina Gruden, Astrid Junker, Graham~J. King, Paweł Krajewski, Matthias
+  Lange, Marie-Angélique Laporte, Célia Michotey, Markus Oppermann, Richard
+  Ostler, Hendrik Poorter, Ricardo Ramírez-Gonzalez, Živa Ramšak, Jochen~C.
+  Reif, Philippe Rocca-Serra, Susanna-Assunta Sansone, Uwe Scholz, François
+  Tardieu, Cristobal Uauy, Björn Usadel, Richard G.~F. Visser, Stephan Weise,
+  Paul~J. Kersey, Célia~M. Miguel, Anne-Françoise Adam-Blondon, and Cyril
+  Pommier.
+\newblock Enabling reusability of plant phenomic datasets with miappe 1.1.
+\newblock \emph{New Phytologist}, 227\penalty0 (1):\penalty0 260--273, 2020.
+\newblock ISSN 1469-8137.
+\newblock \doi{10.1111/nph.16544}.
+\newblock URL \url{http://dx.doi.org/10.1111/nph.16544}.
+
+\bibitem[Wilkinson et~al.(2016)Wilkinson, Dumontier, Aalbersberg, Appleton,
+  Axton, Baak, Blomberg, Boiten, da~Silva~Santos, Bourne, Bouwman, Brookes,
+  Clark, Crosas, Dillo, Dumon, Edmunds, Evelo, Finkers, Gonzalez-Beltran, Gray,
+  Groth, Goble, Grethe, Heringa, ’t Hoen, Hooft, Kuhn, Kok, Kok, Lusher,
+  Martone, Mons, Packer, Persson, Rocca-Serra, Roos, van Schaik, Sansone,
+  Schultes, Sengstag, Slater, Strawn, Swertz, Thompson, van~der Lei, van
+  Mulligen, Velterop, Waagmeester, Wittenburg, Wolstencroft, Zhao, and
+  Mons]{wilkinson2016}
+Mark~D. Wilkinson, Michel Dumontier, IJsbrand~Jan Aalbersberg, Gabrielle
+  Appleton, Myles Axton, Arie Baak, Niklas Blomberg, Jan-Willem Boiten,
+  Luiz~Bonino da~Silva~Santos, Philip~E. Bourne, Jildau Bouwman, Anthony~J.
+  Brookes, Tim Clark, Mercè Crosas, Ingrid Dillo, Olivier Dumon, Scott
+  Edmunds, Chris~T. Evelo, Richard Finkers, Alejandra Gonzalez-Beltran,
+  Alasdair~J.G. Gray, Paul Groth, Carole Goble, Jeffrey~S. Grethe, Jaap
+  Heringa, Peter~A.C ’t Hoen, Rob Hooft, Tobias Kuhn, Ruben Kok, Joost Kok,
+  Scott~J. Lusher, Maryann~E. Martone, Albert Mons, Abel~L. Packer, Bengt
+  Persson, Philippe Rocca-Serra, Marco Roos, Rene van Schaik, Susanna-Assunta
+  Sansone, Erik Schultes, Thierry Sengstag, Ted Slater, George Strawn,
+  Morris~A. Swertz, Mark Thompson, Johan van~der Lei, Erik van Mulligen, Jan
+  Velterop, Andra Waagmeester, Peter Wittenburg, Katherine Wolstencroft, Jun
+  Zhao, and Barend Mons.
+\newblock The fair guiding principles for scientific data management and
+  stewardship.
+\newblock \emph{Scientific Data}, 3\penalty0 (1), 2016.
+\newblock ISSN 2052-4463.
+\newblock \doi{10.1038/sdata.2016.18}.
+\newblock URL \url{http://dx.doi.org/10.1038/sdata.2016.18}.
+
+\end{thebibliography}

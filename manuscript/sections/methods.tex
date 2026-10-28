@@ -1,0 +1,99 @@
+% Methods. Every fact is traceable to ../metadata/FACTS_PENDING.md (source codes H, N, V1, V2,
+% P, L) or to a script in ../scripts/. \pending{} marks facts still to be supplied.
+
+\section{Methods}
+
+\subsection{Plant material and treatments}
+\textit{Arabidopsis thaliana} seedlings of five genotypes were grown on square agar plates in
+five lanes per plate: Col-0 (lane A), \textit{fls2-17} (B), \textit{fls2-101} (C),
+\textit{cml24-2} (D) and \textit{cml24-4} (E). Lane assignments are taken from the 2016 analysis
+folders (FACTS R8). \pending{Allele origins, backgrounds and stock numbers.}
+\textit{FLS2} encodes the flagellin receptor that perceives the flg22 epitope
+\citep{gomezgomez1999,felix1999,gomezgomez2000,chinchilla2006}. \textit{CML24} encodes a
+calmodulin-like Ca$^{2+}$ sensor \citep{delk2005} implicated in flg22-triggered nitric-oxide
+signalling \citep{ma2008}.
+Seedlings were grown on \pending{medium (protocol draft: \textonehalf{} LS, 0.3\% P), age,
+light, photoperiod and temperature}.
+Plates were treated with a mock solution, flg22 or \textit{Pseudomonas syringae}
+(FACTS R5) \pending{pathovar/strain, inoculum density, flg22 concentration}. The 2016 protocol
+draft specifies flood inoculation after \citet{ishiga2011}, with Silwet L-77 as the mock
+(FACTS P1--P3). Four plates per treatment were imaged in the July experiment (set A).
+
+The independent November experiment (set B; FACTS R7, R9) used Col-0, \textit{fls2-17} and
+\textit{fls2-101} only, with two or three plates per treatment, three rows per plate and three
+seedlings per genotype per row. A pilot experiment (February--March 2016) measured rosette leaf
+area from images of eight genotypes, including \textit{glr3.3} and \textit{glr3.4} alleles
+(FACTS R10--R11). It is reported in the supplement only.
+
+\subsection{Fluorescence hyperspectral imaging}
+Plates were imaged in the Gilroy Laboratory (UW-Madison Botany) with a MacroPhor\texttrademark{}
+fluorescence hyperspectral line-scan imager (Middleton Spectral Vision; FACTS R1). It carried an
+Andor Zyla~5.5 sCMOS camera in 12-bit low-noise mode (FACTS R2). Set A used 488\,nm excitation
+and 500--800\,nm emission (FACTS R3). The camera recorded 324 bands from 400.3 to 808.7\,nm at
+about 1.23\,nm spacing. Set B used 405\,nm excitation and 400--800\,nm emission (FACTS R4),
+recorded as 406 bands from 400.2 to 800.0\,nm, each row-scan acquired at two settings labelled
+\texttt{Laser50} and \texttt{Laser58} \pending{meaning}. Each plate was imaged as three
+row-scans, one row of seedlings each.
+Set A was imaged before treatment (\texttt{Hour0}, 11:20--12:26 on 22 July 2016) and at 1, 2,
+3, 24 and 48\,h after infection (FACTS R6). Set B was imaged at 0, 6, 24 and 48\,h.
+Acquisition settings were read from every ENVI header (\texttt{metadata/cube\_manifest.csv}).
+
+\subsection{Data provenance and quality}\label{sec:quality}
+All 7,752 files on the 2016 drive were inventoried and hashed (\texttt{scripts/00\_inventory.py}).
+Every file name was parsed without exception: 400 hyperspectral cubes (216 set-A samples, 168
+set-B samples, 8 set-B bacteria-only scans, 6 set-B reference scans, one reference and one
+artefact scan in set A) and 5,842 hand-drawn region-of-interest (ROI) spectra (2,486 unique by
+content hash). We found the following problems and corrected for each where possible.
+\begin{enumerate}
+  \item \textbf{Exposure time changed between timepoints.} It was 0.305\,s at \texttt{Hour0},
+  0.203\,s at 1--3\,h, 0.222--0.268\,s at 24\,h (varying within plates) and 0.222\,s at 48\,h.
+  The 2016 summary graphs plotted uncorrected intensities, so their apparent drop between 0 and
+  1\,h (about 1.5-fold) matches the exposure ratio $0.305/0.203=1.50$. We divide every intensity
+  by its own exposure time, and our primary features are exposure-independent ratios
+  (Section~\ref{sec:features}).
+  \item \textbf{\texttt{Hour0} plates were scanned ``inverted''} \pending{meaning}, except four
+  rescans labelled ``NI'' made later the same day at the 1\,h settings. \texttt{Hour0} is used
+  only as a baseline and is analysed separately from the upright timepoints.
+  \item \textbf{Detector saturation.} At the \texttt{Hour0} exposure, up to
+  \pending{N}\% of seedling pixels reached the 12-bit ceiling (4095 counts). Saturated pixels
+  are excluded from all spectra.
+  \item \textbf{Fixed scan order.} Within each timepoint plates were scanned Pathogen, then
+  flg22, then Control, 20--40\,min apart, so scan time is partly confounded with treatment. We
+  report the drift of Control plates between consecutive hours as a bound on this effect.
+  \item \textbf{The plate is the experimental unit.} Treatments were applied per plate (four per
+  treatment in set A), so treatment effects are tested at plate level. Genotype contrasts are
+  within plates.
+  \item \textbf{Missing cells.} No hand ROIs were drawn for Pathogen plates at 48\,h, although
+  the cubes exist. Our automated segmentation covers them.
+\end{enumerate}
+
+\subsection{Spectral processing}\label{sec:features}
+Each raw cube was read once, sequentially, and hashed with SHA-256
+(\texttt{scripts/02\_harvest\_cubes.py}). The per-band dark level was taken as the median of
+background pixels, which sit at about 108 counts. Seedlings were segmented on the dark-subtracted
+685\,nm image at 10 background standard deviations, then cleaned, and cotyledon and hypocotyl
+components were grouped (\texttt{src/pathofluor/segment.py}). Each segmented seedling was
+assigned its lane and plant number from the row layout, which was validated against the 2016
+hand ROIs (Supplementary Note~1). Spectral features were computed from the mean unsaturated
+spectrum of each seedling after Savitzky--Golay smoothing (\texttt{src/pathofluor/features.py}):
+\begin{itemize}
+  \item the red/far-red ratio $F_{685}/F_{740}$ \citep{buschmann2007};
+  \item the position and full width at half maximum of the red emission peak;
+  \item the spectral centroid;
+  \item the far-red fraction of 650--800\,nm emission;
+  \item the short-wavelength fraction (500--640\,nm emission relative to 650--800\,nm), which
+  captures the broad autofluorescence reported by the 2016 vendor analysis;
+  \item exposure-normalised intensities (counts\,s$^{-1}$);
+  \item per-pixel heterogeneity of the ratio and of the short-wavelength fraction.
+\end{itemize}
+
+\subsection{Statistics and classification}
+\pending{Final model specification, written after the analysis is frozen.}
+Treatment effects were tested with linear mixed models with plate as a random effect, against
+time-matched controls, with false-discovery-rate control \citep{benjamini1995}. Classifiers were
+evaluated by leave-one-plate-out cross-validation, with a plate-level permutation null.
+
+\subsection{Data and code availability}
+Code (MIT licence), derived data, the 2016 hand-ROI spectra and all manifests are in the
+repository. Raw cubes are deposited on Zenodo \pending{DOIs}. The metadata follow MIAPPE where
+applicable \citep{papoutsoglou2020} and the FAIR principles \citep{wilkinson2016}.

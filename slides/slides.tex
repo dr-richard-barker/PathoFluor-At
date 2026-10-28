@@ -1,0 +1,141 @@
+% PathoFluor-At slide deck. Numbers come from ../manuscript/numbers.tex (scripts/07_numbers.py);
+% figures from ../figures (scripts/08_figures.py). Build: make (in this folder).
+\documentclass[aspectratio=169,10pt]{beamer}
+\usetheme{Boadilla}
+\usecolortheme{default}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\graphicspath{{../figures/}}
+\input{../manuscript/numbers}
+\newcommand{\pending}[1]{\textcolor{red}{[PENDING: #1]}}
+\setbeamertemplate{navigation symbols}{}
+
+\title[PathoFluor-At]{Fluorescence hyperspectral signatures of \textit{Pseudomonas} challenge
+and flg22 in \textit{Arabidopsis}}
+\subtitle{A FAIR reanalysis of the 2016 UW-Madison experiment}
+\author[R.\,J. Barker]{Richard J. Barker \and \pending{co-authors}}
+\date{\pending{date / venue}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{The question}
+  \begin{itemize}
+    \item Can we \textbf{see} a plant responding to bacteria before symptoms appear?
+    \item Plants perceive flagellin (flg22) through the receptor \textbf{FLS2}; \textit{fls2}
+          mutants cannot.
+    \item \textbf{CML24} (TCH2) is a Ca$^{2+}$ sensor; \textit{cml24-4} is impaired in
+          pattern-induced NO signalling.
+    \item Chlorophyll fluorescence changes with photosynthesis and chlorophyll content, so a
+          \textbf{whole emission spectrum per pixel} might carry an early signature.
+  \end{itemize}
+  \vfill
+  \textbf{Key control:} a genuine flg22 \emph{perception} signature must vanish in \textit{fls2}.
+\end{frame}
+
+\begin{frame}{The 2016 experiment}
+  \begin{columns}[T]
+    \column{0.55\textwidth}
+    \begin{itemize}
+      \item MacroPhor fluorescence hyperspectral imager (Middleton Spectral Vision), Gilroy Lab
+      \item 488\,nm excitation, 500--800\,nm emission, 324 bands
+      \item 5 genotypes per plate: Col-0, \textit{fls2-17}, \textit{fls2-101},
+            \textit{cml24-2}, \textit{cml24-4}
+      \item Mock, flg22 or \textit{P.~syringae}; 4 plates each
+      \item Imaged before treatment, then 1, 2, 3, 24 and 48\,h
+      \item Independent replicate (Nov 2016, 405\,nm excitation)
+    \end{itemize}
+    \column{0.42\textwidth}
+    \begin{block}{Recovered from the drive}
+      \nFiles{} files, \rawGB{}\,GB\\
+      \nCubes{} image cubes\\
+      \nRoiUnique{} unique hand-drawn seedling spectra\\
+      every file name parsed, every cube hashed
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Data problem 1: exposure time changed between timepoints}
+  \centering
+  \includegraphics[width=\linewidth]{fig1_exposure_artefact.pdf}\\[2mm]
+  \small The 2016 graphs' \rawDropPct{}\% intensity fall after treatment is a camera setting:
+  after dividing by exposure, 1--3\,h Control values lie within \cpsDiffPct{}\% of hour 0.
+\end{frame}
+
+\begin{frame}{Data problem 2: plates differed \emph{before} treatment}
+  \centering
+  \includegraphics[width=0.85\linewidth]{fig4_auc.pdf}\\[1mm]
+  \small (a) At hour 0, before any treatment, flg22 and Control plates are perfectly separable
+  (AUC \aucPlaceboFlg{}). Only change from each plate's own baseline is evidence (b).
+\end{frame}
+
+\begin{frame}{A pathogen signature within 1--2 hours}
+  \centering
+  \includegraphics[width=\linewidth]{fig3_timecourse.pdf}\\[1mm]
+  \small Red emission peak broadens by \pathFwhmOnenm{}\,nm at 1\,h ($q=\pathFwhmOneq$) and
+  \pathFwhmTwonm{}\,nm at 2\,h ($q=\pathFwhmTwoq$); emission below 640\,nm rises (2\,h,
+  $q=\pathSwTwoq$).
+\end{frame}
+
+\begin{frame}{What the spectrum change looks like}
+  \centering
+  \includegraphics[width=\linewidth]{fig2_spectral_change.pdf}\\[1mm]
+  \small Area-normalised spectra, change from hour 0, treated minus Control (Col-0).
+\end{frame}
+
+\begin{frame}{Infected plates can be told apart from their spectra}
+  \begin{itemize}
+    \item Leave-one-plate-out classifier, change-from-baseline spectra (Col-0)
+    \item Plate-level AUC \aucPathOne{} at 1\,h, \aucPathTwo{} at 2\,h,
+          \aucPathTwentyFour{} at 24\,h
+    \item Exact permutation test over all 70 plate relabellings: $p=\pPathTwo$
+    \item Fails at 3\,h \pending{explain}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The flg22 signal is not FLS2-dependent}
+  \centering
+  \includegraphics[width=\linewidth]{fig5_specificity.pdf}\\[1mm]
+  \small A Col-0-trained flg22 model fires as strongly in \textit{fls2-17}
+  (\specFlgFlsSeventeen) and \textit{fls2-101} (\specFlgFlsOneOhOne) as in Col-0
+  (\specFlgColO): a plate-level effect, not perception. The pathogen signature is in every
+  genotype, as expected.
+\end{frame}
+
+\begin{frame}{The November replicate}
+  \begin{itemize}
+    \item 405\,nm excitation; Col-0, \textit{fls2-17}, \textit{fls2-101}; 0, 6, 24, 48\,h
+    \item Hand-drawn ROIs exist for only one plate per treatment, so treatment effects are
+          confounded with plate there
+    \item Within plates: flg22 shifts Col-0 emission shape differently from
+          \textit{fls2-17} at 6\,h ($q=\setBinterq$), the FLS2-dependent pattern
+    \item \pending{plate-replicated analysis from the raw cubes}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Take-home}
+  \begin{enumerate}
+    \item Carry acquisition metadata with every intensity: one camera setting made the most
+          striking 2016 pattern.
+    \item The plate is the experimental unit: image a baseline and validate leave-plate-out.
+    \item Use non-perceiving mutants as the decisive control.
+    \item A pathogen signature appears within 1--2\,h: a broader red peak and more emission
+          below 640\,nm.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{FAIR resource}
+  \begin{itemize}
+    \item Code, manifests, hand-ROI spectra, derived tables: \texttt{github.com/dr-richard-barker/PathoFluor-At}
+    \item Raw cubes (lossless, SHA-256 verified): Zenodo \pending{DOIs}
+    \item Project page: \texttt{dr-richard-barker.github.io/PathoFluor-At}
+    \item Every number in the paper and these slides is generated from the committed tables
+  \end{itemize}
+\end{frame}
+
+\end{document}

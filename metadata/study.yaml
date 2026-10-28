@@ -1,0 +1,70 @@
+# MIAPPE-style study description (MIAPPE 1.1 sections; Papoutsoglou et al. 2020).
+# Values marked PENDING are not recorded with the data; see FACTS_PENDING.md. Nothing here is inferred.
+investigation:
+  title: Fluorescence hyperspectral signatures of Pseudomonas syringae challenge and flg22 in Arabidopsis seedlings
+  description: >-
+    Reanalysis of 2016 UW-Madison fluorescence hyperspectral imaging of Arabidopsis seedlings
+    treated with mock, flg22 or Pseudomonas syringae, in Col-0 and fls2 / cml24 mutants.
+  license: CC-BY-4.0
+  contacts:
+    - name: Richard J. Barker
+      orcid: 0000-0001-5681-9857
+      role: data reuser; investigator (2016)
+    - name: PENDING (FACTS P10)
+studies:
+  - id: set_A
+    title: July 2016 time course
+    institution: University of Wisconsin-Madison, Department of Botany (Gilroy Laboratory)   # vendor reports V1/V2
+    start_date: 2016-07-22   # first sample scan, cube_manifest.csv
+    end_date: 2016-07-24
+    imaging:
+      system: MacroPhor fluorescence hyperspectral line-scan imager (Middleton Spectral Vision)
+      camera: Andor Zyla 5.5 USB3, serial VSC-03157, 12-bit low-noise mode
+      excitation_nm: 488
+      emission_nm: [500, 800]
+      bands: 324
+      wavelength_range_nm: [400.26, 808.70]
+    factors:
+      treatment: [Control (mock), flg22, Pathogen (Pseudomonas syringae)]
+      time_h: [0 (pre-treatment), 1, 2, 3, 24, 48]
+      genotype: [Col-0, fls2-17, fls2-101, cml24-2, cml24-4]
+    design:
+      plates_per_treatment: 4
+      row_scans_per_plate: 3
+      lanes_per_plate: 5      # A..E = Col-0, fls2-17, fls2-101, cml24-2, cml24-4
+      experimental_unit: plate (treatment applied per plate)
+    biological_material:
+      organism: Arabidopsis thaliana (NCBITaxon:3702)
+      accessions_and_alleles: PENDING (FACTS P9)
+      growth_medium: PENDING (protocol draft says "1/2 LS, 0.3% P"; FACTS P4)
+      seedling_age: PENDING (FACTS P4)
+      growth_conditions: PENDING (FACTS P4)
+    treatment_details:
+      method: PENDING (protocol draft: flood inoculation after Ishiga et al. 2011; FACTS P1-P3)
+      pathogen_strain: PENDING (FACTS P1)
+      flg22_concentration: PENDING (FACTS P2)
+      mock: PENDING (protocol draft: Silwet L-77; FACTS P3)
+  - id: set_B
+    title: November 2016 replicate (Sarah Sapiro)
+    start_date: 2016-11-04
+    end_date: 2016-11-06
+    imaging:
+      system: MacroPhor (Middleton Spectral Vision)
+      camera: Andor Zyla 5.5, serial VSC-04393
+      excitation_nm: 405
+      emission_nm: [400, 800]
+      bands: 406
+      settings: Laser50 and Laser58 per scan (meaning PENDING, FACTS P7); daily reference scans
+    factors:
+      treatment: [Control, flg22, Pathogen]
+      time_h: [0, 6, 24, 48]
+      genotype: [Col-0, fls2-17, fls2-101]   # lane order per vendor report V2 (FACTS R9)
+  - id: pilot
+    title: February-March 2016 pilot (leaf area from images)
+    genotypes: [Col-0, fls2-101, cml24-2, cml24-4, glr3.3-1, glr3.3-2, glr3.4-1, glr3.4-2]
+    time_days: [0, 1, 2, 3]
+data_files:
+  inventory: metadata/file_inventory.csv
+  cubes: metadata/cube_manifest.csv
+  roi_spectra: metadata/roi_manifest.csv
+  raw_cube_archives: PENDING Zenodo DOIs (metadata/zenodo_records.csv)

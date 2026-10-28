@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite it as below. The full author list is pending (metadata/FACTS_PENDING.md, P10)."
+title: "PathoFluor-At: fluorescence hyperspectral imaging of Arabidopsis seedlings challenged with Pseudomonas syringae or flg22"
+type: software
+authors:
+  - family-names: Barker
+    given-names: Richard J.
+    orcid: "https://orcid.org/0000-0001-5681-9857"
+repository-code: "https://github.com/dr-richard-barker/PathoFluor-At"
+url: "https://dr-richard-barker.github.io/PathoFluor-At/"
+license: MIT
+keywords:
+  - Arabidopsis thaliana
+  - hyperspectral imaging
+  - chlorophyll fluorescence
+  - flg22
+  - FLS2
+  - CML24
+  - Pseudomonas syringae
+  - plant immunity
+  - FAIR data
