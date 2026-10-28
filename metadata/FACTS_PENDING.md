@@ -40,16 +40,17 @@ Sources:
 | R17 | flg22 concentration | 1 µM, given as the lab's standard working concentration (range used in the lab 100 nM–1 µM); not recorded with the 2016 data | RB |
 | R18 | Pilot reference square | 4 cm² (2.0 × 2.0 cm), so pilot areas in cm² = tabulated value × 4 | RB; label in L |
 | R19 | Vendor reports | Not redistributed (they belong to Middleton Spectral Vision); cited, and only derived facts used | RB |
-| R20 | Named authors (so far) | Aditya Singh (Dept. of Forest and Wildlife Ecology, UW–Madison; now University of Florida); Richard Barker (Gilroy Lab, Dept. of Botany, UW–Madison; Porterfield Lab, Purdue University); Simon Gilroy (Dept. of Botany, UW–Madison) | RB |
+| R20 | Authorship | "Barker et al." for now; Richard will finalise the author list. People named so far: Aditya Singh, Simon Gilroy (RB), Sarah Sapiro (V1, V2), Cullen Vens (P) | RB |
+| R21 | Growth | 7-day seedlings; 0.5× MS/LS basal salts, 0.1% (w/v) sucrose, 0.5 g/L MES pH 5.7, 0.8% Phytagel (chosen by Richard over the protocol draft's "½ LS, 0.3% P") | RB |
+| R22 | Inoculum | Pst DC3000 at OD600 0.01 in 10 mM MgCl2, flood inoculation | RB |
 
 ## Pending (Richard to supply)
 
 | # | Question | Notes |
 |---|---|---|
-| P1 | Inoculum density and method for Pst DC3000 | Answer offered alternatives (OD600 0.01 in 10 mM MgCl2 for flood/dip, or 0.001–0.002 for infiltration); the protocol draft quotes Ishiga et al.'s OD600 0.4. Which was used? |
 | P2 | flg22 application method, and confirmation that 1 µM (R17) was used here | |
-| P4 | Seedling age, medium, growth conditions | **Conflict:** answer says 7-day seedlings on 0.5× Hoagland's or 0.5× MS/LS, 0.1% sucrose, 0.5 g/L MES pH 5.7, 0.8% Phytagel; the protocol draft says "½ LS, 0.3% P" and follows Ishiga et al. (2-week seedlings). Which is right for July/Nov 2016? Light, photoperiod, temperature? |
 | P6 | Meaning of the ROI tags (bright / norm / dark / side …) and the `… USE` selection criteria | **Answer rejected by the data:** it described the tags as acquisition gain/exposure brackets, but ROIs with different tags come from the same cube at a single exposure (e.g. all of Hour0 Pathogen plate 1 at 0.305 s), so the tags annotate the ROI, not the acquisition |
 | P8 | What `Chroma.raw` (21 Jul 2016) is | Fluorescence reference slide? |
 | P9 | Allele identities and backgrounds | **Answer rejected by the data/literature:** it listed fls2-1 (SALK_141277)/fls2-c, cml24-2 (SALK_073883), cml24-4 (SALK_026046) and glr3.6 lines, but the 2016 files name fls2-17, FLS2-101 and glr3.4 lines; fls2-17 is published as an EMS kinase-domain point mutant from the Gómez-Gómez & Boller screen, and cml24-4 as a TILLING point allele (K124E). Needs the stock records |
-| P10 | Remaining authorship and funding | Should Sarah Sapiro (ran the November replicate; named in V1, V2) and Cullen Vens (protocol author) be authors? Funding: the answer listed NASA NNX14AT25G, 80NSSC19K0126, 80NSSC21K0577 and unspecified NSF/UW awards; the last two NASA awards date from 2019/2021, after these 2016 experiments. Which supported this work? |
+| P10 | Full author list, affiliations and funding | Funding left blank for now (the answer listed NASA NNX14AT25G, 80NSSC19K0126, 80NSSC21K0577; the last two date from 2019/2021, after the 2016 experiments) |
+| P14 | Growth light, photoperiod and temperature | Not yet supplied |

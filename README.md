@@ -88,4 +88,4 @@ summarised (`metadata/related_material.md`) but not redistributed.
 ## Licence and citation
 
 Code: MIT ([`LICENSE`](LICENSE)). Data, figures, text: CC-BY 4.0 ([`LICENSE-DATA`](LICENSE-DATA)).
-Cite via [`CITATION.cff`](CITATION.cff): Richard J. Barker, Aditya Singh, Simon Gilroy (further authors may be added; `metadata/FACTS_PENDING.md`, P10).
+Cite via [`CITATION.cff`](CITATION.cff) as Barker et al. (the full author list is being finalised).

@@ -1,17 +1,11 @@
 cff-version: 1.2.0
-message: "If you use this software or data, please cite it as below. Further authors may be added (metadata/FACTS_PENDING.md, P10)."
+message: "If you use this software or data, please cite it as below. Cite as Barker et al.; the full author list is being finalised."
 title: "PathoFluor-At: fluorescence hyperspectral imaging of Arabidopsis seedlings challenged with Pseudomonas syringae or flg22"
 type: software
 authors:
   - family-names: Barker
     given-names: Richard J.
     orcid: "https://orcid.org/0000-0001-5681-9857"
-    affiliation: "Department of Botany, University of Wisconsin-Madison; Purdue University"
-  - family-names: Singh
-    given-names: Aditya
-    affiliation: "Department of Forest and Wildlife Ecology, University of Wisconsin-Madison; University of Florida"
-  - family-names: Gilroy
-    given-names: Simon
     affiliation: "Department of Botany, University of Wisconsin-Madison"
 repository-code: "https://github.com/dr-richard-barker/PathoFluor-At"
 url: "https://dr-richard-barker.github.io/PathoFluor-At/"

@@ -1,0 +1,19 @@
+{
+ "cube_id": "A_H48_Pathogen_P3_R3",
+ "relpath_raw": "Hour48/Pathogen/Hour48 Pathogen3 Row3.raw",
+ "sha256_raw": "6dece118cb539072296bb25d6954d5d6bd08182c454f2536f17d66cf1483634e",
+ "lines": 1717,
+ "bands": 324,
+ "samples": 708,
+ "read_seconds": 18.9,
+ "bg_median685": 110.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 108.83125305175781,
+ "dark_sd_420_620": 7.344482421875,
+ "n_fg_pixels": 27200,
+ "fg_fraction": 0.022375118867818986,
+ "n_saturated_fg_pixels": 0,
+ "cube_max": 1911,
+ "fg_mean_minus_dark_in_420_620": 4.058628559112549,
+ "harvested_utc": "2026-10-28T19:23:40Z"
+}

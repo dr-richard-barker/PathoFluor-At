@@ -10,11 +10,7 @@ investigation:
     - name: Richard J. Barker
       orcid: 0000-0001-5681-9857
       role: data reuser; investigator (2016)
-    - name: Aditya Singh
-      role: investigator (2016)
-    - name: Simon Gilroy
-      role: principal investigator (2016)
-    - name: further contributors PENDING (FACTS P10)
+    - name: further contributors PENDING (author list being finalised; FACTS P10)
 studies:
   - id: set_A
     title: July 2016 time course
@@ -40,11 +36,11 @@ studies:
     biological_material:
       organism: Arabidopsis thaliana (NCBITaxon:3702)
       accessions_and_alleles: PENDING (FACTS P9)
-      growth_medium: PENDING (protocol draft says "1/2 LS, 0.3% P"; FACTS P4)
-      seedling_age: PENDING (FACTS P4)
-      growth_conditions: PENDING (FACTS P4)
+      growth_medium: 0.5x MS/LS basal salts, 0.1% sucrose, 0.5 g/L MES pH 5.7, 0.8% Phytagel (FACTS R21)
+      seedling_age: 7 days (FACTS R21)
+      growth_conditions: PENDING (FACTS P14)
     treatment_details:
-      method: PENDING (protocol draft: flood inoculation after Ishiga et al. 2011; FACTS P1-P2)
+      method: flood inoculation after Ishiga et al. 2011, OD600 0.01 in 10 mM MgCl2 (FACTS R22)
       pathogen_strain: Pseudomonas syringae pv. tomato DC3000 (FACTS R16)
       flg22_concentration: 1 uM, the lab's standard working concentration (FACTS R17)
       mock: Silwet L-77 per the protocol draft (not confirmed for the 2016 runs)

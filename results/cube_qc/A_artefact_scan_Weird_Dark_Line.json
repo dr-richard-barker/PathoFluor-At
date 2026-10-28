@@ -1,0 +1,19 @@
+{
+ "cube_id": "A_artefact_scan_Weird_Dark_Line",
+ "relpath_raw": "Weird Dark Line.raw",
+ "sha256_raw": "8be7668e36593582f4b9907545d38bae55114f3e198017ba695dd58d777fbee4",
+ "lines": 1340,
+ "bands": 324,
+ "samples": 708,
+ "read_seconds": 14.8,
+ "bg_median685": 109.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 108.2249984741211,
+ "dark_sd_420_620": 7.248780727386475,
+ "n_fg_pixels": 39971,
+ "fg_fraction": 0.04213150349945189,
+ "n_saturated_fg_pixels": 0,
+ "cube_max": 2502,
+ "fg_mean_minus_dark_in_420_620": 0.13838262856006622,
+ "harvested_utc": "2026-10-28T19:29:47Z"
+}

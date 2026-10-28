@@ -1,0 +1,19 @@
+{
+ "cube_id": "A_H48_Control_P1_R3",
+ "relpath_raw": "Hour48/Control/Hour48 Control1 Row3.raw",
+ "sha256_raw": "79dda11425151e771e63a67569cd164ca66a94e834793b827183f024e7ac9ea0",
+ "lines": 1714,
+ "bands": 324,
+ "samples": 708,
+ "read_seconds": 19.1,
+ "bg_median685": 111.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 108.64375305175781,
+ "dark_sd_420_620": 7.247175693511963,
+ "n_fg_pixels": 142214,
+ "fg_fraction": 0.11719208380304438,
+ "n_saturated_fg_pixels": 102,
+ "cube_max": 4095,
+ "fg_mean_minus_dark_in_420_620": 0.664278507232666,
+ "harvested_utc": "2026-10-28T19:15:57Z"
+}

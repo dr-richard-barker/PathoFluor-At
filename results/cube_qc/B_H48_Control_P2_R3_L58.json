@@ -1,0 +1,19 @@
+{
+ "cube_id": "B_H48_Control_P2_R3_L58",
+ "relpath_raw": "Hyper_spectral_work_from_Sarah_Sapiro/Hr48/Hr48 C2 R3 Laser58.raw",
+ "sha256_raw": "4df18b2523fe2c7f93e0aa2ec749bfc79d0940d180c9580c9c1207d51ac18af2",
+ "lines": 873,
+ "bands": 406,
+ "samples": 1600,
+ "read_seconds": 27.3,
+ "bg_median685": 108.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 108.67317199707031,
+ "dark_sd_420_620": 7.743860244750977,
+ "n_fg_pixels": 46352,
+ "fg_fraction": 0.033184421534936996,
+ "n_saturated_fg_pixels": 0,
+ "cube_max": 4095,
+ "fg_mean_minus_dark_in_420_620": 10.4612398147583,
+ "harvested_utc": "2026-10-28T20:39:11Z"
+}

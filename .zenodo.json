@@ -4,18 +4,10 @@
     {
       "name": "Barker, Richard J.",
       "orcid": "0000-0001-5681-9857",
-      "affiliation": "University of Wisconsin-Madison; Purdue University"
-    },
-    {
-      "name": "Singh, Aditya",
-      "affiliation": "University of Wisconsin-Madison; University of Florida"
-    },
-    {
-      "name": "Gilroy, Simon",
       "affiliation": "University of Wisconsin-Madison"
     }
   ],
-  "description": "<p>Reanalysis of a 2016 UW-Madison fluorescence hyperspectral imaging experiment (MacroPhor imager, 488 nm excitation, 500-800 nm emission) on Arabidopsis thaliana seedlings of Col-0, fls2-17, fls2-101, cml24-2 and cml24-4, imaged before and 1-48 h after treatment with a mock solution, flg22 or Pseudomonas syringae, plus an independent November 2016 replicate (405 nm excitation). The archive contains the analysis code, a manifest of every file on the original drive with SHA-256 checksums, the 2016 hand-drawn ROI spectra, derived per-ROI and per-seedling tables, statistics, figures, and a LaTeX manuscript and slide deck. Raw image cubes are deposited separately (see related identifiers). Further authors may be added.</p>",
+  "description": "<p>Reanalysis of a 2016 UW-Madison fluorescence hyperspectral imaging experiment (MacroPhor imager, 488 nm excitation, 500-800 nm emission) on Arabidopsis thaliana seedlings of Col-0, fls2-17, fls2-101, cml24-2 and cml24-4, imaged before and 1-48 h after treatment with a mock solution, flg22 or Pseudomonas syringae, plus an independent November 2016 replicate (405 nm excitation). The archive contains the analysis code, a manifest of every file on the original drive with SHA-256 checksums, the 2016 hand-drawn ROI spectra, derived per-ROI and per-seedling tables, statistics, figures, and a LaTeX manuscript and slide deck. Raw image cubes are deposited separately (see related identifiers). Barker et al.; the full author list is being finalised.</p>",
   "access_right": "open",
   "license": "mit",
   "upload_type": "software",

@@ -1,0 +1,19 @@
+{
+ "cube_id": "B_H00_Pathogen_P2_R2_L50",
+ "relpath_raw": "Hyper_spectral_work_from_Sarah_Sapiro/Hr0/Hr0 P2 Row2 Laser50.raw",
+ "sha256_raw": "4bd37544a04c87c24b054c28b33014e10d1900e8125892fda7d27684c4359311",
+ "lines": 840,
+ "bands": 406,
+ "samples": 1600,
+ "read_seconds": 26.2,
+ "bg_median685": 108.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 107.74146270751953,
+ "dark_sd_420_620": 7.328157901763916,
+ "n_fg_pixels": 55804,
+ "fg_fraction": 0.04152083333333333,
+ "n_saturated_fg_pixels": 0,
+ "cube_max": 2199,
+ "fg_mean_minus_dark_in_420_620": 0.6637952923774719,
+ "harvested_utc": "2026-10-28T19:40:16Z"
+}

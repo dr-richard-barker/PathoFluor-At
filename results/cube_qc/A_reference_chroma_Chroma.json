@@ -1,0 +1,19 @@
+{
+ "cube_id": "A_reference_chroma_Chroma",
+ "relpath_raw": "Chroma.raw",
+ "sha256_raw": "083c2d303728d011ba2eaba49bfe2e6f95b089c0ae7b83d09b1d2066fd54ce3a",
+ "lines": 311,
+ "bands": 324,
+ "samples": 1416,
+ "read_seconds": 6.9,
+ "bg_median685": 147.0,
+ "bg_sigma685": 23.7216,
+ "dark_mean_420_620": 269.98126220703125,
+ "dark_sd_420_620": 83.4023666381836,
+ "n_fg_pixels": 80,
+ "fg_fraction": 0.00018166294257634385,
+ "n_saturated_fg_pixels": 0,
+ "cube_max": 1854,
+ "fg_mean_minus_dark_in_420_620": 142.81851196289062,
+ "harvested_utc": "2026-10-28T19:29:30Z"
+}
