@@ -73,3 +73,17 @@
 14:27:34 [73/400] A_H02_Control_P1_R1: fg 80029 px, sat 1, 33 MB/s
 14:27:56 [74/400] A_H02_Control_P1_R2: fg 52394 px, sat 9, 33 MB/s
 14:28:19 [75/400] A_H02_Control_P1_R3: fg 63290 px, sat 24, 33 MB/s
+14:28:41 [76/400] A_H02_Control_P2_R1: fg 58136 px, sat 0, 33 MB/s
+14:29:03 [77/400] A_H02_Control_P2_R2: fg 72657 px, sat 0, 33 MB/s
+14:29:26 [78/400] A_H02_Control_P2_R3: fg 78638 px, sat 7, 33 MB/s
+14:29:50 [79/400] A_H02_Control_P3_R1: fg 98196 px, sat 0, 33 MB/s
+14:30:16 [80/400] A_H02_Control_P3_R2: fg 94329 px, sat 0, 33 MB/s
+14:30:39 [81/400] A_H02_Control_P3_R3: fg 73410 px, sat 583, 33 MB/s
+14:31:02 [82/400] A_H02_Control_P4_R1: fg 76462 px, sat 0, 33 MB/s
+14:31:24 [83/400] A_H02_Control_P4_R2: fg 66257 px, sat 0, 33 MB/s
+14:31:47 [84/400] A_H02_Control_P4_R3: fg 77496 px, sat 336, 33 MB/s
+14:32:10 [85/400] A_H02_Pathogen_P1_R1: fg 62607 px, sat 0, 33 MB/s
+14:32:33 [86/400] A_H02_Pathogen_P1_R2: fg 64872 px, sat 0, 33 MB/s
+14:32:55 [87/400] A_H02_Pathogen_P1_R3: fg 61445 px, sat 0, 33 MB/s
+14:33:16 [88/400] A_H02_Pathogen_P2_R1: fg 62928 px, sat 0, 33 MB/s
+14:33:38 [89/400] A_H02_Pathogen_P2_R2: fg 55852 px, sat 0, 33 MB/s

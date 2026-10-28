@@ -13,7 +13,8 @@ Sources:
   (H. Jones, PDF dated Jan 2017; analysis of the November set). Held in Richard's Google Drive.
 - **[P]** Protocol draft "Hyperspectral & NVDI imaging of pathgen infection"
   (Google Doc, R. Barker et al.; last modified Mar 2019). It describes the *planned* design.
-- **[L]** "Pathogen_hyperspectral assay_leaf size.xlsx" (pilot leaf areas). Richard's Google Drive.
+  PDF export in `data/related_drive_2016/`.
+- **[L]** "Pathogen_hyperspectral assay_leaf size.xlsx" (pilot leaf areas). Copy in `data/related_drive_2016/`.
 
 ## Resolved
 
@@ -28,7 +29,7 @@ Sources:
 | R7 | November timepoints | 0, 6, 24 and 48 h after infection | V2, N |
 | R8 | July lanes | A = Col-0, B = FLS2-17, C = FLS2-101, D = cml24-2, E = cml24-4 | N (`Results/<treatment>/<genotype>/`) |
 | R9 | November lane order | "First 3 plants in each image is the wild type (Col-0), followed by FLS2-17 and FLS2-101", so A/B/C is **taken** as Col-0/FLS2-17/FLS2-101 (positional; confirm) | V2 |
-| R10 | Pilot table values | Per-plant rosette leaf area (cm²) from image pixel counts against a red reference square labelled "4 cm^2"; days 0–3. The sheet has two "leaf area cm^2" columns differing by exactly 4×; the summary tables use the smaller. **Unresolved which is correct.** | L |
+| R10 | Pilot table values | Per-plant rosette size from image pixel counts, days 0–3. In the source sheet, column G = 4 × green/red-reference pixel ratio and column H = the ratio itself; **98.3% of the pilot-table values match column H** (checked in data/related_drive_2016/). The red reference is labelled "4 cm^2", so column G would be cm² and the tables would be in units of reference-square area. Confirm the reference size (P12) | L |
 | R11 | Pilot genotype codes | "GL3.3-1/-2" and "GL3.4-1/-2" = GLR3.3-1/-2 and GLR3.4-1/-2 (the sheet spells both forms) | L |
 | R12 | People named in the 2016 records | Sarah Sapiro, Richard Barker, Gilroy Laboratory (V1, V2). Protocol authors: Richard Barker, Cullen Vens, Aditya Singa, Simon Gilroy (P) | V1, V2, P |
 
@@ -47,5 +48,5 @@ Sources:
 | P9 | Allele identities and backgrounds: fls2-17, FLS2-101, cml24-2, cml24-4, glr3.3-1/-2, glr3.4-1/-2 | Need the stock/line IDs to cite the right papers |
 | P10 | Author list, affiliations, ORCIDs, funding, acknowledgements | Richard's ORCID 0000-0001-5681-9857 (verified). What were Sarah Sapiro's, Cullen Vens' and Aditya Singa's roles? Is the spelling "Singa" or "Singh"? (The WARF poster says "Aditya Singh", and the leaf-size sheet is shared with an account named Aditya Singh, so "Singh" is likely.) Acknowledge H. Jones / Middleton Spectral Vision? |
 | P11 | May the two Middleton Spectral Vision reports (V1, V2) be redistributed in the public repo? | Default: cited and summarised only, not redistributed |
-| P12 | Pilot leaf-area 4× discrepancy (R10) | Which column is the true cm²? |
+| P12 | Pilot leaf-area units (R10) | Was the red reference square really 4 cm²? If so, multiply the pilot tables by 4 for cm² |
 | P13 | Was `Hour0` imaged before treatment, and when exactly were plates treated? | Inferred from scan times (Hour0 ends 12:26; Hour1 starts 18:06) and the vendor's "1, 2, 3, 24 and 48 hours after infection"; the analysis treats Hour0 as baseline |

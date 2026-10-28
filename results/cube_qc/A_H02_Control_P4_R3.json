@@ -1,0 +1,19 @@
+{
+ "cube_id": "A_H02_Control_P4_R3",
+ "relpath_raw": "Hour2/Control/Hour2 Conrol4 Row3.raw",
+ "sha256_raw": "e7fe19cd3cdfda4dff7e4acfb3e41de9cb1a0929134c4dae6641927c53973756",
+ "lines": 1741,
+ "bands": 324,
+ "samples": 708,
+ "read_seconds": 19.2,
+ "bg_median685": 110.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 108.2562484741211,
+ "dark_sd_420_620": 7.2617340087890625,
+ "n_fg_pixels": 77496,
+ "fg_fraction": 0.06287054975223669,
+ "n_saturated_fg_pixels": 336,
+ "cube_max": 4095,
+ "fg_mean_minus_dark_in_420_620": 0.5210275053977966,
+ "harvested_utc": "2026-10-28T18:31:47Z"
+}
