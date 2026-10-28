@@ -1,0 +1,19 @@
+{
+ "cube_id": "B_H24_Pathogen_bacteria_L58",
+ "relpath_raw": "Hyper_spectral_work_from_Sarah_Sapiro/Hr24/Hr24 Bacteria Laser58.raw",
+ "sha256_raw": "d81f4a933031b2c1da53d211b0825a064602432bd8461f57c7f65ea17c6e49bf",
+ "lines": 873,
+ "bands": 406,
+ "samples": 1600,
+ "read_seconds": 37.7,
+ "bg_median685": 108.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 110.84390258789062,
+ "dark_sd_420_620": 8.086944580078125,
+ "n_fg_pixels": 295,
+ "fg_fraction": 0.00021119702176403208,
+ "n_saturated_fg_pixels": 0,
+ "cube_max": 461,
+ "fg_mean_minus_dark_in_420_620": 0.60246342420578,
+ "harvested_utc": "2026-10-28T20:58:37Z"
+}

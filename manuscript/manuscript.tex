@@ -56,8 +56,10 @@ On that basis, \textit{P.~syringae} broadened the red chlorophyll emission peak 
 (+\pathFwhmOnenm{}\,nm; $q=\pathFwhmOneq$) through 24\,h, and raised emission below 640\,nm from
 2\,h. Change-from-baseline spectra separated infected from control plates perfectly at 1, 2 and
 24\,h (leave-plate-out AUC \aucPathTwo{}; exact permutation $p=\pPathTwo$). The pathogen
-signature appeared in every genotype; at 24\,h the rise in short-wavelength emission was smaller
-in \textit{cml24-4} ($q=\cmlFourSwq$). A flg22 signal was weaker
+signature appeared in every genotype. An independent analysis of all \nSeedA{} seedlings segmented
+from the raw cubes reproduced it and added that chlorophyll emission fell from 3\,h and seedlings
+shrank by 48\,h. A smaller late rise in \textit{cml24-4} seen in the hand-drawn spectra did not
+replicate at seedling level. A flg22 signal was weaker
 (AUC \aucFlgEarlyMin--\aucFlgEarlyMax{}, $p\geq\pFlgEarlyMin$). It was as strong in both
 \textit{fls2} mutants, which cannot perceive flg22, as in Col-0, so in this experiment it
 reflects a plate-level effect rather than flg22 perception. We release the raw data,
@@ -199,13 +201,51 @@ treatment, so treatment main effects cannot be separated from plate effects ther
 plates, however, flg22 changed the emission shape of Col-0 differently from \textit{fls2-17}
 at 6\,h (F$_{685}$/F$_{740}$ interaction $\setBinterSD$\,SD, $q=\setBinterq$; \setBinterN{}
 related features). This is the pattern expected of FLS2-dependent perception. It was not seen
-for \textit{fls2-101}. \pending{Plate-replicated set-B analysis from the raw cubes (2--3 plates
-per treatment).}
+for \textit{fls2-101}. The raw cubes give two or three plates per treatment. At that level no
+treatment effect in set B reached $q<0.1$. One Control plate deteriorated by 48\,h: its
+short-wavelength fraction rose by \setBctrlTwoSw{}, more than on any Pathogen plate. Under
+405\,nm excitation, short-wavelength emission therefore tracks tissue stress in general rather
+than infection specifically. At 48\,h, flg22 raised localised short-wavelength emission less in
+both \textit{fls2} alleles than in Col-0 (\textit{fls2-17} $\setBflsHetSeventeenSD$\,SD,
+$q=\setBflsHetSeventeenq$; \textit{fls2-101} $\setBflsHetOneOhOneSD$\,SD,
+$q=\setBflsHetOneOhOneq$), which is the FLS2-dependent pattern. We regard this as tentative. The
+set-B lane order was confirmed against the hand-drawn spectra only on plate 1 (better in
+\setBdirWins{} of \setBdirN{} comparisons); for plates 2--3 it was assumed. Bacteria-only scans
+showed no fluorescence of their own: at most \bactMaxSigPct\% of pixels were above the seedling
+threshold, at $\leq$\bactMaxSwCps{} counts\,s$^{-1}$ below 640\,nm, against thousands for
+seedlings. The plant signal is thus not bacterial fluorescence.
 
 \subsection{Seedling-level analysis of the raw cubes}
-\pending{Segmentation of all cubes (Pathogen 48\,h, exposure-corrected intensity, spatial
-heterogeneity) and pixel-level multivariate curve resolution \citep{dejuan2021}; label-transfer
-validation in Supplementary Note 1.}
+We segmented \nSeedA{} seedlings from the set-A cubes, including the Pathogen plates at 48\,h, for
+which no hand ROIs exist. We averaged them per plate (all genotypes) and compared changes from
+hour~0 (Fig.~\ref{fig:seed}). This analysis is independent of the 2016 annotations, and it
+reproduced the early signature. At 1\,h, Pathogen plates showed a broader red peak
+(+\pathSeedFwhmOne{}\,nm, $q=\pathSeedFwhmOneq$) and a lower F$_{685}$/F$_{740}$
+(\pathSeedRatioOne, $q=\pathSeedRatioOneq$). Exposure-corrected 685\,nm emission fell from
+3\,h (\pathSeedCpsThree{}\,counts\,s$^{-1}$, $q=\pathSeedCpsThreeq$) to 48\,h
+(\pathSeedCpsFortyEight{}, $q=\pathSeedCpsFortyEightq$). By 48\,h, short-wavelength emission had
+risen (+\pathSeedSwFortyEight, $q=\pathSeedSwFortyEightq$) and become patchier (per-pixel ratio
+s.d.\ +\pathSeedHetFortyEight, $q=\pathSeedHetFortyEightq$), and seedlings had shrunk
+(\pathSeedAreaFortyEight{}\,pixels, $q=\pathSeedAreaFortyEightq$). In all, \nSeedSigA{}
+plate-level contrasts were significant at $q<0.05$.
+
+Multivariate curve resolution \citep{dejuan2021} of pixels from every set-A cube resolved the
+emission into three components peaking at \mcrPeakLo--\mcrPeakHi\,nm. None carried more than
+\mcrMaxSwPct\% of its area below 640\,nm, so the broad autofluorescence component reported for
+two plates in 2016 \citep{msv2016july} did not emerge as an independent source of variation
+across all plates. The broadest, far-red-rich component rose on Pathogen plates at 1--3\,h
+(+\pathSeedMcrTwoTwo{} of the total at 2\,h, $q=\pathSeedMcrTwoTwoq$). Genotype-resolved
+seedling models found no genotype $\times$ treatment interaction in set A at $q<0.1$
+(\nGenoSigA{} of all tests), so the \textit{cml24-4} difference in the hand-drawn spectra did not
+replicate.
+
+\begin{figure}[t]\centering
+\includegraphics[width=\linewidth]{fig6_seedling_level.pdf}
+\caption{\textbf{Seedling-level analysis of the raw cubes.} (a) MCR-ALS components. (b, c) Set A,
+plate means of all seedlings, change from hour 0, including Pathogen at 48\,h. (d) Set B, 2--3
+plates per treatment. Data: \texttt{tables/seedling\_plate\_changes.csv}.}
+\label{fig:seed}
+\end{figure}
 
 \section{Discussion}
 Three lessons from this reanalysis apply beyond these data.
@@ -222,10 +262,13 @@ What survives is a pathogen signature within 1--2\,h of inoculation: a broader r
 emission peak and more short-wavelength emission. The timing is consistent with reports that
 chlorophyll fluorescence changes precede visible symptoms \citep{bonfig2006}. Because the
 signature appears in \textit{fls2} mutants, it does not require flagellin perception.
-Loss of CML24 may modulate it: at 24\,h the short-wavelength rise was smaller in
-\textit{cml24-4} ($\cmlFourSwSD$\,SD, $q=\cmlFourSwq$), the allele that is impaired in
-pattern-induced NO signalling \citep{ma2008}. The second allele, \textit{cml24-2}, did not
-differ, so this needs replication. \pending{seedling-level test of the cml24 interaction}
+We found no robust effect of CML24. At 24\,h the short-wavelength rise was smaller in
+\textit{cml24-4} in the hand-drawn spectra ($\cmlFourSwSD$\,SD, $q=\cmlFourSwq$); this is the
+allele impaired in pattern-induced NO signalling \citep{ma2008}. But \textit{cml24-2} did not
+differ, and the seedling-level analysis did not replicate it. Later, the signature turned into
+falling chlorophyll emission, patchy short-wavelength emission and tissue loss. Under 405\,nm
+excitation, short-wavelength emission also rose on a deteriorating control plate, so on its own it
+marks damage rather than infection.
 Limitations: the growth and inoculation details come from the investigators rather than from
 records stored with the data (FACTS R21, R22); there were four plates per treatment; and set B
 used a different excitation wavelength.

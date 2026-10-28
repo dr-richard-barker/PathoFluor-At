@@ -1,0 +1,19 @@
+{
+ "cube_id": "B_reference_reference-2016-11-05_15.42.21_Laser58",
+ "relpath_raw": "Hyper_spectral_work_from_Sarah_Sapiro/reference-2016-11-05_15.42.21 Laser58.raw",
+ "sha256_raw": "932d63ef4a5d69ddb4dc2d087040feae92157dcdcc85eb63c743aea611a16a08",
+ "lines": 232,
+ "bands": 406,
+ "samples": 1600,
+ "read_seconds": 8.1,
+ "bg_median685": 322.0,
+ "bg_sigma685": 47.4432,
+ "dark_mean_420_620": 590.98291015625,
+ "dark_sd_420_620": 78.1871337890625,
+ "n_fg_pixels": 0,
+ "fg_fraction": 0.0,
+ "n_saturated_fg_pixels": 0,
+ "cube_max": 4095,
+ "fg_mean_minus_dark_in_420_620": null,
+ "harvested_utc": "2026-10-28T21:00:27Z"
+}

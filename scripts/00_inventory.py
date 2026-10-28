@@ -51,11 +51,15 @@ def category(rel):
 
 
 def parse_time(s):
+    """Header timestamps as written by the acquisition software. Set-B software sometimes
+    writes a 24-hour time with an AM/PM suffix ('16:30:38 PM'); the suffix is then ignored."""
     s = " ".join(str(s).split())
-    try:
-        return datetime.strptime(s, "%m/%d/%Y %I:%M:%S %p").isoformat()
-    except ValueError:
-        return None
+    for fmt in ("%m/%d/%Y %I:%M:%S %p", "%m/%d/%Y %H:%M:%S %p", "%m/%d/%Y %H:%M:%S"):
+        try:
+            return datetime.strptime(s, fmt).isoformat()
+        except ValueError:
+            continue
+    return None
 
 
 def cube_id(info, stem):

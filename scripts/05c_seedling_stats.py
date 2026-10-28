@@ -61,7 +61,47 @@ def main():
     for _, idx in R.groupby(["set", "laser"], dropna=False).groups.items():
         R.loc[idx, "q"] = multipletests(R.loc[idx, "p"].fillna(1), method="fdr_bh")[1]
     R.to_csv(TABLES / "seedling_stats.csv", index=False)
+    # ---- Genotype-resolved: plate x genotype means, change from the same plate x genotype at
+    # hour 0, mixed model ~ treatment * genotype + (1 | plate) per set x laser x hour x feature.
+    import statsmodels.formula.api as smf
+    G = L[L.genotype.notna()]
+    gk = keys + ["genotype"]
+    gm = G.groupby(gk + ["hour"])[feats].mean().reset_index()
+    gb = gm[gm.hour == 0].drop(columns="hour").set_index(gk).add_suffix("_h0").reset_index()
+    gd = gm[gm.hour > 0].merge(gb, on=gk)
+    for f in feats:
+        gd[f] = gd[f] - gd[f + "_h0"]
+    gd = gd[~((gd["set"] == "A") & (((gd.treatment == "Control") & (gd.plate == 4)) |
+                                  ((gd.treatment == "flg22") & (gd.plate == 2))))]
+    gd[gk + ["hour"] + feats].to_csv(TABLES / "seedling_genotype_changes.csv", index=False)
+    grows = []
+    for (s, las, hr), g in gd.groupby(["set", "laser", "hour"]):
+        if g.treatment.nunique() < 2:
+            continue
+        g = g.assign(plate_id=g.treatment + "_" + g.plate.astype(int).astype(str))
+        for f in feats:
+            d_ = g[np.isfinite(g[f])].assign(y=lambda x: (x[f] - x[f].mean()) / x[f].std())
+            try:
+                m = smf.mixedlm("y ~ C(treatment, Treatment('Control')) * C(genotype, Treatment('Col-0'))",
+                                d_, groups=d_.plate_id).fit(reml=True, method="lbfgs")
+            except Exception:
+                continue
+            for term in m.params.index:
+                if ":" not in term:
+                    continue
+                trt = term.split("[T.")[1].split("]")[0]
+                geno = term.split("[T.")[2].split("]")[0]
+                grows.append(dict(set=s, laser=las or None, hour=hr, feature=f, contrast=f"{trt} x {geno}",
+                                  effect_sd=m.params[term], p=m.pvalues[term], n=int(m.nobs)))
+    GR = pd.DataFrame(grows)
+    GR["q"] = np.nan
+    for _, idx in GR.groupby(["set", "laser"], dropna=False).groups.items():
+        GR.loc[idx, "q"] = multipletests(GR.loc[idx, "p"].fillna(1), method="fdr_bh")[1]
+    GR.to_csv(TABLES / "seedling_genotype_stats.csv", index=False)
+
     pd.set_option("display.width", 200)
+    print("genotype x treatment interactions at q < 0.1:")
+    print(GR[GR.q < 0.1].sort_values(["set", "laser", "contrast", "hour"]).round(4).to_string(index=False))
     print(R[R.q < 0.1].sort_values(["set", "laser", "contrast", "hour"])
           [["set", "laser", "hour", "contrast", "feature", "delta", "n_treated", "n_control", "p", "q"]]
           .round(4).to_string(index=False))

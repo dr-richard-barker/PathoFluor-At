@@ -7,9 +7,8 @@ Project page: <https://dr-richard-barker.github.io/PathoFluor-At/> ·
 Manuscript draft: [`manuscript/PathoFluor-At_draft.pdf`](manuscript/PathoFluor-At_draft.pdf) ·
 Slides: [`slides/PathoFluor-At_slides.pdf`](slides/PathoFluor-At_slides.pdf)
 
-> **Status: analysis in progress.** The hand-ROI analysis is complete. The seedling-level analysis of the
-> raw cubes is running. Parts that depend on it are marked `PENDING` in the manuscript, slides and page.
-> Methods facts not recorded with the data are listed in
+> **Status:** analysis complete (hand-ROI and seedling-level). Remaining placeholders: the full
+> author list and funding. Methods facts not recorded with the data are listed in
 > [`metadata/FACTS_PENDING.md`](metadata/FACTS_PENDING.md) and are never filled in by guesswork.
 
 ## What this is
@@ -39,7 +38,12 @@ recovers that experiment from its original drive, documents every data problem, 
   peak from 1 h to 24 h and raises 500–640 nm emission from 2 h
   (`tables/stats_contrasts_baseline_adjusted.csv`). Change-from-baseline spectra separate infected from
   control plates at 1, 2 and 24 h (plate-level AUC 1.0, exact permutation p = 0.029). At 24 h the
-  short-wavelength rise is smaller in *cml24-4* (q = 0.036; one allele, needs replication).
+  short-wavelength rise is smaller in *cml24-4* in the hand ROIs (q = 0.036), but this did not
+  replicate at seedling level.
+- **Seedling-level replication.** 1,623 seedlings segmented from the raw July cubes reproduce the early
+  signature, independently of the 2016 annotations. Exposure-corrected 685 nm emission then falls, and
+  seedlings shrink by 48 h (`tables/seedling_stats.csv`). Bacteria-only scans do not fluoresce
+  (`tables/setb_control_scans.csv`).
 - **The set-A flg22 signal is not FLS2-dependent.** A Col-0-trained model scores *fls2* plants as
   strongly as Col-0, so the signal is a plate-level effect, not perception
   (`tables/model_specificity.csv`).

@@ -129,6 +129,26 @@ def main():
     L["possibly_merged"] = L.n_px > 1.7 * med
     L.to_csv(RESULTS / "seedlings_labelled.csv.gz", index=False)
 
+    # Set-B check: the leaf-level hand ROIs (plate 1 of each treatment only) are compared with
+    # seedling lane means under each direction (lane-level Spearman over the three lanes,
+    # averaged over three features). Plates 2-3 have no ROIs, so their direction is assumed.
+    from scipy.stats import spearmanr
+    Fb = pd.read_csv(RESULTS / "roi_features.csv.gz")
+    Fb = Fb[Fb["set"] == "B"]
+    cols = ["f685_f740", "red_fwhm_nm", "centroid_nm"]
+    brows = []
+    for (hr, trt, pl), f in Fb.groupby(["hour", "treatment", "plate"]):
+        a = f.groupby("lane")[cols].mean()
+        for las, g in L[(L["set"] == "B") & (L.hour == hr) & (L.treatment == trt) & (L.plate == pl)].groupby("laser"):
+            sc = {}
+            for d in ("fwd", "rev"):
+                b = g.groupby(f"lane_{d}")[cols].mean().reindex(a.index)
+                sc[d] = float(np.nanmean([spearmanr(a[c], b[c]).statistic for c in cols]))
+            brows.append(dict(hour=hr, treatment=trt, plate=pl, laser=las, score_fwd=sc["fwd"], score_rev=sc["rev"]))
+    DB = pd.DataFrame(brows)
+    DB.to_csv(RESULTS / "label_direction_setB.csv", index=False)
+
+
     Da = D[D["set"] == "A"]
     notes = ["# Label assignment and validation\n",
              "Genotype lanes are found per plate x timepoint by 1-D k-means on seedling positions "
@@ -147,6 +167,9 @@ def main():
                  "margin"]].round(2).to_markdown(index=False),
              f"\nSeedlings labelled: {int(L.genotype.notna().sum())} of {len(L)}; possibly merged "
              f"neighbours: {int(L.possibly_merged.sum())}."]
+    notes.append(f"\nSet B (vendor lane order taken as fwd): on plate 1, where leaf ROIs exist, fwd agrees better "
+                 f"in {int((DB.score_fwd > DB.score_rev).sum())} of {len(DB)} hour x treatment x laser comparisons "
+                 f"(mean score fwd {DB.score_fwd.mean():.2f}, rev {DB.score_rev.mean():.2f}). Plates 2-3: assumed.")
     (RESULTS / "label_validation.md").write_text("\n".join(notes) + "\n")
     print("\n".join(notes[:7]))
     print(notes[-1])

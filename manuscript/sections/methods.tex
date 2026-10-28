@@ -58,7 +58,8 @@ content hash). We found the following problems and corrected for each where poss
   rescans labelled ``NI'' made later the same day at the 1\,h settings. \texttt{Hour0} is used
   only as a baseline and is analysed separately from the upright timepoints.
   \item \textbf{Detector saturation.} At the \texttt{Hour0} exposure, up to
-  \pending{N}\% of seedling pixels reached the 12-bit ceiling (4095 counts). Saturated pixels
+  \satHzeroMaxPct\% of a cube's seedling pixels (median \satHzeroMedPct\%) reached the 12-bit ceiling
+  (4095 counts). Saturated pixels
   are excluded from all spectra.
   \item \textbf{Fixed scan order.} Within each timepoint plates were scanned Pathogen, then
   flg22, then Control, 20--40\,min apart, so scan time is partly confounded with treatment. We
@@ -97,10 +98,24 @@ spectrum of each seedling after Savitzky--Golay smoothing (\texttt{src/pathofluo
 \end{itemize}
 
 \subsection{Statistics and classification}
-\pending{Final model specification, written after the analysis is frozen.}
-Treatment effects were tested with linear mixed models with plate as a random effect, against
-time-matched controls, with false-discovery-rate control \citep{benjamini1995}. Classifiers were
-evaluated by leave-one-plate-out cross-validation, with a plate-level permutation null.
+\emph{Hand-ROI features (primary).} For each set, hour and feature we fitted
+$y \sim \mathrm{treatment}\times\mathrm{genotype} + (1\,|\,\mathrm{plate})$ with Control and Col-0 as
+references (\texttt{statsmodels} MixedLM, REML; features standardised), both on absolute values and
+on change from the same plate and genotype at hour~0 (plates Control-4 and flg22-2 excluded from
+the latter). $p$-values were adjusted by the Benjamini--Hochberg procedure across all features,
+hours and contrasts within a set \citep{benjamini1995} (\texttt{scripts/05\_stats.py}).
+\emph{Seedling-level features.} Seedling values were averaged per plate (and per plate and
+genotype), expressed as change from hour~0, and compared between treated and Control plates by
+Welch's $t$-test, or by the same mixed model for genotype interactions, with the same FDR control
+(\texttt{scripts/05c\_seedling\_stats.py}).
+\emph{Classification.} Logistic regression (L2, $C=0.1$) and PLS-DA (three components) on the
+area-normalised spectrum or on the six shape features were evaluated by leave-one-plate-out
+cross-validation. AUC was computed on plate means of out-of-fold scores. Significance came from an
+exact permutation test that re-ran the whole cross-validation for every assignment of the treated
+label to the same number of plates (\texttt{scripts/06\_models.py}).
+\emph{Curve resolution.} MCR-ALS with three non-negative components was fitted to 1,500 unsaturated
+seedling pixels per set-A cube (500--800\,nm, dark-subtracted, divided by exposure), initialised
+from the purest pixels (\texttt{scripts/05b\_mcr.py}).
 
 \subsection{Data and code availability}
 Code (MIT licence), derived data, the 2016 hand-ROI spectra and all manifests are in the

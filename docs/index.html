@@ -102,9 +102,14 @@ signature need not.</p>
 <h3>The flg22 signal is not FLS2-dependent</h3>
 <figure><img src="figures/fig5_specificity.png" alt="Col-0-trained signature applied to each genotype">
 <figcaption>Is the signature genotype-specific? A logistic model trained on Col-0 shape features (change from hour 0) is applied to every genotype on the same plates. Values are the mean predicted probability of &#x27;treated&#x27; on treated plates minus that on Control plates (Col-0: out-of-fold). An FLS2-dependent flg22 signature would vanish in fls2-17 and fls2-101; it does not, so the set-A flg22 signal is a plate-level effect. Data: tables/model_specificity.csv.</figcaption></figure>
-<p class="note">Still to come from the raw cubes, and marked as pending in the manuscript: Pathogen at 48 h (no hand ROIs
-were drawn), the plate-replicated November analysis, exposure-corrected intensities and pixel-level curve
-resolution.</p>
+<h3>Every seedling in the raw cubes</h3>
+<figure><img src="figures/fig6_seedling_level.png" alt="MCR components and plate-level changes from the raw cubes">
+<figcaption>Seedling-level analysis of the raw cubes. (a) Spectra of the three MCR-ALS components fitted to pixels from every set-A cube (results/mcr_components.csv). (b, c) Set A, all genotypes pooled per plate, change from the same plate at hour 0: short-wavelength fraction and exposure-corrected 685 nm emission; unlike the hand ROIs, these include Pathogen plates at 48 h. (d) Set B (405 nm excitation), 2-3 plates per treatment, Laser58 scans. Points are plate means ± s.e.m. Data: tables/seedling_plate_changes.csv; statistics: tables/seedling_stats.csv; table: tables/fig6_seedling_level.csv.</figcaption></figure>
+<p class="note">1,623 seedlings segmented from the July cubes reproduce the early signature without the 2016
+annotations. 685 nm emission then falls (by -3,462 counts s<sup>−1</sup> at 48 h) and seedlings shrink.
+Curve resolution finds no separate broad autofluorescence component. Bacteria-only scans do not fluoresce, so the
+signal is the plant's. In the November replicate, a deteriorating Control plate showed the largest short-wavelength
+rise, so that emission marks damage, not infection specifically. No CML24 effect replicated.</p>
 
 <h2 id="explorer">Spectrum explorer</h2>
 <div class="viz-root" id="viz">

@@ -48,7 +48,8 @@ def main(force=False):
         np.savez_compressed(CACHE / f"{cid}.npz", wl=h["wl"], spectra=np.array(specs), spectra_all=np.array(specs_all))
         done += 1
     print(f"segmented {done} new cubes")
-    parts = [pd.read_csv(p) for p in sorted(OUT.glob("*.csv"))]
+    # Cubes with no seedlings (e.g. set-B bacteria-only scans) leave empty files; skip them.
+    parts = [pd.read_csv(p) for p in sorted(OUT.glob("*.csv")) if p.stat().st_size > 1]
     if parts:
         allr = pd.concat(parts, ignore_index=True)
         allr.to_csv(RESULTS / "seedlings_all.csv.gz", index=False)

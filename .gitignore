@@ -19,3 +19,4 @@ slides/*.snm
 slides/*.toc
 slides/*.fls
 slides/*.fdb_latexmk
+.abai/

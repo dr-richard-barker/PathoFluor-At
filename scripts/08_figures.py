@@ -304,9 +304,9 @@ def fig_cubes():
     ax[0].set_title("a  MCR components", fontsize=8.5)
     ax[0].legend(fontsize=6.5)
     rows = []
-    panels = ((1, "A", 0, "shortwave_fraction", "b  Set A: 500-640 / 650-800"),
-              (2, "A", 0, "f685_cps", "c  Set A: F$_{685}$ (counts s$^{-1}$)"),
-              (3, "B", 58, "shortwave_fraction", "d  Set B (Laser58): 500-640 / 650-800"))
+    panels = ((1, "A", 0, "shortwave_fraction", "b  Set A: 500–640 / 650–800 nm"),
+              (2, "A", 0, "f685_cps", "c  Set A: F$_{685}$ (s$^{-1}$)"),
+              (3, "B", 58, "shortwave_fraction", "d  Set B: 500–640 / 650–800 nm"))
     for i, s_, las, f, title in panels:
         a = ax[i]
         g = d[(d["set"] == s_) & (d.laser.fillna(0).astype(int) == las)]
@@ -320,7 +320,7 @@ def fig_cubes():
         a.axhline(0, color=INK2, lw=0.8)
         a.set_xticks(range(len(hours)), [f"{h:g}" for h in hours])
         a.set_xlabel("Hours after treatment")
-        a.set_title(title, fontsize=8)
+        a.set_title(title, fontsize=7.5)
     ax[1].legend(fontsize=6.5, loc="upper left")
     fig.tight_layout()
     pd.DataFrame(rows).to_csv(TABLES / "fig6_seedling_level.csv", index=False)

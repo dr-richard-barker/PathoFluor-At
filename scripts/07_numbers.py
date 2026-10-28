@@ -161,6 +161,49 @@ def main():
     put("specFlgFlsSeventeen", piv["fls2-17"])
     put("specFlgFlsOneOhOne", piv["fls2-101"])
 
+    # ---- seedling-level (raw cubes)
+    SS = pd.read_csv(TABLES / "seedling_stats.csv")
+    SA = SS[SS["set"] == "A"]
+    for hr, f, tag in ((1, "red_fwhm_nm", "SeedFwhmOne"), (1, "f685_f740", "SeedRatioOne"),
+                       (3, "f685_cps", "SeedCpsThree"), (48, "f685_cps", "SeedCpsFortyEight"),
+                       (48, "shortwave_fraction", "SeedSwFortyEight"), (48, "n_px", "SeedAreaFortyEight"),
+                       (48, "ratio_px_sd", "SeedHetFortyEight"), (2, "mcr2_frac", "SeedMcrTwoTwo")):
+        r = one(SA, hour=hr, feature=f, contrast="Pathogen vs Control")
+        put(f"path{tag}", r.delta, "{:,.0f}" if "cps" in f or f == "n_px" else "{:.2f}" if abs(r.delta) >= 0.1 else "{:.3f}")
+        put(f"path{tag}q", pfmt(r.q), "{}")
+    put("nSeedA", int(pd.read_csv(RESULTS / "seedlings_labelled.csv.gz").query("set == 'A'").shape[0]), "{:,}")
+    put("nSeedSigA", int(((SA.q < 0.05)).sum()), "{:d}")
+    GS = pd.read_csv(TABLES / "seedling_genotype_stats.csv")
+    put("nGenoSigA", int(((GS["set"] == "A") & (GS.q < 0.1)).sum()), "{:d}")
+    for g, tag in (("fls2-17", "Seventeen"), ("fls2-101", "OneOhOne")):
+        r = one(GS, set="B", laser=58.0, hour=48.0, feature="shortwave_px_p90", contrast=f"flg22 x {g}")
+        put(f"setBflsHet{tag}SD", r.effect_sd)
+        put(f"setBflsHet{tag}q", pfmt(r.q), "{}")
+    put("nSetBPlateSig", int(((SS["set"] == "B") & (SS.q < 0.1)).sum()), "{:d}")
+    pc = pd.read_csv(TABLES / "seedling_plate_changes.csv")
+    r = one(pc, set="B", laser=58, hour=48.0, treatment="Control", plate=2.0)
+    put("setBctrlTwoSw", r.shortwave_fraction)
+    comp = pd.read_csv(RESULTS / "mcr_components.csv")
+    w = comp.wl
+    fr = [comp[c][(w >= 500) & (w <= 640)].sum() / comp[c].sum() for c in comp.columns if c.startswith("comp")]
+    put("mcrMaxSwPct", 100 * max(fr), "{:.1f}")
+    pk = sorted(float(w[comp[c].idxmax()]) for c in comp.columns if c.startswith("comp"))
+    put("mcrPeakLo", pk[0], "{:.0f}")
+    put("mcrPeakHi", pk[-1], "{:.0f}")
+    bc = pd.read_csv(TABLES / "setb_control_scans.csv")
+    bb = bc[bc.role == "bacteria_scan"]
+    put("bactMaxSigPct", 100 * bb.signal_fraction.max(), "{:.2f}")
+    put("bactMaxSwCps", bb.sw_cps.max(), "{:.1f}")
+    LB = pd.read_csv(RESULTS / "label_direction_setB.csv")
+    put("setBdirWins", int((LB.score_fwd > LB.score_rev).sum()), "{:d}")
+    put("setBdirN", len(LB), "{:d}")
+    LD = pd.read_csv(RESULTS / "label_direction_scores.csv")
+    LD = LD[LD["set"] == "A"]
+    put("labPlates", int(LD.direction.notna().sum()), "{:d}")
+    put("labPlatesAll", len(LD), "{:d}")
+    put("labLowConf", int((LD.margin < 0.2).sum()), "{:d}")
+    put("nShaRaw", int(cm.sha256_raw.notna().sum()), "{:d}")
+
     write_tables()
     rm_a = rm[rm["set"] == "A"]
     put("nUseSubset", int(rm_a[rm_a.location == "use_subset"].spectrum_id.nunique()), "{:,}")

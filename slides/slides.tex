@@ -124,8 +124,18 @@ and flg22 in \textit{Arabidopsis}}
           confounded with plate there
     \item Within plates: flg22 shifts Col-0 emission shape differently from
           \textit{fls2-17} at 6\,h ($q=\setBinterq$), the FLS2-dependent pattern
-    \item \pending{plate-replicated analysis from the raw cubes}
+    \item Raw cubes (2--3 plates/treatment): no replicated treatment effect; one deteriorating
+          Control plate had the largest short-wavelength rise
+    \item Bacteria-only scans do not fluoresce: the signal is the plant's
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Every seedling in the raw cubes}
+  \centering
+  \includegraphics[width=\linewidth]{fig6_seedling_level.pdf}\\[1mm]
+  \small \nSeedA{} seedlings, plate means, change from hour 0. The early signature replicates;
+  685\,nm emission falls from 3\,h (\pathSeedCpsFortyEight{}\,s$^{-1}$ by 48\,h) and seedlings
+  shrink. Curve resolution finds no separate broad autofluorescence component.
 \end{frame}
 
 \begin{frame}{Take-home}
@@ -135,8 +145,9 @@ and flg22 in \textit{Arabidopsis}}
     \item The plate is the experimental unit: image a baseline and validate leave-plate-out.
     \item Use non-perceiving mutants as the decisive control.
     \item Check every export: an un-subtracted dark level mimicked autofluorescence.
-    \item A pathogen signature appears from 1\,h: a broader red peak, then more emission
-          below 640\,nm.
+    \item A pathogen signature appears from 1\,h (broader red peak), then chlorophyll emission
+          falls and tissue is lost; short-wavelength emission marks damage, not infection.
+    \item No robust CML24 effect.
   \end{enumerate}
 \end{frame}
 
