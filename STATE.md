@@ -17,8 +17,8 @@ Update this file as each stage lands, so work can resume from the filesystem (AB
 | 7 numbers | scripts/07_numbers.py | done | manuscript/numbers.tex |
 | 8 figures | scripts/08_figures.py | figs 1-6 + S1 done | figures/ |
 | 9 site | scripts/09_site_data.py | done (renders docs/index.html) | docs/ |
-| 10 Zenodo | scripts/10_package_zenodo.py pack/verify/plan; zenodo_upload.py (Richard runs) | not run | staging next to source folder |
+| 10 Zenodo | scripts/10_package_zenodo.py pack/verify/plan; zenodo_upload.py (Richard runs) | packing started 2026-10-28 17:15 (level 10, ~158 GB expected); resumable | /Volumes/Barker_2016/_PathoFluor_zenodo_staging |
 | manuscript / slides | make -C manuscript draft; make -C slides | drafts build | *_draft.pdf, *_slides.pdf |
-| push | - | not yet; needs /abai check + Richard-facing review | |
+| push | git push origin main | public 2026-10-28; Pages live; AstroBotany hub entry live (registry e94712b) | github.com/dr-richard-barker/PathoFluor-At |
 
 Raw data: /Volumes/Barker_2016/Hyperspectral_UW-Botany_July 2016 (set PATHOFLUOR_SRC to override).

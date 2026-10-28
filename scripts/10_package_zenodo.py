@@ -17,6 +17,7 @@ Uploading is a separate, user-run step: scripts/zenodo_upload.py (needs ZENODO_T
 import argparse
 import hashlib
 import json
+import os
 import subprocess
 import sys
 import tarfile
@@ -48,7 +49,9 @@ def pack(cm, stage, level):
         listfile = stage / f"{g}.members.txt"
         listfile.write_text("\n".join(members) + "\n")
         print(f"packing {g}: {len(members)} files, {d.raw_bytes.sum() / 1e9:.1f} GB raw", flush=True)
-        tar = subprocess.Popen(["tar", "-C", str(SRC), "-cf", "-", "-T", str(listfile)], stdout=subprocess.PIPE)
+        # COPYFILE_DISABLE + --no-mac-metadata: keep macOS AppleDouble ("._") entries out of the archive
+        tar = subprocess.Popen(["tar", "--no-mac-metadata", "-C", str(SRC), "-cf", "-", "-T", str(listfile)],
+                               stdout=subprocess.PIPE, env={**os.environ, "COPYFILE_DISABLE": "1"})
         with open(out, "wb") as f:
             z = subprocess.run(["zstd", f"-{level}", "-T0", "--long=27", "-q", "-c"], stdin=tar.stdout, stdout=f)
         tar.wait()
