@@ -42,11 +42,12 @@ the pre-treatment baseline, FACTS R13) and at 1, 2, 3, 24 and
 Acquisition settings were read from every ENVI header (\texttt{metadata/cube\_manifest.csv}).
 
 \subsection{Data provenance and quality}\label{sec:quality}
-All 7,752 files on the 2016 drive were inventoried and hashed (\texttt{scripts/00\_inventory.py}).
-Every file name was parsed without exception: 400 hyperspectral cubes (216 set-A samples, 168
-set-B samples, 8 set-B bacteria-only scans, 6 set-B reference scans, one reference and one
-artefact scan in set A) and 5,842 hand-drawn region-of-interest (ROI) spectra (2,486 unique by
-content hash). We found the following problems and corrected for each where possible.
+All \nFiles{} files on the 2016 drive were inventoried and hashed (\texttt{scripts/00\_inventory.py}).
+Every file name was parsed without exception: \nCubes{} hyperspectral cubes (\nCubesA{} set-A
+samples, \nCubesB{} set-B samples, plus set-B bacteria-only and reference scans and one reference
+and one artefact scan in set A) and \nRoiFiles{} hand-drawn region-of-interest (ROI) spectra
+(\nRoiUnique{} unique by content hash). All \nShaRaw{} raw cubes carry SHA-256 checksums in
+\texttt{metadata/cube\_manifest.csv}. We found the following problems and corrected for each where possible.
 \begin{enumerate}
   \item \textbf{Exposure time changed between timepoints.} It was 0.305\,s at \texttt{Hour0},
   0.203\,s at 1--3\,h, 0.222--0.268\,s at 24\,h (varying within plates) and 0.222\,s at 48\,h.
