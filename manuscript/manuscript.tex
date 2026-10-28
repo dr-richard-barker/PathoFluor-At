@@ -41,7 +41,7 @@ but not of flg22 perception}
 Detecting plant infection before symptoms appear would help both field and
 controlled-environment agriculture. In 2016 we imaged \textit{Arabidopsis} seedlings by
 fluorescence hyperspectral imaging (488\,nm excitation, 500--800\,nm emission) before and
-1--48\,h after flood treatment with a mock solution, the flagellin epitope flg22 or
+1--48\,h after treatment with a mock solution, the flagellin epitope flg22 or
 \textit{Pseudomonas syringae}. Five genotypes were imaged: Col-0, two \textit{fls2} receptor
 mutants and two \textit{cml24} Ca$^{2+}$-sensor mutants. We reanalysed all \nRoiA{} hand-drawn
 seedling spectra of the primary experiment, and \nCubes{} raw image cubes (\rawGB{}\,GB).
@@ -73,7 +73,7 @@ leaf surface \citep{zipfel2004}. Pattern-triggered defence quickly lowers non-ph
 quenching \citep{gohre2012}. \textit{P.~syringae} infection changes photosynthetic chlorophyll
 fluorescence parameters near the infection site before visible symptoms, within 3\,h for an
 avirulent strain \citep{bonfig2006}. Chlorophyll fluorescence imaging is therefore a
-candidate for pre-symptomatic disease detection
+candidate for disease detection and phenotyping
 \citep{rousseau2013,perezbueno2016,perezbueno2019,mahlein2016}.
 
 Steady-state chlorophyll fluorescence emission has two bands, near 685--690\,nm and
@@ -117,7 +117,8 @@ Control hand ROIs as plotted in 2016 and (c) divided by exposure. Data:
 \end{figure}
 
 \subsection{Plates differed before treatment}
-Hour~0 was imaged before treatment. Even so, flg22 plates already differed from Control plates
+Hour~0 was imaged before treatment (as the scan times and the 2016 vendor report indicate; FACTS R6,
+P13). Even so, flg22 plates already differed from Control plates
 in red-peak width ($\hzeroFlgFwhmSD$\,SD; $q=\hzeroFlgFwhmq$). A classifier separated them
 perfectly from spectra alone (plate-level AUC \aucPlaceboFlg{}, $p=\pPlaceboFlg$;
 Fig.~\ref{fig:auc}a). The same held, less strongly, for Pathogen plates (AUC \aucPlaceboPath{}).
@@ -206,7 +207,7 @@ leave-plate-out validation are essential. Without them, a classifier here would 
 Third, mutants that cannot perceive the stimulus are the decisive control. Here they showed that
 an apparently promising flg22 signal was not perception.
 
-What survives is a pathogen signature within 1--2\,h of flood inoculation: a broader red
+What survives is a pathogen signature within 1--2\,h of inoculation: a broader red
 emission peak and more short-wavelength emission. The timing is consistent with reports that
 chlorophyll fluorescence changes precede visible symptoms \citep{bonfig2006}. Because the
 signature appears in \textit{fls2} mutants, it does not require flagellin perception.

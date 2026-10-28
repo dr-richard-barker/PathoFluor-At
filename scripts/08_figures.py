@@ -251,6 +251,88 @@ def fig_specificity():
          "plate-level effect. Data: tables/model_specificity.csv.")
 
 
+def fig_pilot():
+    P = pd.read_csv(RESULTS / "pilot_leaf_area.csv")
+    P["genotype"] = P.genotype.str.replace("GL3.", "glr3.", regex=False).str.replace("GLR3.", "glr3.", regex=False) \
+        .str.replace("FLS2", "fls2", regex=False)
+    genos = sorted(P.genotype.unique(), key=lambda g: (g != "Col-0", g))
+    fig, axes = plt.subplots(2, 4, figsize=(7.2, 3.8), sharex=True, sharey=True)
+    rows = []
+    for a, g in zip(axes.flat, genos):
+        for trt in ("Control", "flg22", "Pathogen"):
+            d = P[(P.genotype == g) & (P.treatment == trt)].groupby("day").leaf_area_cm2_as_tabulated.agg(["mean", "sem", "size"])
+            if d.empty:
+                continue
+            a.errorbar(d.index, d["mean"], yerr=d["sem"], color=TRT[trt], marker=TRT_MARK[trt], capsize=1.5,
+                       lw=1.4, ms=4, elinewidth=0.8, label=trt)
+            rows += [dict(genotype=g, treatment=trt, day=k, mean=m, sem=se, n=n) for k, m, se, n in
+                     zip(d.index, d["mean"], d["sem"], d["size"])]
+        a.set_title(g, fontsize=8.5, style="italic" if g != "Col-0" else "normal")
+        a.set_xticks([0, 1, 2, 3])
+    for a in axes[-1]:
+        a.set_xlabel("Day")
+    for a in axes[:, 0]:
+        a.set_ylabel("Leaf area\n(as tabulated)")
+    axes.flat[0].legend(fontsize=6.5, loc="upper left")
+    fig.tight_layout()
+    pd.DataFrame(rows).to_csv(TABLES / "figS1_pilot_leaf_area.csv", index=False)
+    save(fig, "figS1_pilot_leaf_area",
+         "Pilot experiment (February-March 2016): rosette leaf area per plant from images, days 0-3 after "
+         "treatment, mean ± s.e.m. of the five values tabulated per genotype x treatment x day. Units are as "
+         "tabulated in 2016 (cm², derived from pixel counts against a red reference square); the source sheet "
+         "has a second area column 4x larger, and which is correct is unresolved (FACTS R10, P12). Genotype "
+         "codes GL3.3/GL3.4 in the 2016 files denote glr3.3/glr3.4 alleles (FACTS R11). Data: "
+         "data/original_2016/Plant hyperspectral assay/*_hyperspectral_Patho.csv; table: "
+         "tables/figS1_pilot_leaf_area.csv.")
+
+
+def fig_cubes():
+    """Seedling-level (cube-derived) results; skipped until 05b/05c outputs exist."""
+    need = [RESULTS / "mcr_components.csv", TABLES / "seedling_plate_changes.csv"]
+    if not all(p.exists() for p in need):
+        print("fig6 skipped: run 05b and 05c first")
+        return
+    comp = pd.read_csv(RESULTS / "mcr_components.csv")
+    d = pd.read_csv(TABLES / "seedling_plate_changes.csv")
+    fig, ax = plt.subplots(1, 4, figsize=(7.4, 2.5))
+    cols = [c for c in comp.columns if c.startswith("comp")]
+    for c, colr in zip(cols, ("#2a78d6", "#eb6834", "#1baf7a")):
+        ax[0].plot(comp.wl, comp[c] * 1000, color=colr, label=c.replace("comp", "C"))
+    ax[0].set_xlabel("Wavelength (nm)")
+    ax[0].set_ylabel("Component (×10$^{-3}$ nm$^{-1}$)")
+    ax[0].set_title("a  MCR components", fontsize=8.5)
+    ax[0].legend(fontsize=6.5)
+    rows = []
+    panels = ((1, "A", 0, "shortwave_fraction", "b  Set A: 500-640 / 650-800"),
+              (2, "A", 0, "f685_cps", "c  Set A: F$_{685}$ (counts s$^{-1}$)"),
+              (3, "B", 58, "shortwave_fraction", "d  Set B (Laser58): 500-640 / 650-800"))
+    for i, s_, las, f, title in panels:
+        a = ax[i]
+        g = d[(d["set"] == s_) & (d.laser.fillna(0).astype(int) == las)]
+        hours = sorted(g.hour.unique())
+        for trt in ("Control", "flg22", "Pathogen"):
+            m = g[g.treatment == trt].groupby("hour")[f].agg(["mean", "sem", "size"]).reindex(hours)
+            a.errorbar(range(len(hours)), m["mean"], yerr=m["sem"], color=TRT[trt], marker=TRT_MARK[trt],
+                       capsize=2, lw=1.4, ms=4, elinewidth=0.8, label=trt)
+            rows += [dict(set=s_, laser=las, feature=f, treatment=trt, hour=h, mean=v, sem=e, n_plates=n)
+                     for h, v, e, n in zip(hours, m["mean"], m["sem"], m["size"])]
+        a.axhline(0, color=INK2, lw=0.8)
+        a.set_xticks(range(len(hours)), [f"{h:g}" for h in hours])
+        a.set_xlabel("Hours after treatment")
+        a.set_title(title, fontsize=8)
+    ax[1].legend(fontsize=6.5, loc="upper left")
+    fig.tight_layout()
+    pd.DataFrame(rows).to_csv(TABLES / "fig6_seedling_level.csv", index=False)
+    save(fig, "fig6_seedling_level",
+         "Seedling-level analysis of the raw cubes. (a) Spectra of the three MCR-ALS components fitted to "
+         "pixels from every set-A cube (results/mcr_components.csv). (b, c) Set A, all genotypes pooled per "
+         "plate, change from the same plate at hour 0: short-wavelength fraction and exposure-corrected 685 nm "
+         "emission; unlike the hand ROIs, these include Pathogen plates at 48 h. (d) Set B (405 nm excitation), "
+         "2-3 plates per treatment, Laser58 scans. Points are plate means ± s.e.m. Data: "
+         "tables/seedling_plate_changes.csv; statistics: tables/seedling_stats.csv; table: "
+         "tables/fig6_seedling_level.csv.")
+
+
 def main():
     F = pd.read_csv(RESULTS / "roi_features.csv.gz")
     cm = pd.read_csv(META / "cube_manifest.csv")
@@ -260,6 +342,8 @@ def main():
     fig_timecourse(F)
     fig_auc()
     fig_specificity()
+    fig_pilot()
+    fig_cubes()
     lines = ["# Figure captions\n", "Each caption says what the figure shows and where its data come from.\n"]
     for k, v in CAPTIONS.items():
         lines.append(f"**{k}** — {v}\n")

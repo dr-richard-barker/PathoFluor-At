@@ -45,6 +45,7 @@ Sources:
 | P7 | What `Laser50` / `Laser58` mean in the November scans | Laser power setting? Both share tint 3.326 s |
 | P8 | What `Chroma.raw` (21 Jul 2016) is | Fluorescence reference slide? |
 | P9 | Allele identities and backgrounds: fls2-17, FLS2-101, cml24-2, cml24-4, glr3.3-1/-2, glr3.4-1/-2 | Need the stock/line IDs to cite the right papers |
-| P10 | Author list, affiliations, ORCIDs, funding, acknowledgements | Richard's ORCID 0000-0001-5681-9857 (verified). What were Sarah Sapiro's, Cullen Vens' and Aditya Singa's roles? Is the spelling "Singa" or "Singh" (the WARF poster has "Aditya Singh")? Acknowledge H. Jones / Middleton Spectral Vision? |
+| P10 | Author list, affiliations, ORCIDs, funding, acknowledgements | Richard's ORCID 0000-0001-5681-9857 (verified). What were Sarah Sapiro's, Cullen Vens' and Aditya Singa's roles? Is the spelling "Singa" or "Singh"? (The WARF poster says "Aditya Singh", and the leaf-size sheet is shared with an account named Aditya Singh, so "Singh" is likely.) Acknowledge H. Jones / Middleton Spectral Vision? |
 | P11 | May the two Middleton Spectral Vision reports (V1, V2) be redistributed in the public repo? | Default: cited and summarised only, not redistributed |
 | P12 | Pilot leaf-area 4× discrepancy (R10) | Which column is the true cm²? |
+| P13 | Was `Hour0` imaged before treatment, and when exactly were plates treated? | Inferred from scan times (Hour0 ends 12:26; Hour1 starts 18:06) and the vendor's "1, 2, 3, 24 and 48 hours after infection"; the analysis treats Hour0 as baseline |

@@ -1,0 +1,77 @@
+% PathoFluor-At supplement. Numbers: numbers.tex; tables: generated/ (scripts/07_numbers.py).
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{microtype}
+\graphicspath{{../figures/}}
+\input{numbers}
+\newcommand{\pending}[1]{\textcolor{red}{[PENDING: #1]}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+
+\title{\bfseries Supplementary information: PathoFluor-At}
+\author{Richard J. Barker \pending{co-authors}}
+\date{}
+\begin{document}
+\maketitle
+
+\section*{Supplementary Note 1. Assigning genotype and plant labels to segmented seedlings}
+Each row-scan images one row of seedlings along the scan (line) axis. Genotype lanes are
+columns along that axis, shared by a plate's three rows. For every plate and timepoint we pooled
+the line positions of all segmented seedlings and clustered them into five lanes (set A) or
+three (set B) by exact one-dimensional $k$-means. Plant numbers follow reading order within a
+lane, which is how the 2016 hand ROIs are numbered.
+
+Plates were not always placed in the same orientation on the stage. The 2016 hand ROIs show
+\textit{cml24-2} (lane D) with the highest F$_{685}$/F$_{740}$ on every set-A plate, while in
+the segmented images the high-ratio lane changes position between plates. We therefore chose
+the scan direction per plate and timepoint. For each direction we paired every hand ROI with
+the seedling that direction assigns to it, and scored the within-plate Spearman correlation of
+three features (F$_{685}$/F$_{740}$, red-peak width, peak intensity). We kept the direction with
+the higher mean (Table~\ref{tab:labels}). Plates without hand ROIs (set-A Pathogen at 48\,h)
+receive no genotype label and enter only treatment-level analyses. Set-B hand ROIs are per leaf,
+so set-B lanes follow the order stated in the vendor report (Col-0, \textit{fls2-17},
+\textit{fls2-101}; FACTS R9), pending confirmation.
+
+\input{generated/tab_label_direction}
+
+\section*{Supplementary Note 2. The 2016 hand-drawn ROIs}
+The 2016 annotator drew ROIs on seedlings and exported their mean spectra. Copies were sorted by
+timepoint, by genotype, and into curated ``USE'' subsets (\nUseSubset{} set-A spectra), plus
+\nCopyFiles{} Windows ``- Copy'' duplicates. Identical copies were merged by content hash.
+\nKeyConflict{} spectra share a design key with a different spectrum (re-drawn ROIs); both are
+kept and flagged. ROIs carry \nTagValues{} distinct free-text tags (``bright'', ``norm'',
+``dark'', ``side'', ``dying'' and others) whose meaning is pending (FACTS P6). They are retained
+in \texttt{results/roi\_features.csv.gz}. No ROIs exist for set-A Pathogen plates at 48\,h.
+
+\section*{Supplementary Note 3. The 2016 vendor analyses}
+Two Middleton Spectral Vision reports analysed subsets of these data by multivariate curve
+resolution. For the July set (one infected and one control plate, two plants per genotype) the
+report describes two chlorophyll-like components and a broad autofluorescence component present
+mainly in plants infected for at least 24\,h, with infected and control plants separated by
+component medians. For the November set (one plate per treatment) it describes a
+``chlorophyll shift'' component that rises in \textit{Pseudomonas} plants from 6\,h and in
+flg22-treated Col-0 but not \textit{fls2}, tested with notched box plots of individual plants.
+Neither analysis treated the plate as the experimental unit or used a pre-treatment baseline.
+We treat their conclusions as hypotheses, tested in the main text. The reports are cited, not
+redistributed (FACTS P11).
+
+\section*{Supplementary Note 4. Pilot experiment}
+\begin{figure}[ht]\centering
+\includegraphics[width=\linewidth]{figS1_pilot_leaf_area.pdf}
+\caption{Pilot (February--March 2016) leaf area, days 0--3. Values as tabulated in 2016; the
+source sheet's second area column is 4$\times$ larger, and which is correct is unresolved (FACTS
+R10, P12). Data: \texttt{tables/figS1\_pilot\_leaf\_area.csv}.}
+\end{figure}
+
+\section*{Supplementary Table: strongest baseline-adjusted contrasts}
+\input{generated/tab_baseline_top}
+
+\end{document}

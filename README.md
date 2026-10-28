@@ -17,7 +17,7 @@ Slides: [`slides/PathoFluor-At_slides.pdf`](slides/PathoFluor-At_slides.pdf)
 In July 2016 seedlings of five genotypes were imaged in the Gilroy Lab (UW-Madison Botany) with a
 MacroPhor fluorescence hyperspectral imager (488 nm excitation, 500–800 nm emission). The genotypes
 were Col-0, *fls2-17*, *fls2-101*, *cml24-2* and *cml24-4*. Imaging was done before and 1, 2, 3, 24 and
-48 h after flood treatment with a mock solution, flg22 or *P. syringae*. An independent replicate
+48 h after treatment with a mock solution, flg22 or *P. syringae* (the method, planned as flood inoculation, is still to be confirmed). An independent replicate
 followed in November 2016 (405 nm excitation; Col-0 and the two *fls2* lines). This repository
 recovers that experiment from its original drive, documents every data problem, and tests:
 
