@@ -3,6 +3,12 @@
 Pilot: 24 tables, 476 values (units: see FACTS_PENDING R10/P12).
 Spectra: 5842 files -> 2486 unique (A 1982, B 504).
 Design-key conflicts (same hour/treatment/plate/lane/plant, different spectrum): 12 spectra in 6 keys.
+Residual dark offset: 83 spectra exported without dark subtraction (|residual| > 5 counts; median 108.6); every spectrum is corrected by its own sub-excitation mean before features are computed.
+|                              |   n |
+|:-----------------------------|----:|
+| ('A', 3.0, 'Pathogen', 1.0)  |  30 |
+| ('A', 3.0, 'Pathogen', 2.0)  |  28 |
+| ('A', 24.0, 'Pathogen', 4.0) |  25 |
 
 Spectra per set x hour x treatment:
 

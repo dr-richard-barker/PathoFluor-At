@@ -62,18 +62,35 @@ def main():
                   f"{len(conflict)} spectra in {conflict.groupby(KEY).ngroups} keys.")
     uniq.loc[uniq["set"] == "B", "genotype"] = uniq.loc[uniq["set"] == "B", "lane"].map(LANES_B)
 
-    wl_ref, vals, feats, grids = {}, [], [], []
+    # Residual dark offset. Nothing fluoresces at wavelengths shorter than the excitation line,
+    # so the mean below it measures whatever dark level the 2016 export left in the spectrum
+    # (set A, 488 nm excitation: 420-470 nm; set B, 405 nm: 400-404 nm). Most exports are
+    # dark-subtracted (residual ~0.1 counts); some were exported raw (~105 counts).
+    DARK_WIN = {"A": (420.0, 470.0), "B": (400.0, 404.0)}
+    wl_ref, vals, feats, grids, resid = {}, [], [], [], []
     for sid, r in uniq.iterrows():
         wl, y = read_spectrum(r.relpath)
         wl_ref.setdefault(r["set"], wl)
         if len(wl) != len(wl_ref[r["set"]]) or not np.allclose(wl, wl_ref[r["set"]], atol=0.02):
             raise SystemExit(f"wavelength axis differs in {r.relpath}")
+        lo, hi = DARK_WIN[r["set"]]
+        off = float(y[(wl >= lo) & (wl <= hi)].mean())
+        resid.append(off)
         vals.append(y)
-        feats.append(shape_features(wl, y))
-        grids.append(to_grid(wl, y))
+        yc = y - off
+        feats.append(shape_features(wl, yc))
+        grids.append(to_grid(wl, yc))
 
+    uniq["dark_residual"] = resid
+    uniq["offset_corrected"] = np.abs(uniq.dark_residual) > 5
+    report.append(f"Residual dark offset: {int(uniq.offset_corrected.sum())} spectra exported without dark "
+                  f"subtraction (|residual| > 5 counts; median {uniq.loc[uniq.offset_corrected, 'dark_residual'].median():.1f}); "
+                  "every spectrum is corrected by its own sub-excitation mean before features are computed.")
+    report.append(uniq[uniq.offset_corrected].groupby(["set", "hour", "treatment", "plate"]).size()
+                  .rename("n").to_frame().to_markdown())
     meta_cols = ["set", "hour", "treatment", "plate", "lane", "genotype", "plant", "tag",
-                 "file_copy", "relpath", "location", "in_use_subset", "n_copies", "key_conflict"]
+                 "file_copy", "relpath", "location", "in_use_subset", "n_copies", "key_conflict",
+                 "dark_residual", "offset_corrected"]
     meta = uniq[meta_cols].reset_index()
 
     # Raw spectra, per set (axes differ: 324 bands in A, 406 in B).

@@ -32,10 +32,14 @@ recovers that experiment from its original drive, documents every data problem, 
   (`tables/fig1_exposure_artefact.csv`).
 - **Plates differed before treatment.** At hour 0 a classifier separates flg22 from Control plates
   perfectly, so only change from each plate's own baseline is used as evidence (`tables/model_auc.csv`).
+- **Some 2016 exports kept the dark level.** 83 hand-ROI spectra (all on Pathogen plates) were
+  saved without dark subtraction, which mimics broad autofluorescence. Every spectrum is corrected by
+  its own emission below the 488 nm excitation line (`results/roi_import_report.md`).
 - **Early pathogen signature.** Relative to baseline, *P. syringae* broadens the red chlorophyll emission
-  peak at 1 and 2 h and raises 500–640 nm emission at 2 h. These are the only tests significant at
-  q < 0.05 (`tables/stats_contrasts_baseline_adjusted.csv`). Change-from-baseline spectra separate
-  infected from control plates at 1, 2 and 24 h (plate-level AUC 1.0, exact permutation p = 0.029).
+  peak from 1 h to 24 h and raises 500–640 nm emission from 2 h
+  (`tables/stats_contrasts_baseline_adjusted.csv`). Change-from-baseline spectra separate infected from
+  control plates at 1, 2 and 24 h (plate-level AUC 1.0, exact permutation p = 0.029). At 24 h the
+  short-wavelength rise is smaller in *cml24-4* (q = 0.036; one allele, needs replication).
 - **The set-A flg22 signal is not FLS2-dependent.** A Col-0-trained model scores *fls2* plants as
   strongly as Col-0, so the signal is a plate-level effect, not perception
   (`tables/model_specificity.csv`).

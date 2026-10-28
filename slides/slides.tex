@@ -74,12 +74,22 @@ and flg22 in \textit{Arabidopsis}}
   (AUC \aucPlaceboFlg{}). Only change from each plate's own baseline is evidence (b).
 \end{frame}
 
-\begin{frame}{A pathogen signature within 1--2 hours}
+\begin{frame}{Data problem 3: some 2016 exports kept the dark level}
+  \begin{itemize}
+    \item \nOffsetRoi{} hand-drawn spectra (all on Pathogen plates, 3\,h and 24\,h) were saved
+          without dark subtraction: a flat \offsetMedian{}-count offset
+    \item Uncorrected, it looks like broad ``autofluorescence'' below 640\,nm
+    \item Nothing fluoresces below the 488\,nm excitation, so each spectrum's 420--470\,nm mean is
+          its own offset: subtracted before any analysis
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{A pathogen signature from 1 hour}
   \centering
   \includegraphics[width=\linewidth]{fig3_timecourse.pdf}\\[1mm]
-  \small Red emission peak broadens by \pathFwhmOnenm{}\,nm at 1\,h ($q=\pathFwhmOneq$) and
-  \pathFwhmTwonm{}\,nm at 2\,h ($q=\pathFwhmTwoq$); emission below 640\,nm rises (2\,h,
-  $q=\pathSwTwoq$).
+  \small Red emission peak broadens from 1\,h (+\pathFwhmOnenm{}\,nm, $q=\pathFwhmOneq$) to 24\,h
+  (+\pathFwhmTwentyFournm{}\,nm); emission below 640\,nm rises from 2\,h ($q=\pathSwTwoq$).
+  At 24\,h the rise is smaller in \textit{cml24-4} ($q=\cmlFourSwq$).
 \end{frame}
 
 \begin{frame}{What the spectrum change looks like}
@@ -94,7 +104,7 @@ and flg22 in \textit{Arabidopsis}}
     \item Plate-level AUC \aucPathOne{} at 1\,h, \aucPathTwo{} at 2\,h,
           \aucPathTwentyFour{} at 24\,h
     \item Exact permutation test over all 70 plate relabellings: $p=\pPathTwo$
-    \item Fails at 3\,h \pending{explain}
+    \item Weaker at 3\,h (AUC \aucPathThree, $p=\pPathThree$)
   \end{itemize}
 \end{frame}
 
@@ -124,7 +134,8 @@ and flg22 in \textit{Arabidopsis}}
           striking 2016 pattern.
     \item The plate is the experimental unit: image a baseline and validate leave-plate-out.
     \item Use non-perceiving mutants as the decisive control.
-    \item A pathogen signature appears within 1--2\,h: a broader red peak and more emission
+    \item Check every export: an un-subtracted dark level mimicked autofluorescence.
+    \item A pathogen signature appears from 1\,h: a broader red peak, then more emission
           below 640\,nm.
   \end{enumerate}
 \end{frame}

@@ -1,0 +1,19 @@
+{
+ "cube_id": "A_H03_Pathogen_P3_R2",
+ "relpath_raw": "Hour3/Pathogen/Hour3 Pathogen3 Row2.raw",
+ "sha256_raw": "b47afb1293e856040823121d3fa0ead555c84ca89122f152f3292b36c0caa85e",
+ "lines": 1741,
+ "bands": 324,
+ "samples": 708,
+ "read_seconds": 19.2,
+ "bg_median685": 109.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 108.3187484741211,
+ "dark_sd_420_620": 7.263864994049072,
+ "n_fg_pixels": 58721,
+ "fg_fraction": 0.04763886590277034,
+ "n_saturated_fg_pixels": 0,
+ "cube_max": 2931,
+ "fg_mean_minus_dark_in_420_620": 0.6211979985237122,
+ "harvested_utc": "2026-10-28T18:48:36Z"
+}

@@ -64,6 +64,12 @@ content hash). We found the following problems and corrected for each where poss
   \item \textbf{The plate is the experimental unit.} Treatments were applied per plate (four per
   treatment in set A), so treatment effects are tested at plate level. Genotype contrasts are
   within plates.
+  \item \textbf{Inconsistent dark subtraction in the 2016 exports.} \nOffsetRoi{} hand-ROI spectra
+  (Pathogen 3\,h plates 1--2 and 24\,h plate 4) were exported with the camera dark level
+  (median \offsetMedian{} counts) still in them; all others were dark-subtracted (median
+  \offsetCleanMedian{} counts). Because nothing fluoresces at wavelengths shorter than the
+  excitation, each spectrum's mean below the excitation line (420--470\,nm in set A, 400--404\,nm
+  in set B) was subtracted from it before features were computed (\texttt{scripts/01\_import\_rois.py}).
   \item \textbf{Missing cells.} No hand ROIs were drawn for Pathogen plates at 48\,h, although
   the cubes exist. Our automated segmentation covers them.
 \end{enumerate}

@@ -47,14 +47,17 @@ mutants and two \textit{cml24} Ca$^{2+}$-sensor mutants. We reanalysed all \nRoi
 seedling spectra of the primary experiment, and \nCubes{} raw image cubes (\rawGB{}\,GB).
 Recovering the camera metadata showed that exposure time changed between timepoints: the
 2016 summaries' \rawDropPct{}\% fall in intensity after treatment disappears (to within
-\cpsDiffPct{}\%) once intensities are divided by exposure. Treated and control plates also
+\cpsDiffPct{}\%) once intensities are divided by exposure. In addition, \nOffsetRoi{} exported
+spectra had been saved without dark subtraction; we corrected every spectrum by its own
+emission below the excitation wavelength. Treated and control plates also
 differed \emph{before} treatment, enough for a classifier to tell them apart (plate-level
 AUC \aucPlaceboFlg{}), so we analysed only change from each plate's own baseline.
-On that basis, \textit{P.~syringae} broadened the red chlorophyll emission peak within 1\,h
-(+\pathFwhmOnenm{}\,nm; $q=\pathFwhmOneq$). By 2\,h it had also raised emission below
-640\,nm, and change-from-baseline spectra separated infected from control plates perfectly
-at 1, 2 and 24\,h (leave-plate-out AUC \aucPathTwo{}; exact permutation $p=\pPathTwo$).
-The pathogen signature appeared in every genotype. A flg22 signal was weaker
+On that basis, \textit{P.~syringae} broadened the red chlorophyll emission peak from 1\,h
+(+\pathFwhmOnenm{}\,nm; $q=\pathFwhmOneq$) through 24\,h, and raised emission below 640\,nm from
+2\,h. Change-from-baseline spectra separated infected from control plates perfectly at 1, 2 and
+24\,h (leave-plate-out AUC \aucPathTwo{}; exact permutation $p=\pPathTwo$). The pathogen
+signature appeared in every genotype; at 24\,h the rise in short-wavelength emission was smaller
+in \textit{cml24-4} ($q=\cmlFourSwq$). A flg22 signal was weaker
 (AUC \aucFlgEarlyMin--\aucFlgEarlyMax{}, $p\geq\pFlgEarlyMin$). It was as strong in both
 \textit{fls2} mutants, which cannot perceive flg22, as in Col-0, so in this experiment it
 reflects a plate-level effect rather than flg22 perception. We release the raw data,
@@ -105,7 +108,13 @@ Control intensity from \rawFzero{} to \rawFone{} counts after hour~0 (Fig.~\ref{
 is largely a camera setting. Exposure-corrected Control intensities at 1--3\,h lie within
 \cpsDiffPct{}\% of hour~0 (Fig.~\ref{fig:exposure}c). Hour-0 scans also saturated the 12-bit
 detector in up to \satHzeroMaxPct{}\% of a cube's seedling pixels (median \satHzeroMedPct{}\%).
-We therefore based the primary analysis on exposure-independent shape features.
+A further \nOffsetRoi{} hand-ROI spectra, all from Pathogen plates (3\,h plates 1--2 and 24\,h
+plate 4), had been exported without dark subtraction. Their emission below the excitation
+wavelength sat at the camera's dark level (median \offsetMedian{} counts, against
+\offsetCleanMedian{} for all other set-A spectra). Uncorrected, this offset masquerades as broad
+short-wavelength ``autofluorescence''. Nothing can fluoresce at wavelengths shorter than the
+488\,nm excitation, so we subtracted each spectrum's own mean over 420--470\,nm. We therefore
+based the primary analysis on exposure- and offset-independent shape features.
 
 \begin{figure}[t]\centering
 \includegraphics[width=\linewidth]{fig1_exposure_artefact.pdf}
@@ -128,15 +137,17 @@ baseline, with the plate as the experimental unit.
 
 \subsection{An early pathogen signature}
 Relative to baseline, \textit{P.~syringae} broadened the red emission peak of Col-0 seedlings
-by \pathFwhmOnenm{}\,nm at 1\,h ($\pathFwhmOneSD$\,SD, $q=\pathFwhmOneq$) and \pathFwhmTwonm{}\,nm
-at 2\,h ($\pathFwhmTwoSD$\,SD, $q=\pathFwhmTwoq$). It also raised the 500--640\,nm fraction of
-emission at 2\,h ($\pathSwTwoSD$\,SD, $q=\pathSwTwoq$; Figs~\ref{fig:spectra},~\ref{fig:time}).
-These were the only \nBaselineSig{} of \nBaselineTests{} baseline-adjusted tests significant at
-$q<0.05$. The spectral change deepened through 24\,h (Fig.~\ref{fig:spectra}a). A classifier on
-change-from-baseline spectra separated infected from control plates perfectly at 1, 2 and 24\,h
-(AUC \aucPathOne, \aucPathTwo, \aucPathTwentyFour; exact $p=\pPathOne$ each, close to the
-smallest $p$ the 70 plate relabellings allow; Fig.~\ref{fig:auc}b). It failed at 3\,h
-\pending{explain or flag the 3\,h dip once cube-level data are in}. The 2016 vendor analysis
+by \pathFwhmOnenm{}\,nm at 1\,h ($\pathFwhmOneSD$\,SD, $q=\pathFwhmOneq$), \pathFwhmTwonm{}\,nm
+at 2\,h ($\pathFwhmTwoSD$\,SD, $q=\pathFwhmTwoq$), \pathFwhmThreenm{}\,nm at 3\,h
+($q=\pathFwhmThreeq$) and \pathFwhmTwentyFournm{}\,nm at 24\,h ($q=\pathFwhmTwentyFourq$). It
+raised the 500--640\,nm fraction of emission from 2\,h ($\pathSwTwoSD$\,SD, $q=\pathSwTwoq$) to
+24\,h ($\pathSwTwentyFourSD$\,SD, $q=\pathSwTwentyFourq$; Figs~\ref{fig:spectra},~\ref{fig:time}).
+\nBaselineSig{} of \nBaselineTests{} baseline-adjusted tests were significant at $q<0.05$
+(Supplementary Table). A classifier on change-from-baseline spectra
+separated infected from control plates perfectly at 1, 2 and 24\,h (AUC \aucPathOne,
+\aucPathTwo, \aucPathTwentyFour; exact $p=\pPathOne$ each, close to the smallest $p$ the 70 plate
+relabellings allow; Fig.~\ref{fig:auc}b), and less well at 3\,h (AUC \aucPathThree,
+$p=\pPathThree$). The 2016 vendor analysis
 of a single infected and a single control plate reported a broad autofluorescence component in
 infected plants after 24\,h (FACTS V1). Our short-wavelength fraction measures that component
 across all plates.
@@ -156,7 +167,8 @@ $\pm$ s.e.m. over plates). Data: \texttt{tables/fig3\_timecourse.csv}.}
 \end{figure}
 
 \subsection{The flg22 signal does not depend on FLS2}
-After baseline adjustment, flg22 plates were separable from Control plates at 1--3\,h
+flg22 also broadened the red peak at 3\,h ($\flgFwhmThreeSD$\,SD, $q=\flgFwhmThreeq$). After
+baseline adjustment, flg22 plates were separable from Control plates at 1--3\,h
 (AUC \aucFlgEarlyMin--\aucFlgEarlyMax{}; Fig.~\ref{fig:auc}b). With three plates per treatment
 left, however, no result beat $p=\pFlgEarlyMin$ (\nPermFlgBase{} relabellings). The genetics
 decide what this signal is. A model trained on Col-0 flg22-versus-Control shape features gave
@@ -211,8 +223,10 @@ What survives is a pathogen signature within 1--2\,h of inoculation: a broader r
 emission peak and more short-wavelength emission. The timing is consistent with reports that
 chlorophyll fluorescence changes precede visible symptoms \citep{bonfig2006}. Because the
 signature appears in \textit{fls2} mutants, it does not require flagellin perception.
-\pending{Whether CML24 modulates it awaits the seedling-level analysis; the hand-ROI data show
-no cml24 $\times$ treatment interaction at $q<0.05$.}
+Loss of CML24 may modulate it: at 24\,h the short-wavelength rise was smaller in
+\textit{cml24-4} ($\cmlFourSwSD$\,SD, $q=\cmlFourSwq$), the allele that is impaired in
+pattern-induced NO signalling \citep{ma2008}. The second allele, \textit{cml24-2}, did not
+differ, so this needs replication. \pending{seedling-level test of the cml24 interaction}
 \pending{Limitations: pathovar/strain, inoculum and seedling age unrecorded on the drive; four
 plates per treatment; set-B excitation differs.}
 
