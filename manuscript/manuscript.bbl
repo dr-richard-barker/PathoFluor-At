@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -151,6 +151,13 @@ Wei Ma, Andries Smigel, Yu-Chang Tsai, Janet Braam, and Gerald~A. Berkowitz.
 \newblock \doi{10.1104/pp.108.125104}.
 \newblock URL \url{http://dx.doi.org/10.1104/pp.108.125104}.
 
+\bibitem[Jones(2016)]{msv2016july}
+Howland Jones.
+\newblock Arabidopsis imaging, uw arabidopsis (msv091416).
+\newblock Unpublished technical report (slides), Middleton Spectral Vision,
+  2016.
+\newblock Analysis of the July 2016 experiment; not publicly available.
+
 \bibitem[de~Juan and Tauler(2021)]{dejuan2021}
 Anna de~Juan and Romà Tauler.
 \newblock Multivariate curve resolution: 50 years addressing the mixture
@@ -179,6 +186,12 @@ Yoav Benjamini and Yosef Hochberg.
 \newblock ISSN 1467-9868.
 \newblock \doi{10.1111/j.2517-6161.1995.tb02031.x}.
 \newblock URL \url{http://dx.doi.org/10.1111/j.2517-6161.1995.tb02031.x}.
+
+\bibitem[Jones(2017)]{msv2017nov}
+Howland Jones.
+\newblock Arabidopsis imaging, uw arabidopsis, october experiment.
+\newblock Unpublished technical report, Middleton Spectral Vision, 2017.
+\newblock Analysis of the November 2016 replicate; not publicly available.
 
 \bibitem[Papoutsoglou et~al.(2020)Papoutsoglou, Faria, Arend, Arnaud,
   Athanasiadis, Chaves, Coppens, Cornut, Costa, Ćwiek Kupczyńska, Droesbeke,

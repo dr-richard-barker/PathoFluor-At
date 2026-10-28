@@ -14,10 +14,10 @@ calmodulin-like Ca$^{2+}$ sensor \citep{delk2005} implicated in flg22-triggered 
 signalling \citep{ma2008}.
 Seedlings were grown on \pending{medium (protocol draft: \textonehalf{} LS, 0.3\% P), age,
 light, photoperiod and temperature}.
-Plates were treated with a mock solution, flg22 or \textit{Pseudomonas syringae}
-(FACTS R5) \pending{pathovar/strain, inoculum density, flg22 concentration}. The 2016 protocol
-draft specifies flood inoculation after \citet{ishiga2011}, with Silwet L-77 as the mock
-(FACTS P1--P3). Four plates per treatment were imaged in the July experiment (set A).
+Plates were treated with a mock solution, flg22 (1\,$\mu$M, the laboratory's standard working
+concentration; FACTS R17) or \textit{Pseudomonas syringae} pv.\ tomato DC3000 (FACTS R5, R16)
+\pending{inoculum density and application method, FACTS P1--P2}. The 2016 protocol draft
+specifies flood inoculation after \citet{ishiga2011}, with Silwet L-77 as the mock. Four plates per treatment were imaged in the July experiment (set A).
 
 The independent November experiment (set B; FACTS R7, R9) used Col-0, \textit{fls2-17} and
 \textit{fls2-101} only, with two or three plates per treatment, three rows per plate and three
@@ -31,11 +31,11 @@ fluorescence hyperspectral line-scan imager (Middleton Spectral Vision; FACTS R1
 Andor Zyla~5.5 sCMOS camera in 12-bit low-noise mode (FACTS R2). Set A used 488\,nm excitation
 and 500--800\,nm emission (FACTS R3). The camera recorded 324 bands from 400.3 to 808.7\,nm at
 about 1.23\,nm spacing. Set B used 405\,nm excitation and 400--800\,nm emission (FACTS R4),
-recorded as 406 bands from 400.2 to 800.0\,nm, each row-scan acquired at two settings labelled
-\texttt{Laser50} and \texttt{Laser58} \pending{meaning}. Each plate was imaged as three
+recorded as 406 bands from 400.2 to 800.0\,nm, each row-scan acquired at two excitation laser powers,
+50\% and 58\% of maximum (\texttt{Laser50}, \texttt{Laser58}; FACTS R15). Each plate was imaged as three
 row-scans, one row of seedlings each.
-Set A was imaged at \texttt{Hour0} (11:20--12:26 on 22 July 2016, about 6\,h before the 1\,h scans,
-which indicates a pre-treatment baseline; FACTS R6, \pending{confirm, P13}) and at 1, 2, 3, 24 and
+Set A was imaged at \texttt{Hour0} (11:20--12:26 on 22 July 2016, about 6\,h before the 1\,h scans;
+the pre-treatment baseline, FACTS R13) and at 1, 2, 3, 24 and
 48\,h after infection (FACTS R6). Set B was imaged at 0, 6, 24 and 48\,h.
 Acquisition settings were read from every ENVI header (\texttt{metadata/cube\_manifest.csv}).
 
@@ -52,7 +52,7 @@ content hash). We found the following problems and corrected for each where poss
   1\,h (about 1.5-fold) matches the exposure ratio $0.305/0.203=1.50$. We divide every intensity
   by its own exposure time, and our primary features are exposure-independent ratios
   (Section~\ref{sec:features}).
-  \item \textbf{\texttt{Hour0} plates were scanned ``inverted''} \pending{meaning}, except four
+  \item \textbf{\texttt{Hour0} plates were scanned ``inverted''}, i.e.\ upside down (FACTS R14), except four
   rescans labelled ``NI'' made later the same day at the 1\,h settings. \texttt{Hour0} is used
   only as a baseline and is analysed separately from the upright timepoints.
   \item \textbf{Detector saturation.} At the \texttt{Hour0} exposure, up to
@@ -102,5 +102,6 @@ evaluated by leave-one-plate-out cross-validation, with a plate-level permutatio
 
 \subsection{Data and code availability}
 Code (MIT licence), derived data, the 2016 hand-ROI spectra and all manifests are in the
-repository. Raw cubes are deposited on Zenodo \pending{DOIs}. The metadata follow MIAPPE where
+repository. Raw cubes are deposited on Zenodo \pending{DOIs}. The two 2016 Middleton Spectral Vision
+analysis reports \citep{msv2016july,msv2017nov} are cited but not redistributed (FACTS R19). The metadata follow MIAPPE where
 applicable \citep{papoutsoglou2020} and the FAIR principles \citep{wilkinson2016}.

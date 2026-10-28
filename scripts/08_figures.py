@@ -260,7 +260,8 @@ def fig_pilot():
     rows = []
     for a, g in zip(axes.flat, genos):
         for trt in ("Control", "flg22", "Pathogen"):
-            d = P[(P.genotype == g) & (P.treatment == trt)].groupby("day").leaf_area_cm2_as_tabulated.agg(["mean", "sem", "size"])
+            d = (P[(P.genotype == g) & (P.treatment == trt)].assign(cm2=lambda x: 4 * x.leaf_area_cm2_as_tabulated)
+                 .groupby("day").cm2.agg(["mean", "sem", "size"]))
             if d.empty:
                 continue
             a.errorbar(d.index, d["mean"], yerr=d["sem"], color=TRT[trt], marker=TRT_MARK[trt], capsize=1.5,
@@ -272,16 +273,15 @@ def fig_pilot():
     for a in axes[-1]:
         a.set_xlabel("Day")
     for a in axes[:, 0]:
-        a.set_ylabel("Leaf area\n(reference squares)")
+        a.set_ylabel("Leaf area (cm$^2$)")
     axes.flat[0].legend(fontsize=6.5, loc="upper left")
     fig.tight_layout()
     pd.DataFrame(rows).to_csv(TABLES / "figS1_pilot_leaf_area.csv", index=False)
     save(fig, "figS1_pilot_leaf_area",
          "Pilot experiment (February-March 2016): rosette leaf area per plant from images, days 0-3 after "
-         "treatment, mean ± s.e.m. of the five values tabulated per genotype x treatment x day. Values are as "
-         "tabulated in 2016: green-pixel area divided by the area of a red reference square labelled 4 cm², "
-         "so multiply by 4 for cm² if that label is right (FACTS R10, P12; source sheet in "
-         "data/related_drive_2016/). Genotype "
+         "treatment, mean ± s.e.m. of the five values tabulated per genotype x treatment x day, "
+         "converted to cm²: the 2016 tables give green-pixel area divided by the area of a 4 cm² red reference "
+         "square, so cm² = tabulated value × 4 (FACTS R10, R18; source sheet in data/related_drive_2016/). Genotype "
          "codes GL3.3/GL3.4 in the 2016 files denote glr3.3/glr3.4 alleles (FACTS R11). Data: "
          "data/original_2016/Plant hyperspectral assay/*_hyperspectral_Patho.csv; table: "
          "tables/figS1_pilot_leaf_area.csv.")

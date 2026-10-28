@@ -28,9 +28,14 @@
 \title{\bfseries Fluorescence hyperspectral imaging detects an early, FLS2-independent
 signature of \textit{Pseudomonas syringae} challenge in \textit{Arabidopsis} seedlings,
 but not of flg22 perception}
-\author[1]{Richard J. Barker\thanks{ORCID 0000-0001-5681-9857. Correspondence: richard@cosecloud.com}}
-\author[ ]{\pending{co-authors and affiliations (FACTS P10)}}
-\affil[1]{\pending{affiliation}}
+\author[1,2]{Richard J. Barker\thanks{ORCID 0000-0001-5681-9857. Correspondence: richard@cosecloud.com}}
+\author[3]{Aditya Singh}
+\author[1]{Simon Gilroy}
+\author[ ]{\pending{author order; further authors, e.g.\ Sarah Sapiro, Cullen Vens (FACTS P10)}}
+\affil[1]{Department of Botany, University of Wisconsin--Madison, USA}
+\affil[2]{Porterfield Lab, Purdue University, USA}
+\affil[3]{Department of Forest and Wildlife Ecology, University of Wisconsin--Madison, USA; present
+address: University of Florida, USA}
 \date{\pending{date}}
 
 \begin{document}
@@ -42,7 +47,7 @@ Detecting plant infection before symptoms appear would help both field and
 controlled-environment agriculture. In 2016 we imaged \textit{Arabidopsis} seedlings by
 fluorescence hyperspectral imaging (488\,nm excitation, 500--800\,nm emission) before and
 1--48\,h after treatment with a mock solution, the flagellin epitope flg22 or
-\textit{Pseudomonas syringae}. Five genotypes were imaged: Col-0, two \textit{fls2} receptor
+\textit{Pseudomonas syringae} pv.\ tomato DC3000. Five genotypes were imaged: Col-0, two \textit{fls2} receptor
 mutants and two \textit{cml24} Ca$^{2+}$-sensor mutants. We reanalysed all \nRoiA{} hand-drawn
 seedling spectra of the primary experiment, and \nCubes{} raw image cubes (\rawGB{}\,GB).
 Recovering the camera metadata showed that exposure time changed between timepoints: the
@@ -126,8 +131,7 @@ Control hand ROIs as plotted in 2016 and (c) divided by exposure. Data:
 \end{figure}
 
 \subsection{Plates differed before treatment}
-Hour~0 was imaged before treatment (as the scan times and the 2016 vendor report indicate; FACTS R6,
-P13). Even so, flg22 plates already differed from Control plates
+Hour~0 was imaged before treatment (FACTS R13). Even so, flg22 plates already differed from Control plates
 in red-peak width ($\hzeroFlgFwhmSD$\,SD; $q=\hzeroFlgFwhmq$). A classifier separated them
 perfectly from spectra alone (plate-level AUC \aucPlaceboFlg{}, $p=\pPlaceboFlg$;
 Fig.~\ref{fig:auc}a). The same held, less strongly, for Pathogen plates (AUC \aucPlaceboPath{}).
@@ -149,7 +153,7 @@ separated infected from control plates perfectly at 1, 2 and 24\,h (AUC \aucPath
 relabellings allow; Fig.~\ref{fig:auc}b), and less well at 3\,h (AUC \aucPathThree,
 $p=\pPathThree$). The 2016 vendor analysis
 of a single infected and a single control plate reported a broad autofluorescence component in
-infected plants after 24\,h (FACTS V1). Our short-wavelength fraction measures that component
+infected plants after 24\,h \citep{msv2016july}. Our short-wavelength fraction measures that component
 across all plates.
 
 \begin{figure}[t]\centering
@@ -227,8 +231,9 @@ Loss of CML24 may modulate it: at 24\,h the short-wavelength rise was smaller in
 \textit{cml24-4} ($\cmlFourSwSD$\,SD, $q=\cmlFourSwq$), the allele that is impaired in
 pattern-induced NO signalling \citep{ma2008}. The second allele, \textit{cml24-2}, did not
 differ, so this needs replication. \pending{seedling-level test of the cml24 interaction}
-\pending{Limitations: pathovar/strain, inoculum and seedling age unrecorded on the drive; four
-plates per treatment; set-B excitation differs.}
+Limitations: inoculum density, seedling age and growth conditions are not recorded with the data
+\pending{FACTS P1, P4}; there were four plates per treatment; and set B used a different
+excitation wavelength.
 
 \input{sections/methods}
 

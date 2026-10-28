@@ -1,0 +1,19 @@
+{
+ "cube_id": "A_H03_flg22_P2_R1",
+ "relpath_raw": "Hour3/FLG22/Hour3 FLG22-2 Row1.raw",
+ "sha256_raw": "b0cb5f177d614778bfdb1e3e4a47c2600201b323e662ea2514095926b5a32898",
+ "lines": 1741,
+ "bands": 324,
+ "samples": 708,
+ "read_seconds": 19.1,
+ "bg_median685": 109.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 108.26875305175781,
+ "dark_sd_420_620": 7.2617506980896,
+ "n_fg_pixels": 60578,
+ "fg_fraction": 0.04914540315488534,
+ "n_saturated_fg_pixels": 0,
+ "cube_max": 2872,
+ "fg_mean_minus_dark_in_420_620": 0.36380621790885925,
+ "harvested_utc": "2026-10-28T18:51:47Z"
+}

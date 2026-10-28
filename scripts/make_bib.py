@@ -63,5 +63,12 @@ for key, doi in DOIS.items():
     bib = re.sub(r"^@(\w+)\{[^,]*,", lambda m: "@" + m.group(1) + "{" + key + ",", bib, count=1)
     out.append(clean(bib, key) + "\n")
     time.sleep(1)
+# Unpublished vendor reports (no DOI; titles and dates as on the documents; FACTS V1, V2, R19).
+out.append("@techreport{msv2016july, author={Jones, Howland}, title={Arabidopsis Imaging, UW Arabidopsis "
+           "(msv091416)}, institution={Middleton Spectral Vision}, type={Unpublished technical report "
+           "(slides)}, year={2016}, note={Analysis of the July 2016 experiment; not publicly available}}\n")
+out.append("@techreport{msv2017nov, author={Jones, Howland}, title={Arabidopsis Imaging, UW Arabidopsis, "
+           "October Experiment}, institution={Middleton Spectral Vision}, type={Unpublished technical "
+           "report}, year={2017}, note={Analysis of the November 2016 replicate; not publicly available}}\n")
 Path("manuscript/references.bib").write_text("\n".join(out))
 print(f"wrote {len(DOIS)} entries")

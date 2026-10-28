@@ -1,0 +1,19 @@
+{
+ "cube_id": "A_H24_Control_P3_R2",
+ "relpath_raw": "Hour24/Control/Hour24 Control3 Row2.raw",
+ "sha256_raw": "42c66b5a9181a451be8d3bdae058559e7394545c9183f1682478e9332604ce25",
+ "lines": 1714,
+ "bands": 324,
+ "samples": 708,
+ "read_seconds": 19.2,
+ "bg_median685": 111.0,
+ "bg_sigma685": 7.412999999999999,
+ "dark_mean_420_620": 108.54374694824219,
+ "dark_sd_420_620": 7.247491359710693,
+ "n_fg_pixels": 142065,
+ "fg_fraction": 0.1170692996855408,
+ "n_saturated_fg_pixels": 75,
+ "cube_max": 4095,
+ "fg_mean_minus_dark_in_420_620": 0.5432283282279968,
+ "harvested_utc": "2026-10-28T18:59:32Z"
+}

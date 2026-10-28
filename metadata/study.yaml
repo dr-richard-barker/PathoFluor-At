@@ -10,7 +10,11 @@ investigation:
     - name: Richard J. Barker
       orcid: 0000-0001-5681-9857
       role: data reuser; investigator (2016)
-    - name: PENDING (FACTS P10)
+    - name: Aditya Singh
+      role: investigator (2016)
+    - name: Simon Gilroy
+      role: principal investigator (2016)
+    - name: further contributors PENDING (FACTS P10)
 studies:
   - id: set_A
     title: July 2016 time course
@@ -40,10 +44,10 @@ studies:
       seedling_age: PENDING (FACTS P4)
       growth_conditions: PENDING (FACTS P4)
     treatment_details:
-      method: PENDING (protocol draft: flood inoculation after Ishiga et al. 2011; FACTS P1-P3)
-      pathogen_strain: PENDING (FACTS P1)
-      flg22_concentration: PENDING (FACTS P2)
-      mock: PENDING (protocol draft: Silwet L-77; FACTS P3)
+      method: PENDING (protocol draft: flood inoculation after Ishiga et al. 2011; FACTS P1-P2)
+      pathogen_strain: Pseudomonas syringae pv. tomato DC3000 (FACTS R16)
+      flg22_concentration: 1 uM, the lab's standard working concentration (FACTS R17)
+      mock: Silwet L-77 per the protocol draft (not confirmed for the 2016 runs)
   - id: set_B
     title: November 2016 replicate (Sarah Sapiro)
     start_date: 2016-11-04
@@ -54,7 +58,7 @@ studies:
       excitation_nm: 405
       emission_nm: [400, 800]
       bands: 406
-      settings: Laser50 and Laser58 per scan (meaning PENDING, FACTS P7); daily reference scans
+      settings: Laser50 and Laser58 = excitation laser power 50% / 58% of maximum (FACTS R15); daily reference scans
     factors:
       treatment: [Control, flg22, Pathogen]
       time_h: [0, 6, 24, 48]
