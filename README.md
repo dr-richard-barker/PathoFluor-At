@@ -84,9 +84,10 @@ Steps 01 and 05–09 need only the files in this repository. Steps 02–04 need 
 
 ## Data availability
 
-The raw cubes (about 396 GB) are too large for GitHub. They will be deposited on Zenodo as lossless,
-SHA-256-verified archives split across linked records. DOIs are pending; see `metadata/zenodo_records.csv`
-once created. Everything else is here. The 2016 Middleton Spectral Vision analysis reports are cited and
+The raw cubes (about 396 GB) are too large for GitHub. They are packed as 33 lossless tar.zst archives
+(155.7 GB, grouped by set x hour x treatment, plus the bacteria-only and reference scans) for four Zenodo records. Every member of every archive was
+decompressed and checked against the SHA-256 in `metadata/cube_manifest.csv`. The record plan and the
+archive SHA-256 values are in `metadata/zenodo_records.csv`. DOIs are pending upload. Everything else is here. The 2016 Middleton Spectral Vision analysis reports are cited and
 summarised (`metadata/related_material.md`) but not redistributed.
 
 ## Licence and citation
