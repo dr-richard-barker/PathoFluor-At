@@ -45,6 +45,7 @@ Sources:
 | R22 | Inoculum | Pst DC3000 at OD600 0.01 in 10 mM MgCl2, flood inoculation | RB |
 | R23 | Mock and flg22 application | Solutions gently decanted onto the plate, submerging the seedlings for about 10 s, then gently poured away | RB (2026-10-29) |
 | R24 | Funding | None; the work had no funding support (the grants listed on 2026-10-28 are not acknowledged) | RB (2026-10-29) |
+| R25 | Acknowledgements | Thank the people named in the 2016 records: Simon Gilroy and the Gilroy Laboratory (imaging done there, R1); Sarah Sapiro (set-B data folder `Hyper_spectral_work_from_Sarah_Sapiro`, N); Cullen Vens and Aditya Singh (protocol co-authors, P). The protocol draft spells "Aditya Singa"; Richard's chat and the WARF poster (`metadata/related_material.md`) spell "Singh", which is used | RB (2026-10-29) |
 
 ## Pending (Richard to supply)
 
@@ -54,4 +55,3 @@ Sources:
 | P8 | What `Chroma.raw` (21 Jul 2016) is | Fluorescence reference slide? |
 | P9 | Allele identities and backgrounds | **Answer rejected by the data/literature:** it listed fls2-1 (SALK_141277)/fls2-c, cml24-2 (SALK_073883), cml24-4 (SALK_026046) and glr3.6 lines, but the 2016 files name fls2-17, FLS2-101 and glr3.4 lines; fls2-17 is published as an EMS kinase-domain point mutant from the Gómez-Gómez & Boller screen, and cml24-4 as a TILLING point allele (K124E). Needs the stock records |
 | P14 | Growth light, photoperiod and temperature | Not yet supplied |
-| P15 | Acknowledgements | Whether to thank anyone named in the 2016 records (R12); author's choice |
