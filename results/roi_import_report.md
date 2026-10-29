@@ -1,6 +1,6 @@
 # ROI import report
 
-Pilot: 24 tables, 476 values (units: see FACTS_PENDING R10/P12).
+Pilot: 24 tables, 476 values (units: see FACTS_PENDING R10, R18).
 Spectra: 5842 files -> 2486 unique (A 1982, B 504).
 Design-key conflicts (same hour/treatment/plate/lane/plant, different spectrum): 12 spectra in 6 keys.
 Residual dark offset: 83 spectra exported without dark subtraction (|residual| > 5 counts; median 108.6); every spectrum is corrected by its own sub-excitation mean before features are computed.

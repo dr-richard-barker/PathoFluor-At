@@ -42,7 +42,7 @@ def main():
                 rows.append(dict(genotype=r.genotype, treatment=r.treatment, day=int(row.iloc[0]),
                                  column=j, leaf_area_cm2_as_tabulated=v, source=r.relpath))
     pd.DataFrame(rows).to_csv(RESULTS / "pilot_leaf_area.csv", index=False)
-    report.append(f"Pilot: {len(pil)} tables, {len(rows)} values (units: see FACTS_PENDING R10/P12).")
+    report.append(f"Pilot: {len(pil)} tables, {len(rows)} values (units: see FACTS_PENDING R10, R18).")
 
     # ---- spectra: one row per unique content hash, best-provenance copy first
     sp = rm[rm["set"].isin(["A", "B"])].copy()

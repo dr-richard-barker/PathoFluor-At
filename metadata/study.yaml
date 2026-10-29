@@ -10,7 +10,6 @@ investigation:
     - name: Richard J. Barker
       orcid: 0000-0001-5681-9857
       role: data reuser; investigator (2016)
-    - name: further contributors PENDING (author list being finalised; FACTS P10)
 studies:
   - id: set_A
     title: July 2016 time course
@@ -40,7 +39,7 @@ studies:
       seedling_age: 7 days (FACTS R21)
       growth_conditions: PENDING (FACTS P14)
     treatment_details:
-      method: flood inoculation after Ishiga et al. 2011, OD600 0.01 in 10 mM MgCl2 (FACTS R22)
+      method: bacteria by flood inoculation after Ishiga et al. 2011, OD600 0.01 in 10 mM MgCl2 (FACTS R22); mock and flg22 decanted onto the plate, submerging the seedlings for about 10 s, then poured away (FACTS R23)
       pathogen_strain: Pseudomonas syringae pv. tomato DC3000 (FACTS R16)
       flg22_concentration: 1 uM, the lab's standard working concentration (FACTS R17)
       mock: Silwet L-77 per the protocol draft (not confirmed for the 2016 runs)

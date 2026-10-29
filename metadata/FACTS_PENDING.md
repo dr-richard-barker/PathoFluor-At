@@ -14,7 +14,7 @@ Sources:
 - **[P]** Protocol draft "Hyperspectral & NVDI imaging of pathgen infection"
   (Google Doc, R. Barker et al.; last modified Mar 2019). It describes the *planned* design.
   PDF export in `data/related_drive_2016/`.
-- **[RB]** Richard Barker, answers in chat on 2026-10-28 (investigator's statement; not in the 2016 files).
+- **[RB]** Richard Barker, answers in chat on 2026-10-28 and 2026-10-29 (investigator's statement; not in the 2016 files).
 - **[L]** "Pathogen_hyperspectral assay_leaf size.xlsx" (pilot leaf areas). Copy in `data/related_drive_2016/`.
 
 ## Resolved
@@ -40,17 +40,18 @@ Sources:
 | R17 | flg22 concentration | 1 µM, given as the lab's standard working concentration (range used in the lab 100 nM–1 µM); not recorded with the 2016 data | RB |
 | R18 | Pilot reference square | 4 cm² (2.0 × 2.0 cm), so pilot areas in cm² = tabulated value × 4 | RB; label in L |
 | R19 | Vendor reports | Not redistributed (they belong to Middleton Spectral Vision); cited, and only derived facts used | RB |
-| R20 | Authorship | "Barker et al." for now; Richard will finalise the author list. People named so far: Aditya Singh, Simon Gilroy (RB), Sarah Sapiro (V1, V2), Cullen Vens (P) | RB |
+| R20 | Authorship | Sole author: Richard J. Barker (2026-10-29; replaces the earlier "Barker et al." placeholder). Affiliation given as Department of Botany, UW-Madison, where the work was done (R1) | RB |
 | R21 | Growth | 7-day seedlings; 0.5× MS/LS basal salts, 0.1% (w/v) sucrose, 0.5 g/L MES pH 5.7, 0.8% Phytagel (chosen by Richard over the protocol draft's "½ LS, 0.3% P") | RB |
 | R22 | Inoculum | Pst DC3000 at OD600 0.01 in 10 mM MgCl2, flood inoculation | RB |
+| R23 | Mock and flg22 application | Solutions gently decanted onto the plate, submerging the seedlings for about 10 s, then gently poured away | RB (2026-10-29) |
+| R24 | Funding | None; the work had no funding support (the grants listed on 2026-10-28 are not acknowledged) | RB (2026-10-29) |
 
 ## Pending (Richard to supply)
 
 | # | Question | Notes |
 |---|---|---|
-| P2 | flg22 application method, and confirmation that 1 µM (R17) was used here | |
 | P6 | Meaning of the ROI tags (bright / norm / dark / side …) and the `… USE` selection criteria | **Answer rejected by the data:** it described the tags as acquisition gain/exposure brackets, but ROIs with different tags come from the same cube at a single exposure (e.g. all of Hour0 Pathogen plate 1 at 0.305 s), so the tags annotate the ROI, not the acquisition |
 | P8 | What `Chroma.raw` (21 Jul 2016) is | Fluorescence reference slide? |
 | P9 | Allele identities and backgrounds | **Answer rejected by the data/literature:** it listed fls2-1 (SALK_141277)/fls2-c, cml24-2 (SALK_073883), cml24-4 (SALK_026046) and glr3.6 lines, but the 2016 files name fls2-17, FLS2-101 and glr3.4 lines; fls2-17 is published as an EMS kinase-domain point mutant from the Gómez-Gómez & Boller screen, and cml24-4 as a TILLING point allele (K124E). Needs the stock records |
-| P10 | Full author list, affiliations and funding | Funding left blank for now (the answer listed NASA NNX14AT25G, 80NSSC19K0126, 80NSSC21K0577; the last two date from 2019/2021, after the 2016 experiments) |
 | P14 | Growth light, photoperiod and temperature | Not yet supplied |
+| P15 | Acknowledgements | Whether to thank anyone named in the 2016 records (R12); author's choice |

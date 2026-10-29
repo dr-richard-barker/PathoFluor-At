@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this software or data, please cite it as below. Cite as Barker et al.; the full author list is being finalised."
+message: "If you use this software or data, please cite it as below."
 title: "PathoFluor-At: fluorescence hyperspectral imaging of Arabidopsis seedlings challenged with Pseudomonas syringae or flg22"
 type: software
 authors:

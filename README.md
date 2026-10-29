@@ -7,8 +7,8 @@ Project page: <https://dr-richard-barker.github.io/PathoFluor-At/> ·
 Manuscript draft: [`manuscript/PathoFluor-At_draft.pdf`](manuscript/PathoFluor-At_draft.pdf) ·
 Slides: [`slides/PathoFluor-At_slides.pdf`](slides/PathoFluor-At_slides.pdf)
 
-> **Status:** analysis complete (hand-ROI and seedling-level). Remaining placeholders: the full
-> author list and funding. Methods facts not recorded with the data are listed in
+> **Status:** analysis complete (hand-ROI and seedling-level). Remaining placeholders: allele stock
+> records, growth light and temperature, and the Zenodo DOIs. Methods facts not recorded with the data are listed in
 > [`metadata/FACTS_PENDING.md`](metadata/FACTS_PENDING.md) and are never filled in by guesswork.
 
 ## What this is
@@ -16,7 +16,7 @@ Slides: [`slides/PathoFluor-At_slides.pdf`](slides/PathoFluor-At_slides.pdf)
 In July 2016 seedlings of five genotypes were imaged in the Gilroy Lab (UW-Madison Botany) with a
 MacroPhor fluorescence hyperspectral imager (488 nm excitation, 500–800 nm emission). The genotypes
 were Col-0, *fls2-17*, *fls2-101*, *cml24-2* and *cml24-4*. Imaging was done before and 1, 2, 3, 24 and
-48 h after treatment with a mock solution, flg22 or *P. syringae* (the method, planned as flood inoculation, is still to be confirmed). An independent replicate
+48 h after treatment with a mock solution, flg22 or *P. syringae* (bacteria by flood inoculation; mock and flg22 decanted over the seedlings for about 10 s). An independent replicate
 followed in November 2016 (405 nm excitation; Col-0 and the two *fls2* lines). This repository
 recovers that experiment from its original drive, documents every data problem, and tests:
 
@@ -93,4 +93,4 @@ summarised (`metadata/related_material.md`) but not redistributed.
 ## Licence and citation
 
 Code: MIT ([`LICENSE`](LICENSE)). Data, figures, text: CC-BY 4.0 ([`LICENSE-DATA`](LICENSE-DATA)).
-Cite via [`CITATION.cff`](CITATION.cff) as Barker et al. (the full author list is being finalised).
+Cite via [`CITATION.cff`](CITATION.cff) (Richard J. Barker, sole author).
