@@ -196,11 +196,10 @@ def hero(comp, scale):
     gap = np.zeros((ims[0].shape[0], 8, 3), np.uint8)
     strip = np.hstack([ims[0], gap, ims[1], gap, ims[2]])
     Image.fromarray(strip).save(DOCS / "media" / "hero.webp", quality=85, method=6)
-    im = Image.fromarray(strip)
-    w, h = im.size
-    th = 180 * w // 320
-    top = max((h - th) // 2, 0)
-    im.crop((0, top, w, top + min(th, h))).resize((320, 180), Image.LANCZOS).save(DOCS / "thumb.png")
+    # Card thumbnail: the top two row-scans of the Control plate, 16:9, so seedlings stay legible.
+    ctrl = Image.fromarray(ims[0])
+    w = ctrl.size[0]
+    ctrl.crop((0, 0, w, w * 9 // 16)).resize((320, 180), Image.LANCZOS).save(DOCS / "thumb.png")
 
 
 def cubes(cm, L):
