@@ -90,3 +90,16 @@ def to_grid(wl, y, grid=GRID, normalise=True):
         s = np.trapezoid(g, grid)
         g = g / s if s > 0 else g * np.nan
     return g
+
+
+def filter_bands(wl, Y, centres, width=10.0):
+    """Mean signal in boxcar bandpass filters of the given full width, centred on each wavelength:
+    what a camera fitted with those filters would record. Y may be (n, bands) or (bands,)."""
+    Y = np.asarray(Y, dtype=float)
+    out = []
+    for c in centres:
+        m = (wl >= c - width / 2) & (wl <= c + width / 2)
+        if not m.any():
+            raise ValueError(f"no bands within {width} nm of {c} nm")
+        out.append(Y[..., m].mean(axis=-1))
+    return np.stack(out, axis=-1)

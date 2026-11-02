@@ -6,7 +6,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from pathofluor.envi import open_cube, parse_header, read_cube  # noqa: E402
-from pathofluor.features import shape_features, to_grid  # noqa: E402
+from pathofluor.features import filter_bands, shape_features, to_grid  # noqa: E402
 from pathofluor.names import parse_cube, parse_roi  # noqa: E402
 
 
@@ -76,3 +76,13 @@ def test_shape_features_are_exposure_invariant():
     for k in a:
         assert a[k] == pytest.approx(b[k], rel=1e-9, abs=1e-12)
     assert np.allclose(to_grid(wl, y), to_grid(wl, 1.5 * y))
+
+
+def test_filter_bands_boxcar():
+    wl = np.arange(600.0, 800.0, 1.25)
+    y = np.where((wl >= 680) & (wl <= 690), 10.0, 1.0)
+    B = filter_bands(wl, np.stack([y, 2 * y]), [685, 740], width=10)
+    assert B.shape == (2, 2)
+    assert np.allclose(B[0], [10.0, 1.0]) and np.allclose(B[1], [20.0, 2.0])
+    with pytest.raises(ValueError):
+        filter_bands(wl, y, [900], width=10)
