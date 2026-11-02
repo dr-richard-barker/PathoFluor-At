@@ -22,17 +22,82 @@
 .legend span::before{content:"";display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:.35rem;vertical-align:middle;background:var(--c)}
 .note{font-size:.85rem;color:var(--muted)}
 header.site nav{padding-left:7.5rem}  /* clear the kit's fixed back-to-hub pill */
-@media (max-width:640px){header.site nav{padding-left:1.2rem;padding-top:2.6rem}}
+@media (max-width:640px){header.site nav{padding-left:1.2rem;padding-top:2.6rem;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}}
 table.dq{border-collapse:collapse;width:100%;font-size:.92rem}
 table.dq td,table.dq th{border-bottom:1px solid var(--line);padding:.4rem .5rem;text-align:left;vertical-align:top}
+.content h2,.content h3,.hero{scroll-margin-top:6.5rem}
+/* plant images */
+.hero-fig{margin:1.2rem 0 .4rem}
+.hero-fig .trio-labels{display:grid;grid-template-columns:1fr 1fr 1fr;font-size:.82rem;color:var(--muted);text-align:center;margin-bottom:.3rem}
+.hero-fig img,.plate-img img{display:block;width:100%;height:auto;background:#000;border-radius:8px;border:1px solid var(--line)}
+.plate-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem}
+.plate{margin:0;text-align:left}
+.plate figcaption{font-size:.82rem;color:var(--muted);margin:.25rem 0}
+.plate figcaption b{color:var(--fg)}
+.plate-img{position:relative}
+.plate-img .lanes{position:absolute;left:0;right:0;top:2px;height:1.2em;pointer-events:none}
+.plate-img .lanes span{position:absolute;transform:translateX(-50%);font-size:.72rem;font-weight:700;color:#fff;text-shadow:0 0 3px #000,0 0 3px #000}
+.lane-key{font-size:.8rem;color:var(--muted);margin:.4rem 0 0}
+.cbar{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted);margin-top:.6rem;flex-wrap:wrap}
+.cbar .ramp{display:inline-block;width:160px;height:10px;border-radius:3px;border:1px solid var(--line)}
+.viz-controls input[type=range]{vertical-align:middle;width:150px}
+.viz-controls output{display:inline-block;min-width:3.6em;font-weight:600;color:var(--fg)}
+/* monitoring board */
+.board{display:grid;grid-template-columns:minmax(84px,auto) repeat(4,minmax(52px,1fr));gap:3px;font-size:.84rem}
+.board .h{color:var(--muted);text-align:center;font-size:.78rem;padding:.2rem 0}
+.board .rl{color:var(--fg);padding:.35rem .4rem .35rem 0;white-space:nowrap}
+.board .grp{grid-column:1/-1;font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:.5rem}
+.board .c{border-radius:6px;text-align:center;padding:.35rem .2rem;transition:opacity .25s;cursor:default;border:2px solid transparent}
+.board .c.flag{border-color:var(--fg);font-weight:700}
+.board .c.ex{background:var(--line);color:var(--muted);font-size:.72rem}
+.board .c.hide{opacity:.08}
+.board-status{font-size:.9rem;margin:.6rem 0 0;min-height:1.5em}
+.board-wrap{position:relative}
+#board{--a0:#b9aed8;--a1:#9b8bc6;--a2:#7d68b3;--a3:#62489f;--a4:#46287f}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])) #board{--a0:#56408f;--a1:#6e57a8;--a2:#8c78c3;--a3:#ad9dda;--a4:#d3caf0}}
+:root[data-theme="dark"] #board{--a0:#56408f;--a1:#6e57a8;--a2:#8c78c3;--a3:#ad9dda;--a4:#d3caf0}
+/* timeline, steps, ladder */
+ol.timeline{list-style:none;padding:0;margin:1rem 0;border-left:2px solid var(--line)}
+ol.timeline li{position:relative;padding:.1rem 0 .9rem 1.1rem}
+ol.timeline li::before{content:"";position:absolute;left:-7px;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--accent)}
+ol.timeline li.alarm::before{background:var(--accent)}
+ol.timeline .t{font-weight:700;margin-right:.4rem}
+ol.steps{counter-reset:st;list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.7rem}
+ol.steps li{counter-increment:st;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem .7rem 2.6rem;position:relative;font-size:.92rem}
+ol.steps li::before{content:counter(st);position:absolute;left:.8rem;top:.65rem;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+ol.steps li b{display:block}
+ol.steps li span{color:var(--muted);font-size:.86rem}
+.ladder .card h3 small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+.ladder .card p{margin:.35rem 0 0}
+.refs{font-size:.84rem;color:var(--muted)}
+.refs li{margin:.2rem 0}
+/* 3-D viewers */
+.gl-wrap{position:relative;width:100%;aspect-ratio:16/10;background:#0b0b0d;border-radius:8px;overflow:hidden;touch-action:none}
+.gl-wrap canvas{display:block;width:100%;height:100%}
+.gl-wrap .tip{z-index:2}
+.gl-hint{position:absolute;left:.6rem;top:.4rem;font-size:.72rem;color:#bbb;pointer-events:none}
+.cube-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:.8rem;align-items:start}
+@media (max-width:720px){.cube-grid{grid-template-columns:1fr}}
+.cube-side canvas{width:100%;height:auto;display:block;background:#000;border-radius:8px;image-rendering:pixelated;cursor:crosshair}
+.cube-side svg{width:100%;height:auto;display:block;margin-top:.4rem}
+.cube-side svg text{fill:var(--muted);font-size:11px}
+.cube-side svg .grid line{stroke:var(--line)}
+.traj-legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.traj-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.35rem;vertical-align:middle;background:var(--c)}
+.fallback{display:none}
+.no-webgl .fallback{display:block}
+.no-webgl .gl-only{display:none}
 </style>
 </head><body data-site-id="PathoFluor-At" data-brand-logo="https://dr-richard-barker.github.io/Plant_response_to_radiation/cose/cose-logo.png">
 <header class="site"><nav>
   <span class="brand">PathoFluor-At</span>
   <a href="#overview">Overview</a>
   <a href="#experiment">Experiment</a>
+  <a href="#plants">Plants</a>
   <a href="#quality">Data problems</a>
   <a href="#results">Results</a>
+  <a href="#practice">Practice</a>
+  <a href="#threed">3D &amp; 4D</a>
   <a href="#explorer">Explorer</a>
   <a href="#data">Code &amp; data</a>
   <a href="https://github.com/dr-richard-barker/PathoFluor-At">GitHub ↗</a>
@@ -46,6 +111,13 @@ table.dq td,table.dq th{border-bottom:1px solid var(--line);padding:.4rem .5rem;
   were imaged: Col-0, two <i>fls2</i> flagellin-receptor mutants and two <i>cml24</i> Ca<sup>2+</sup>-sensor
   mutants. Our reanalysis finds <b>a pathogen signature from 1 hour after inoculation</b>. It also finds that the flg22 signal in
   this experiment <b>does not depend on FLS2</b>, so it is not perception.</p>
+  <figure class="hero-fig">
+    <div class="trio-labels" aria-hidden="true"><span>Control</span><span>flg22</span><span>Pathogen</span></div>
+    <img src="media/hero.webp" width="1381" height="531" alt="Three plates of Arabidopsis seedlings glowing red at 685 nm on black, 24 hours after treatment: Control, flg22 and Pathogen. The Pathogen seedlings are dimmer and smaller.">
+    <figcaption>The plants, 24 h after treatment (plate 1 of each treatment, three row-scans each): chlorophyll
+    fluorescence at 685 nm, exposure-corrected, from the raw image cubes. Black means no fluorescence.
+    <a href="#plants">Step through every plate and hour ↓</a></figcaption>
+  </figure>
   <div class="badges">
     <span class="badge">488 nm excitation · 500–800 nm emission</span><span class="badge">400 image cubes · 396 GB</span>
     <span class="badge">2,486 hand-drawn seedling spectra</span><span class="badge">Python 3.14</span>
@@ -74,6 +146,30 @@ with Col-0 and both <i>fls2</i> lines. Facts still to be confirmed (allele stock
 <p>The decisive control is genetic. An flg22 signature that reflects <b>perception</b> must disappear in <i>fls2</i>
 mutants, which lack the flagellin receptor. The pathogen is still perceived through other bacterial patterns, so its
 signature need not.</p>
+
+<h2 id="plants">See the plants</h2>
+<p>Every image below is the seedlings' own chlorophyll fluorescence, rendered from the raw cubes: red light
+emitted at 685 nm under 488 nm excitation. Each plate is three row-scans stacked top to bottom, turned
+so the five genotype lanes run left to right in the same order on every plate (A Col-0, B <i>fls2-17</i>,
+C <i>fls2-101</i>, D <i>cml24-2</i>, E <i>cml24-4</i>). Step through the hours to watch Control seedlings
+grow and Pathogen seedlings fade. Switch to <b>As recorded</b> to see the camera-setting problem: the same plants look
+brighter at hour 0 only because that scan was exposed longer.</p>
+<div class="viz-root" id="plates">
+  <div class="viz-controls">
+    <label>Plate <select id="pl-plate"></select></label>
+    <span role="group" aria-label="Image layer" id="pl-layers"></span>
+    <button id="pl-play" aria-pressed="false">▶ Play</button>
+    <label>Hours after treatment <input type="range" id="pl-hour" min="0" max="5" step="1" value="4"> <output id="pl-hour-out"></output></label>
+  </div>
+  <div class="plate-row" id="pl-panels"></div>
+  <p class="lane-key">Lanes: A Col-0 · B <i>fls2-17</i> · C <i>fls2-101</i> · D <i>cml24-2</i> · E <i>cml24-4</i></p>
+  <div class="cbar"><span id="pl-lo"></span><span class="ramp" id="pl-ramp"></span><span id="pl-hi"></span><span id="pl-units"></span></div>
+  <p class="note" id="pl-note">Plates were not registered across time (seedlings were moved between scans), so compare
+  plants by lane, not by pixel. Hour-0 plates were imaged inverted with a wider camera window; every row-scan is
+  cropped to the band holding its seedlings. Lane order for Pathogen 48 h could not be checked against the 2016
+  hand ROIs (none exist), so its lanes are unlabelled. Images: <code>docs/media/plates/</code> from
+  <code>scripts/12_site_media.py</code>.</p>
+</div>
 
 <h2 id="quality">What we had to fix first</h2>
 <table class="dq">
@@ -110,6 +206,141 @@ Curve resolution finds no separate broad autofluorescence component. Bacteria-on
 signal is the plant's. In the November replicate, a deteriorating Control plate showed the largest short-wavelength
 rise, so that emission marks damage, not infection specifically. No CML24 effect replicated.</p>
 
+<h2 id="practice">From plate to practice: early detection outside the lab</h2>
+<p>Chlorophyll fluorescence imaging is an established way to see how pathogens affect photosynthesis
+<a href="#ref-rolfe">(Rolfe &amp; Scholes 2010)</a>. Optical sensors of several kinds are being developed to detect
+disease early, from single leaves to whole fields <a href="#ref-mahlein">(Mahlein 2016)</a>. What does
+<i>this</i> experiment add? We asked two practical questions, fixed in advance and
+<a href="https://github.com/dr-richard-barker/PathoFluor-At/blob/main/scripts/11_field_analyses.py">committed before the analysis was run</a>.</p>
+
+<h3>1. If a scanner had been watching these plates, what would it have flagged?</h3>
+<p>We replayed the experiment as a monitoring run. At each hour, every plate was scored by a model that had never
+seen it, trained on how each plate's Col-0 emission spectra had changed since its own pre-treatment scan. A plate is
+<b>flagged</b> when its probability of infection exceeds 0.5. Press play to watch the run unfold.</p>
+<div class="viz-root" id="board">
+  <div class="viz-controls"><button id="bd-play" aria-pressed="false">▶ Play the monitoring run</button><button id="bd-all">Show all hours</button></div>
+  <div class="board-wrap"><div class="board" id="bd-grid" role="table" aria-label="Held-out probability of infection per plate and hour"></div><div class="tip" id="bd-tip"></div></div>
+  <p class="board-status" id="bd-status" aria-live="polite"></p>
+  <p class="note">Cells: the plate's mean held-out probability of infection. ▲ with an outline = flagged. flg22 plates
+  were never used in training; they test whether the alarm also fires on a non-bacterial challenge. Control-4 and
+  flg22-2 are excluded because their hour-0 scans were partly upright rescans. The run stops at 24 h because Pathogen
+  48 h has no hand-drawn spectra. Data: <a href="data/alarm.json">alarm.json</a> (from <code>tables/alarm_replay.csv</code>).</p>
+</div>
+<p><b>Result.</b> 3 of the 4 Pathogen plates were flagged from the first scan
+after inoculation (1 h), and the last by 24 h (13 of 16 Pathogen
+plate-hours). 0 of 12 Control plate-hours were flagged. The flg22 plates were flagged
+too, at 9 of 9 plate-hours in the first 3 h, but 0 of
+3 at 24 h, when 4 of 4 Pathogen plates were still flagged.
+So a single flag means "this plant has been challenged"; a flag that <b>persists</b> is what pointed to infection.
+With three or four plates per group this is a demonstration, not a validated detector.</p>
+
+<h3>2. The spectral alarm comes before visible damage</h3>
+<ol class="timeline">
+  <li><span class="t">0 h</span>Baseline scan of every plate. Essential: plates differed before treatment (classifier AUC 1.00 at hour 0).</li>
+  <li class="alarm"><span class="t">1 h</span>Red emission peak 1.40 nm broader on Pathogen plates (q = 0.018); 3 of 4 Pathogen plates flagged.</li>
+  <li><span class="t">3 h</span>685 nm emission of segmented seedlings already lower (-1,222 counts s<sup>−1</sup>, q = 0.028).</li>
+  <li class="alarm"><span class="t">24 h</span>4 of 4 Pathogen plates flagged; flg22 flags gone.</li>
+  <li><span class="t">48 h</span>685 nm emission changed by -3,462 counts s<sup>−1</sup> (q = 0.028) and seedlings were smaller (q = 0.066): damage you can see in the images above.</li>
+</ol>
+<p class="note">This fits earlier work in which <i>P. syringae</i> changed photosynthesis and chlorophyll
+fluorescence before symptoms <a href="#ref-bonfig">(Bonfig et al. 2006)</a>.</p>
+
+<h3>3. Could a cheap filter camera do it?</h3>
+<figure><img src="figures/figS3_band_sets.png" alt="Plate-level AUC by hour for 2-, 3- and 4-band filter sets and the full spectrum; the filter sets stay near chance while the full spectrum stays high">
+<figcaption>Could a filter camera do it? Plate-level held-out AUC (Col-0, baseline-relative, L2 logistic) for pre-specified sets of 10 nm boxcar filter bands, as log ratios to the 685 nm band, compared with the full 650-800 nm spectrum on a 2 nm grid. Dashed line: chance. Data: tables/band_sets_auc.csv (scripts/11_field_analyses.py), which also gives the exact plate-permutation p for every point.</figcaption></figure>
+<p><b>No.</b> Reduced to two to four 10 nm filter bands, the best plate AUC for Pathogen vs Control was
+0.75 (smallest permutation p = 0.057); the classic F685/F740 ratio reached at most
+0.67. The full 2 nm spectrum reached 0.75–1.00. The signal is a broadening
+of the red peak by 1.40–1.76 nm, which wide filters average away. A practical sensor needs spectrometer-class resolution
+across 650–760 nm.</p>
+
+<h3>4. What a working system would need, and why</h3>
+<ol class="steps">
+  <li><b>Scan the same plants from the start</b><span>Compare every plant with its own baseline: plates here differed before treatment (AUC 1.00 at hour 0).</span></li>
+  <li><b>Fix and record exposure</b><span>The 2016 summaries' "drop" after treatment was a camera setting: 21% raw, 4% once corrected.</span></li>
+  <li><b>Measure the dark level in every scan</b><span>83 exported spectra kept a ~109-count offset that looked like autofluorescence.</span></li>
+  <li><b>Never saturate</b><span>Hour-0 scans saturated up to 13% of a cube's seedling pixels.</span></li>
+  <li><b>Resolve the red peak at ~2 nm</b><span>Filter bands lost the signal (best AUC 0.75).</span></li>
+  <li><b>Find each plant automatically</b><span>Segmenting 1,623 seedlings from the raw cubes reproduced the signature without hand annotation.</span></li>
+  <li><b>Flag on change, confirm on persistence</b><span>flg22 plates were flagged at 1–3 h but not at 24 h; Pathogen plates stayed flagged.</span></li>
+  <li><b>Confirm before acting</b><span>The signature is not pathogen-specific: the flg22 signal did not need FLS2, and short-wavelength emission also rose on a dying Control plate.</span></li>
+</ol>
+
+<h3>5. Where it could be used first</h3>
+<div class="cards ladder">
+  <div class="card"><h3>Controlled-environment farms<small>greenhouses, vertical farms, growth rooms</small></h3>
+    <p><b>Closest to this experiment.</b> Lights can be switched off for a scan, geometry is fixed, and the same plants
+    can be rescanned on a schedule from a gantry or conveyor, so the baseline and exposure rules above can be met.</p>
+    <p><b>Still missing:</b> older plants and canopies instead of seedlings on agar; other crops, pathogens and
+    strains; many more than four plates per group.</p></div>
+  <div class="card"><h3>Space crop systems<small>Veggie, Advanced Plant Habitat, future lunar greenhouses</small></h3>
+    <p><b>Disease has already happened there.</b> Zinnias grown in Veggie on the ISS in late 2015 developed a
+    <i>Fusarium oxysporum</i> infection linked to reduced airflow and water build-up
+    <a href="#ref-schuerger">(Schuerger et al. 2021)</a>. Habitats are enclosed and controlled like the farms
+    above, and crops are few and slow to replace.</p>
+    <p><b>Still missing:</b> a compact flight-qualified imager, and tests with fungal pathogens and flight crops.</p></div>
+  <div class="card"><h3>Open fields<small>tractors, drones, satellites</small></h3>
+    <p><b>Hardest.</b> Sunlight itself excites chlorophyll fluorescence, measured as solar-induced fluorescence
+    from towers, aircraft and satellites <a href="#ref-mohammed">(Mohammed et al. 2019)</a>, but at canopy scale,
+    far coarser than the seedling spectra here. An actively excited scanner like this one would have to work at night,
+    under a hood, or with excitation it can separate from daylight.</p>
+    <p><b>Still missing:</b> all of the above, plus distance, canopy structure, mixed pixels and weather.</p></div>
+</div>
+
+<h3>What a flag does not tell you</h3>
+<ul>
+  <li>Which pathogen, or that it is a pathogen at all: the flg22 treatment and plain damage also shifted the spectrum.</li>
+  <li>That the plant perceived flagellin: the flg22 signal here did not depend on FLS2.</li>
+  <li>Anything beyond this setting: four plates per group, one bacterial strain, seedlings on agar, 488 nm excitation.</li>
+</ul>
+<ol class="refs">
+  <li id="ref-bonfig">Bonfig K.B., Schreiber U., Gabler A., et al. (2006) Infection with virulent and avirulent <i>P. syringae</i> strains differentially affects photosynthesis and sink metabolism in <i>Arabidopsis</i> leaves. <i>Planta</i> 225, 1–12. <a href="https://doi.org/10.1007/s00425-006-0303-3">doi:10.1007/s00425-006-0303-3</a></li>
+  <li id="ref-mahlein">Mahlein A.-K. (2016) Plant disease detection by imaging sensors – parallels and specific demands for precision agriculture and plant phenotyping. <i>Plant Disease</i> 100, 241–251. <a href="https://doi.org/10.1094/PDIS-03-15-0340-FE">doi:10.1094/PDIS-03-15-0340-FE</a></li>
+  <li id="ref-mohammed">Mohammed G.H., Colombo R., Middleton E.M., et al. (2019) Remote sensing of solar-induced chlorophyll fluorescence (SIF) in vegetation: 50 years of progress. <i>Remote Sensing of Environment</i> 231, 111177. <a href="https://doi.org/10.1016/j.rse.2019.04.030">doi:10.1016/j.rse.2019.04.030</a></li>
+  <li id="ref-rolfe">Rolfe S.A., Scholes J.D. (2010) Chlorophyll fluorescence imaging of plant–pathogen interactions. <i>Protoplasma</i> 247, 163–175. <a href="https://doi.org/10.1007/s00709-010-0203-z">doi:10.1007/s00709-010-0203-z</a></li>
+  <li id="ref-schuerger">Schuerger A.C., Amaradasa B.S., Dufault N.S., et al. (2021) <i>Fusarium oxysporum</i> as an opportunistic fungal pathogen on <i>Zinnia hybrida</i> plants grown on board the International Space Station. <i>Astrobiology</i> 21, 1029–1048. <a href="https://doi.org/10.1089/ast.2020.2399">doi:10.1089/ast.2020.2399</a></li>
+</ol>
+
+<h2 id="threed">The data in 3D and 4D</h2>
+<p>A hyperspectral image is natively three-dimensional: two dimensions of position and one of wavelength. These
+plates were scanned six times, so time is a fourth. Below, one row of seedlings is shown as a cloud of
+(position, wavelength) points you can turn, slice and step through time. The plates' feature changes are drawn as
+paths through a three-dimensional space. We did not draw spectrum-versus-time as a 3D surface: its peaks hide its
+own valleys, so that view stays as the 2D <a href="#explorer">explorer</a> and Fig. 2.</p>
+
+<h3>One row of seedlings as a cube: position × wavelength, through time</h3>
+<div class="viz-root" id="cube">
+  <div class="viz-controls">
+    <span role="group" aria-label="Treatment"><button id="cb-Control" aria-pressed="true">Control</button><button id="cb-Pathogen" aria-pressed="false">Pathogen</button></span>
+    <label>Hour <input type="range" id="cb-hour" min="0" max="5" step="1" value="4"> <output id="cb-hour-out"></output></label>
+    <label>Slice at <input type="range" id="cb-wl" min="0" max="60" step="1" value="37"> <output id="cb-wl-out"></output></label>
+    <button id="cb-reset">Reset view</button>
+  </div>
+  <div class="cube-grid gl-only">
+    <div class="gl-wrap" id="cb-wrap"><canvas id="cb-gl" aria-label="Rotatable 3D point cloud of plant pixels by position and wavelength"></canvas><span class="gl-hint">drag to turn · scroll to zoom</span></div>
+    <div class="cube-side"><canvas id="cb-slice" width="455" height="177" aria-label="Image of the row at the selected wavelength; hover to see a spectrum"></canvas>
+      <svg id="cb-spec" viewBox="0 0 360 170" role="img" aria-label="Emission spectrum of the block under the cursor"></svg></div>
+  </div>
+  <figure class="fallback"><img src="figures/figS4_hypercube.png" alt="Static 3D view of one row-scan as position by wavelength"><figcaption>One row-scan as a hyperspectral cube: position along the row, across the row, and emission wavelength, for Control and Pathogen plate 1, row 1, 24 h after treatment. Each point is a 4 x 4 block of plant pixels at one 5 nm band, coloured by exposure-corrected emission (counts/s); dim points are omitted. Emission is confined to the chlorophyll band (about 650-760 nm). Data: docs/data/cube/ (scripts/12_site_media.py from the raw cubes).</figcaption></figure>
+  <p class="note">Plate 1, row 1. Each point is a 4 × 4 block of plant pixels at one 5 nm band from 500 to 800 nm,
+  coloured by exposure-corrected emission (one scale for all hours; dim points hidden). The bright layer is the
+  685 nm peak, the fainter one the 740 nm shoulder; almost nothing below 640 nm glows. The slice shows the row at the chosen
+  wavelength; hover over it for that block's spectrum. Data: <a href="data/cube.json">cube.json</a> and
+  <code>data/cube/*.bin</code> (from <code>scripts/12_site_media.py</code>).</p>
+</div>
+
+<h3>Plates as paths through feature space</h3>
+<div class="viz-root" id="traj">
+  <div class="viz-controls"><span role="group" aria-label="View" id="tj-views"></span></div>
+  <div class="gl-wrap gl-only" id="tj-wrap"><canvas id="tj-gl" aria-label="3D paths of each plate's feature change over time"></canvas><div class="tip" id="tj-tip"></div><span class="gl-hint">drag to turn · hover a point</span></div>
+  <div class="traj-legend" id="tj-legend"></div>
+  <p class="note">Each line is one plate, from its own hour-0 scan (the origin) through 1, 2, 3, 24 and 48 h. Axes:
+  change in red-peak width (nm), in 685 nm emission (counts s<sup>−1</sup>) and in short-wavelength fraction
+  (×10<sup>−3</sup>), from plate means of all segmented seedlings. Pathogen plates move out along red-peak width
+  first, then fall in emission and rise in short-wavelength fraction at 24–48 h. Use the buttons to flatten the view onto any two axes. Data:
+  <a href="data/trajectories.json">trajectories.json</a> (from <code>tables/seedling_plate_changes.csv</code>).</p>
+</div>
+
 <h2 id="explorer">Spectrum explorer</h2>
 <div class="viz-root" id="viz">
   <div class="viz-controls">
@@ -131,6 +362,7 @@ rise, so that emission marks damage, not infection specifically. No CML24 effect
 <ul>
 <li><b>Repository:</b> <a href="https://github.com/dr-richard-barker/PathoFluor-At">github.com/dr-richard-barker/PathoFluor-At</a>: numbered scripts <code>00</code>–<code>09</code>, manifests with SHA-256 for every file, the 2016 hand-ROI spectra, derived tables and figures, and the LaTeX manuscript and slides.</li>
 <li><b>Raw cubes:</b> lossless, checksum-verified archives on Zenodo. <i>DOIs pending.</i></li>
+<li><b>Images and 3D data</b> on this page are rendered from the raw cubes by <code>scripts/12_site_media.py</code>; the monitoring replay and filter-band analysis are <code>scripts/11_field_analyses.py</code>.</li>
 <li><b>Every number on this page</b> is generated from the committed tables by <code>scripts/07_numbers.py</code>.</li>
 </ul>
 <script defer src="https://visitor-analytics.astrobotany.workers.dev/a.js"></script>
@@ -187,6 +419,11 @@ rise, so that emission marks damage, not infection specifically. No CML24 effect
   draw();
 })();
 </script>
+<script src="assets/plates.js" defer></script>
+<script src="assets/board.js" defer></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="assets/cube3d.js"></script>
+<script type="module" src="assets/traj3d.js"></script>
 <script src="https://dr-richard-barker.github.io/Plant_response_to_radiation/cose/sites.js"></script>
 <script src="https://dr-richard-barker.github.io/Plant_response_to_radiation/cose/theme.js"></script>
 </body></html>

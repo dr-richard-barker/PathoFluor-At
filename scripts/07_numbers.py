@@ -154,6 +154,39 @@ def main():
     put("pFlgEarlyMin", fl.perm_p_plate.min(), "{:.2f}")
     put("nPermFlgBase", int(fl.n_perm.iloc[0]), "{:d}")
 
+    # ---- field-oriented analyses (scripts/11_field_analyses.py)
+    AR = pd.read_csv(TABLES / "alarm_replay.csv")
+    AR = AR[AR.p_infected.notna()]
+    path = AR[AR.treatment == "Pathogen"]
+    first = path[path.alarm].groupby("plate").hour.min().reindex(sorted(path.plate.unique()))
+    put("nAlarmPathPlates", int(path.plate.nunique()), "{:d}")
+    put("alarmPathFirstOne", int((first == 1).sum()), "{:d}")
+    put("alarmPathLatestFirst", int(first.max()), "{:d}")
+    if first.isna().any():
+        raise SystemExit("numbers: a Pathogen plate was never flagged; the page text assumes all were")
+    put("alarmPathHits", int(path.alarm.sum()), "{:d}")
+    put("alarmPathCells", len(path), "{:d}")
+    put("alarmPathLateHits", int(path[path.hour == 24].alarm.sum()), "{:d}")
+    ctrl = AR[AR.treatment == "Control"]
+    put("alarmCtrlHits", int(ctrl.alarm.sum()), "{:d}")
+    put("alarmCtrlCells", len(ctrl), "{:d}")
+    put("nAlarmCtrlPlates", int(ctrl.plate.nunique()), "{:d}")
+    fl = AR[AR.treatment == "flg22"]
+    put("alarmFlgEarlyHits", int(fl[fl.hour <= 3].alarm.sum()), "{:d}")
+    put("alarmFlgEarlyCells", int((fl.hour <= 3).sum()), "{:d}")
+    put("alarmFlgLateHits", int(fl[fl.hour == 24].alarm.sum()), "{:d}")
+    put("nAlarmFlgPlates", int(fl.plate.nunique()), "{:d}")
+    BS = pd.read_csv(TABLES / "band_sets_auc.csv")
+    bp = BS[BS.contrast == "Pathogen vs Control"]
+    filt = bp[bp.band_set != "full spectrum"]
+    full = bp[bp.band_set == "full spectrum"]
+    put("bandFiltAucMax", filt.auc_plate.max())
+    put("bandFiltPMin", filt.perm_p_plate.min(), "{:.3f}")
+    put("bandTwoAucMax", filt[filt.band_set == "B2"].auc_plate.max())
+    put("bandFullAucMin", full.auc_plate.min())
+    put("bandFullAucMax", full.auc_plate.max())
+    put("bandWidthNm", 10, "{:d}")
+
     S = pd.read_csv(TABLES / "model_specificity.csv")
     s = S[(S.variant == "baseline-relative") & (S.contrast == "flg22 vs Control") & (S.hour.isin([1, 2, 3]))]
     piv = s.groupby("genotype").delta_p.mean()

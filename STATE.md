@@ -17,6 +17,8 @@ Update this file as each stage lands, so work can resume from the filesystem (AB
 | 7 numbers | scripts/07_numbers.py | done | manuscript/numbers.tex |
 | 8 figures | scripts/08_figures.py | figs 1-6 + S1 done | figures/ |
 | 9 site | scripts/09_site_data.py | done (renders docs/index.html) | docs/ |
+| 11 field analyses | scripts/11_field_analyses.py | done 2026-11-02 (pre-specified; committed b254ad9 before first run) | tables/alarm_replay.csv, band_sets_auc.csv |
+| 12 site media | scripts/12_site_media.py | done 2026-11-02 (needs cache/harvest) | docs/media/, docs/data/{plates,cube,trajectories}.json, figures/figS4_hypercube.png |
 | 10 Zenodo | scripts/10_package_zenodo.py pack/verify/plan; zenodo_upload.py (Richard runs) | pack + verify + plan done 2026-10-28: 33 archives, 155.7 GB, all 800 members SHA-256-verified, 4 records (43.4/39.1/44.7/28.4 GB). Upload: Richard runs zenodo_upload.py (resumable, drafts only), publishes, then `--dois` | /Volumes/Barker_2016/_PathoFluor_zenodo_staging |
 | manuscript / slides | make -C manuscript draft; make -C slides | drafts build | *_draft.pdf, *_slides.pdf |
 | push | git push origin main | public 2026-10-28; Pages live; AstroBotany hub entry live (registry e94712b) | github.com/dr-richard-barker/PathoFluor-At |

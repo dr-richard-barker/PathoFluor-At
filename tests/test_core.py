@@ -86,3 +86,23 @@ def test_filter_bands_boxcar():
     assert np.allclose(B[0], [10.0, 1.0]) and np.allclose(B[1], [20.0, 2.0])
     with pytest.raises(ValueError):
         filter_bands(wl, y, [900], width=10)
+
+
+def _site_media():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("site_media", Path(__file__).resolve().parents[1] / "scripts" / "12_site_media.py")
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+def test_plate_orientation():
+    m = _site_media()
+    img = np.zeros((40, 1000), np.float32)        # (lines, samples)
+    img[3, 500] = 1.0                             # a seedling near the start of the scan line
+    fwd, lo = m.orient(img, centre=500, direction="fwd")
+    rev, _ = m.orient(img, centre=500, direction="rev")
+    assert fwd.shape == rev.shape == (m.CROP, m.WIDTH)
+    r, c = np.argwhere(fwd == 1.0)[0]
+    assert (r, c) == (500 - lo, 3)                # samples become rows, lines become columns
+    assert np.argwhere(rev == 1.0)[0][1] == 40 - 1 - 3   # 'rev' mirrors the scan axis before padding

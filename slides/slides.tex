@@ -138,6 +138,28 @@ and flg22 in \textit{Arabidopsis}}
   shrink. Curve resolution finds no separate broad autofluorescence component.
 \end{frame}
 
+\begin{frame}{From plate to practice: a monitoring replay}
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{figS2_alarm_replay.pdf}
+    \end{column}
+    \begin{column}{0.51\textwidth}
+      \small
+      \begin{itemize}
+        \item Each plate scored by a model that never saw it; flag if $P>0.5$
+        \item Pathogen: \alarmPathFirstOne{} of \nAlarmPathPlates{} plates flagged from 1\,h, the last at
+              \alarmPathLatestFirst\,h
+        \item Control: \alarmCtrlHits{} of \alarmCtrlCells{} plate-hours flagged
+        \item flg22: flagged at 1--3\,h, not at 24\,h $\Rightarrow$ a flag means ``challenged'';
+              persistence pointed to infection
+        \item 2--4 filter bands lose the signal (best AUC \bandFiltAucMax): a sensor needs
+              spectrometer-class resolution
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Take-home}
   \begin{enumerate}
     \item Carry acquisition metadata with every intensity: one camera setting made the most

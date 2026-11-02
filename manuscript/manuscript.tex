@@ -268,6 +268,12 @@ differ, and the seedling-level analysis did not replicate it. Later, the signatu
 falling chlorophyll emission, patchy short-wavelength emission and tissue loss. Under 405\,nm
 excitation, short-wavelength emission also rose on a deteriorating control plate, so on its own it
 marks damage rather than infection.
+For practical use, a pre-specified replay of the experiment as a monitoring run (Supplementary
+Note 5) flagged \alarmPathFirstOne{} of \nAlarmPathPlates{} Pathogen plates from 1\,h and
+\alarmCtrlHits{} of \alarmCtrlCells{} Control plate-hours. flg22 plates were also flagged at 1--3\,h
+but not at 24\,h, so a single flag means ``challenged'', and persistence is what pointed to infection.
+Reducing the spectrum to two to four \bandWidthNm\,nm filter bands lost most of the signal (best plate
+AUC \bandFiltAucMax), so a sensor needs spectral resolution of a few nanometres around the red peak.
 Limitations: the growth, treatment and inoculation details come from the investigator rather than
 from records stored with the data (FACTS R21--R23); there were four plates per treatment; and set B
 used a different excitation wavelength.

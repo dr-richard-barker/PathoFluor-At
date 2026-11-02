@@ -40,7 +40,7 @@ def save(fig, name, caption):
     FIGURES.mkdir(exist_ok=True)
     place_labels(fig)
     fig.savefig(FIGURES / f"{name}.png", dpi=200, bbox_inches="tight")
-    fig.savefig(FIGURES / f"{name}.pdf", bbox_inches="tight")
+    fig.savefig(FIGURES / f"{name}.pdf", bbox_inches="tight", metadata={"CreationDate": None})  # reproducible bytes
     plt.close(fig)
     CAPTIONS[name] = caption
 
@@ -334,6 +334,97 @@ def fig_cubes():
          "tables/fig6_seedling_level.csv.")
 
 
+ALARM_RAMP = ["#b9aed8", "#9b8bc6", "#7d68b3", "#62489f", "#46287f"]   # single hue, light to dark (validated)
+BAND_SETS = [("B2", "2 bands (685, 740 nm)", "#a594cb", "v"), ("B3", "3 bands (670, 685, 700 nm)", "#8571b8", "s"),
+             ("B4", "4 bands (670, 685, 700, 740 nm)", "#62489f", "D"), ("full spectrum", "Full spectrum (2 nm)", "#2e1a66", "o")]
+
+
+def fig_alarm():
+    """Held-out P(infected) per plate x hour: the monitoring replay."""
+    from matplotlib.colors import LinearSegmentedColormap
+    A = pd.read_csv(TABLES / "alarm_replay.csv")
+    hours = [1, 2, 3, 24]
+    order = [("Pathogen", p) for p in (1, 2, 3, 4)] + [("Control", p) for p in (1, 2, 3, 4)] + \
+            [("flg22", p) for p in (1, 2, 3, 4)]
+    M = np.full((len(order), len(hours)), np.nan)
+    for i, (t, p) in enumerate(order):
+        for j, h in enumerate(hours):
+            r = A[(A.treatment == t) & (A.plate == p) & (A.hour == h)]
+            if len(r):
+                M[i, j] = r.p_infected.iloc[0]
+    cmap = LinearSegmentedColormap.from_list("alarm", ALARM_RAMP)
+    fig, ax = plt.subplots(figsize=(4.6, 4.8))
+    ax.grid(False)
+    ax.imshow(np.ma.masked_invalid(M), cmap=cmap, vmin=0, vmax=1, aspect="auto")
+    for i in range(len(order)):
+        for j in range(len(hours)):
+            v = M[i, j]
+            if np.isnan(v):
+                ax.add_patch(plt.Rectangle((j - .5, i - .5), 1, 1, facecolor="#e9e8e4", edgecolor="none"))
+                ax.text(j, i, "excluded", ha="center", va="center", fontsize=6.5, color=INK2)
+                continue
+            alarm = v > 0.5
+            ax.text(j, i, f"{v:.2f}" + ("  ▲" if alarm else ""), ha="center", va="center", fontsize=7.5,
+                    color="white" if v > 0.45 else INK, fontweight="bold" if alarm else "normal")
+            if alarm:
+                ax.add_patch(plt.Rectangle((j - .46, i - .46), .92, .92, fill=False, edgecolor=INK, linewidth=1.1))
+    ax.set_xticks(range(len(hours)), [f"{h} h" for h in hours])
+    ax.set_yticks(range(len(order)), [f"{t} {p}" for t, p in order])
+    for i, (t, _) in enumerate(order):
+        ax.get_yticklabels()[i].set_color(INK)
+    for y in (3.5, 7.5):
+        ax.axhline(y, color=SURFACE, linewidth=4)
+    ax.set_xlabel("Hours after treatment")
+    ax.set_title("Held-out P(infected); ▲ = flagged (P > 0.5)", loc="left")
+    ax.tick_params(length=0)
+    for s in ax.spines.values():
+        s.set_visible(False)
+    save(fig, "figS2_alarm_replay",
+         "Monitoring replay. Each cell is a plate's mean held-out probability of infection from the "
+         "Col-0 Pathogen-vs-Control model (baseline-relative hand-ROI spectra, L2 logistic). Pathogen and "
+         "Control plates are scored leave-one-plate-out; flg22 plates, never used in training, are scored by "
+         "the model fitted on all Pathogen and Control plates. ▲ and a box mark a flag (P > 0.5). Control-4 and "
+         "flg22-2 are excluded because their hour-0 scans were partly upright rescans. Pathogen 48 h has no "
+         "hand ROIs. Data: tables/alarm_replay.csv (scripts/11_field_analyses.py).")
+
+
+def fig_band_sets():
+    """Plate AUC by hour: few-band filter sets vs the full spectrum."""
+    B = pd.read_csv(TABLES / "band_sets_auc.csv")
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.0), sharey=True)
+    for ax, (con, title) in zip(axes, (("Pathogen vs Control", "a  Pathogen vs Control"),
+                                       ("flg22 vs Control", "b  flg22 vs Control"))):
+        d = B[B.contrast == con]
+        hrs = sorted(d.hour.unique())
+        xs = np.arange(len(hrs))
+        for key, lab, col, mk in BAND_SETS:
+            s = d[d.band_set == key].set_index("hour").reindex(hrs)
+            ax.plot(xs, s.auc_plate.values, color=col, marker=mk, label=lab)
+        ax.axhline(0.5, color=INK2, linewidth=0.8, linestyle=(0, (3, 3)), label="Chance (0.5)")
+        ax.set_xticks(xs, [f"{h:g} h" for h in hrs])
+        ax.set_ylim(-0.04, 1.06)
+        ax.set_title(title, loc="left")
+        ax.set_xlabel("Hours after treatment")
+    axes[0].set_ylabel("Plate-level AUC (held out)")
+    axes[1].legend(loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    save(fig, "figS3_band_sets",
+         f"Could a filter camera do it? Plate-level held-out AUC (Col-0, baseline-relative, L2 logistic) for "
+         f"pre-specified sets of 10 nm boxcar filter bands, as log ratios to the 685 nm band, compared with the "
+         f"full 650-800 nm spectrum on a 2 nm grid. Dashed line: chance. Data: tables/band_sets_auc.csv "
+         f"(scripts/11_field_analyses.py), which also gives the exact plate-permutation p for every point.")
+
+
+def caption_hypercube():
+    """figS4 is drawn by scripts/12_site_media.py from the raw-cube cache; its caption lives here."""
+    if (FIGURES / "figS4_hypercube.png").exists():
+        CAPTIONS["figS4_hypercube"] = (
+            "One row-scan as a hyperspectral cube: position along the row, across the row, and emission "
+            "wavelength, for Control and Pathogen plate 1, row 1, 24 h after treatment. Each point is a 4 x 4 "
+            "block of plant pixels at one 5 nm band, coloured by exposure-corrected emission (counts/s); dim "
+            "points are omitted. Emission is confined to the chlorophyll band (about 650-760 nm). "
+            "Data: docs/data/cube/ (scripts/12_site_media.py from the raw cubes).")
+
+
 def main():
     F = pd.read_csv(RESULTS / "roi_features.csv.gz")
     cm = pd.read_csv(META / "cube_manifest.csv")
@@ -345,7 +436,10 @@ def main():
     fig_specificity()
     fig_pilot()
     fig_cubes()
-    lines = ["# Figure captions\n", "Each caption says what the figure shows and where its data come from.\n"]
+    fig_alarm()
+    fig_band_sets()
+    caption_hypercube()
+    lines =["# Figure captions\n", "Each caption says what the figure shows and where its data come from.\n"]
     for k, v in CAPTIONS.items():
         lines.append(f"**{k}** — {v}\n")
     (FIGURES / "CAPTIONS.md").write_text("\n".join(lines))

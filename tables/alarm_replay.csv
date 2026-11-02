@@ -1,0 +1,49 @@
+hour,treatment,plate,p_infected,n_rois,scoring,alarm
+1,Control,1,0.36626945233657593,6,held out (leave-one-plate-out),False
+2,Control,1,0.36013461620568665,6,held out (leave-one-plate-out),False
+3,Control,1,0.43327151691639215,6,held out (leave-one-plate-out),False
+24,Control,1,0.3401126248307323,6,held out (leave-one-plate-out),False
+1,Control,2,0.21022013291639532,6,held out (leave-one-plate-out),False
+2,Control,2,0.2825011281547178,6,held out (leave-one-plate-out),False
+3,Control,2,0.3077519104331935,6,held out (leave-one-plate-out),False
+24,Control,2,0.27575073960234303,6,held out (leave-one-plate-out),False
+1,Control,3,0.11615240403643633,6,held out (leave-one-plate-out),False
+2,Control,3,0.11329419792199968,6,held out (leave-one-plate-out),False
+3,Control,3,0.23004534796517787,6,held out (leave-one-plate-out),False
+24,Control,3,0.3252640070210526,6,held out (leave-one-plate-out),False
+1,Control,4,,0,excluded: hour-0 scans partly upright rescans,False
+2,Control,4,,0,excluded: hour-0 scans partly upright rescans,False
+3,Control,4,,0,excluded: hour-0 scans partly upright rescans,False
+24,Control,4,,0,excluded: hour-0 scans partly upright rescans,False
+1,Pathogen,1,0.8154881394257691,5,held out (leave-one-plate-out),True
+2,Pathogen,1,0.8327630845273436,6,held out (leave-one-plate-out),True
+3,Pathogen,1,0.8203315524029918,6,held out (leave-one-plate-out),True
+24,Pathogen,1,0.5348263333818045,6,held out (leave-one-plate-out),True
+1,Pathogen,2,0.9655090789035384,5,held out (leave-one-plate-out),True
+2,Pathogen,2,0.917009141162475,5,held out (leave-one-plate-out),True
+3,Pathogen,2,0.84787211664941,6,held out (leave-one-plate-out),True
+24,Pathogen,2,0.8705556429071617,6,held out (leave-one-plate-out),True
+1,Pathogen,3,0.9072389138904936,6,held out (leave-one-plate-out),True
+2,Pathogen,3,0.9800889464582555,6,held out (leave-one-plate-out),True
+3,Pathogen,3,0.7964711068676887,6,held out (leave-one-plate-out),True
+24,Pathogen,3,0.9764527167173583,6,held out (leave-one-plate-out),True
+1,Pathogen,4,0.4883401095157038,6,held out (leave-one-plate-out),False
+2,Pathogen,4,0.47795645469598963,6,held out (leave-one-plate-out),False
+3,Pathogen,4,0.18520062830713827,6,held out (leave-one-plate-out),False
+24,Pathogen,4,0.8812130472014683,6,held out (leave-one-plate-out),True
+1,flg22,1,0.516174181755864,6,"Pathogen-vs-Control model, all plates",True
+2,flg22,1,0.5509497614480692,5,"Pathogen-vs-Control model, all plates",True
+3,flg22,1,0.6991226624605583,6,"Pathogen-vs-Control model, all plates",True
+24,flg22,1,0.17742138695302176,6,"Pathogen-vs-Control model, all plates",False
+1,flg22,2,,0,excluded: hour-0 scans partly upright rescans,False
+2,flg22,2,,0,excluded: hour-0 scans partly upright rescans,False
+3,flg22,2,,0,excluded: hour-0 scans partly upright rescans,False
+24,flg22,2,,0,excluded: hour-0 scans partly upright rescans,False
+1,flg22,3,0.5748111240507597,6,"Pathogen-vs-Control model, all plates",True
+2,flg22,3,0.699116475456412,6,"Pathogen-vs-Control model, all plates",True
+3,flg22,3,0.7987500274174105,6,"Pathogen-vs-Control model, all plates",True
+24,flg22,3,0.22433389538550985,6,"Pathogen-vs-Control model, all plates",False
+1,flg22,4,0.8730964942402762,6,"Pathogen-vs-Control model, all plates",True
+2,flg22,4,0.7910372948014982,6,"Pathogen-vs-Control model, all plates",True
+3,flg22,4,0.7902993904878439,6,"Pathogen-vs-Control model, all plates",True
+24,flg22,4,0.18707256842289652,6,"Pathogen-vs-Control model, all plates",False

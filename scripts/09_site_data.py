@@ -27,6 +27,7 @@ def main():
                                   y=[round(v * 1000, 4) for v in d[grid].mean().values]))
     (DOCS / "data").mkdir(parents=True, exist_ok=True)
     (DOCS / "data" / "spectra.json").write_text(json.dumps(out, separators=(",", ":")))
+    export_field_tables()
     (DOCS / "figures").mkdir(exist_ok=True)
     for p in FIGURES.glob("*.png"):
         shutil.copy2(p, DOCS / "figures" / p.name)
@@ -36,6 +37,24 @@ def main():
             shutil.copy2(src, DOCS / dst)
     render_page()
     print(f"{len(out['series'])} series; figures and PDFs copied; docs/index.html rendered")
+
+
+def export_field_tables():
+    """docs/data/alarm.json and bands.json from scripts/11_field_analyses.py's tables."""
+    from pathofluor.config import TABLES
+    A = pd.read_csv(TABLES / "alarm_replay.csv")
+    rows = [dict(treatment=r.treatment, plate=int(r.plate), hour=int(r.hour),
+                 p=None if pd.isna(r.p_infected) else float(r.p_infected),
+                 n=int(r.n_rois), scoring=r.scoring) for r in A.itertuples()]
+    (DOCS / "data" / "alarm.json").write_text(json.dumps(dict(
+        threshold=0.5, source="tables/alarm_replay.csv (scripts/11_field_analyses.py)", cells=rows),
+        separators=(",", ":")))
+    B = pd.read_csv(TABLES / "band_sets_auc.csv")
+    (DOCS / "data" / "bands.json").write_text(json.dumps(dict(
+        source="tables/band_sets_auc.csv (scripts/11_field_analyses.py)",
+        rows=[dict(hour=int(r.hour), contrast=r.contrast, band_set=r.band_set, bands_nm=r.bands_nm,
+                   auc=round(float(r.auc_plate), 3), p=round(float(r.perm_p_plate), 3)) for r in B.itertuples()]),
+        separators=(",", ":")))
 
 
 def render_page():

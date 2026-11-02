@@ -47,13 +47,19 @@ recovers that experiment from its original drive, documents every data problem, 
 - **The set-A flg22 signal is not FLS2-dependent.** A Col-0-trained model scores *fls2* plants as
   strongly as Col-0, so the signal is a plate-level effect, not perception
   (`tables/model_specificity.csv`).
+- **Towards practical monitoring (pre-specified, `scripts/11_field_analyses.py`).** Replayed as a
+  monitoring run, a model that never saw the plate flagged 3 of 4 Pathogen plates from 1 h and the
+  fourth at 24 h, and flagged 0 of 12 Control plate-hours. flg22 plates were flagged at 1–3 h but not at
+  24 h, so a flag means "challenged" and persistence points to infection (`tables/alarm_replay.csv`).
+  Two to four 10 nm filter bands lose the signal (best plate AUC 0.75 vs up to 1.0 for the full 2 nm
+  spectrum), so a practical sensor needs spectrometer-class resolution (`tables/band_sets_auc.csv`).
 
 ## Repository layout
 
 | Path | Contents |
 |---|---|
-| `scripts/00_inventory.py` … `09_site_data.py` | Numbered, idempotent, resumable pipeline (see below) |
-| `src/pathofluor/` | ENVI reader, file-name parsers, features, segmentation |
+| `scripts/00_inventory.py` … `12_site_media.py` | Numbered, idempotent, resumable pipeline (see below) |
+| `src/pathofluor/` | ENVI reader, file-name parsers, features, segmentation, plate-level classifiers |
 | `metadata/` | `file_inventory.csv` (all 7,752 drive files, SHA-256), `cube_manifest.csv` (every cube's acquisition settings), `roi_manifest.csv`, `FACTS_PENDING.md`, `related_material.md`, `study.yaml` |
 | `data/original_2016/` | The 2016 hand-ROI spectra, ENVI headers, summary graphs and pilot material, copied unchanged (raw cubes excluded) |
 | `results/` | Derived per-ROI and per-seedling tables, per-cube QC, label validation |
@@ -61,7 +67,7 @@ recovers that experiment from its original drive, documents every data problem, 
 | `figures/` | Figures (PNG + PDF) and `CAPTIONS.md` |
 | `manuscript/` | LaTeX manuscript; `numbers.tex` is generated, so no result is typed by hand |
 | `slides/` | Beamer deck built from the same figures and numbers |
-| `docs/` | GitHub Pages site (CoSE theme) with an interactive spectrum explorer |
+| `docs/` | GitHub Pages site (CoSE theme): plant images rendered from the raw cubes, a plate time-lapse, the monitoring replay, 3D/4D views of a cube and of plate trajectories, and a spectrum explorer |
 
 ## Reproduce
 
@@ -75,12 +81,15 @@ export PATHOFLUOR_SRC="/path/to/Hyperspectral_UW-Botany_July 2016"   # raw drive
 .venv/bin/python scripts/04_assign_labels.py
 .venv/bin/python scripts/05_stats.py
 .venv/bin/python scripts/06_models.py
+.venv/bin/python scripts/11_field_analyses.py     # monitoring replay + filter-band sets
+.venv/bin/python scripts/12_site_media.py         # page images and 3D data (needs the step-02 cache)
 .venv/bin/python scripts/07_numbers.py && .venv/bin/python scripts/08_figures.py
 .venv/bin/python scripts/09_site_data.py
 make -C manuscript draft && make -C slides
 ```
 
-Steps 01 and 05–09 need only the files in this repository. Steps 02–04 need the raw cubes.
+Steps 01, 05–09 and 11 need only the files in this repository. Steps 02–04 need the raw cubes, and step 12
+reads the cube cache that step 02 writes.
 
 ## Data availability
 
