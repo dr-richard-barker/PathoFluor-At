@@ -79,8 +79,8 @@ and one artefact scan in set A) and \nRoiFiles{} hand-drawn region-of-interest (
 \end{enumerate}
 
 \subsection{Spectral processing}\label{sec:features}
-Each raw cube was read once, sequentially, and hashed with SHA-256
-(\texttt{scripts/02\_harvest\_cubes.py}). The per-band dark level was taken as the median of
+The harvest script (\texttt{scripts/02\_harvest\_cubes.py}) read each raw cube once,
+sequentially, and hashed it with SHA-256. The per-band dark level was taken as the median of
 background pixels, which sit at about 108 counts. Seedlings were segmented on the dark-subtracted
 685\,nm image at 10 background standard deviations, then cleaned, and cotyledon and hypocotyl
 components were grouped (\texttt{src/pathofluor/segment.py}). Each segmented seedling was

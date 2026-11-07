@@ -44,7 +44,7 @@ def tex_table(df, cols, header, path, caption, label, fmt=None):
             f = fmt.get(c)
             cells.append(f(v) if f else (f"{v:.2f}" if isinstance(v, float) else str(v)))
         body.append(" & ".join(cells).replace("_", "\\_") + " \\\\")
-    tex = ["\\begin{table}[ht]\\centering\\small", f"\\caption{{{caption}}}\\label{{{label}}}",
+    tex = ["\\begin{table}[ht]\\centering\\small\\setlength{\\tabcolsep}{4pt}", f"\\caption{{{caption}}}\\label{{{label}}}",
            "\\begin{tabular}{" + "l" * len(cols) + "}", "\\toprule", " & ".join(header) + " \\\\", "\\midrule",
            *body, "\\bottomrule", "\\end{tabular}", "\\end{table}"]
     (REPO / "manuscript" / "generated").mkdir(exist_ok=True)
